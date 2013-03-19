@@ -1,0 +1,139 @@
+%-------------------------------------------------
+% CVL Technical Report
+% Author: Markus Diem
+% Date: 05.07.2010
+% Affiliation:
+%		Vienna University of Technology
+%		Faculty of Informatics
+%		Institute of Computer Aided Automation
+% 	Computer Vision Lab
+%-------------------------------------------------
+\documentclass[12pt,a4paper]{article}
+
+% include packages ---------------------------------------------------
+
+%\usepackage[ngerman]{babel}			% uncomment if you write it in german
+
+\usepackage[pdfborder=0]{hyperref}	% links without border
+%\usepackage{url}										% uncomment if hyperref is commented
+%\linespread{1.2}										% use this for a short report :)
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[noindentafter]{titlesec}
+\usepackage[ansinew]{inputenc}      % ---> für umlaute in deutschen references
+\usepackage[printonlyused]{acronym}	% acronyms
+\usepackage{changepage}							% for the titlepage
+\usepackage{a4}											% margin
+
+% our style
+% creates the titlepage & does all the formating
+\usepackage{cvl-titlepage}
+
+
+% ------------------------------------------------
+%	How to make LaTeX copy & paste -able for WORD (final spell checking):
+%	- uncomment the subsequent commands so that
+%   fi and ff are correct symbols
+% - comment hyperref & uncomment url
+%	- copy & paste the *.pdf text
+% - In word: replace (ctrl+H) ^p with a whitespace
+%   this removes paragraph breaks
+% - the subsequent commands surpress ligatures & page numbering
+%\usepackage{microtype}
+%\DisableLigatures{encoding = *, family = * }
+%\pagestyle{empty}
+% ------------------------------------------------
+
+% hyphenation
+\hyphenation{kle-ber}
+
+
+% title information -----------------------------------------------
+\title{Online Medical Imaging Platform}
+\author{Willinger Christin}
+\newcommand{\supervisor}{Robert Sablatnig}
+%\newcommand{\subsupervisor}{Sebastian Zambanini}	% uncomment if you have two supervisors
+
+%\date{July 5, 2010}	% use this if you need a specific date
+
+% title information -----------------------------------------------
+
+% readme ----------------------------------------------------------
+% Some hints...
+% - do not make a tableofcontents
+% - the proposed structure (introduction, related work, ...)
+% - if you have any questions concerning latex, or the proposed
+%   style sheet, contact your supervisor.
+% - if you detect errors within this style sheet, contact: 
+%		diem@caa.tuwien.ac.at
+% - please keep the abstract short enough to fit on the title page
+% - concentrate on the essential content, but do not write bushwa
+% 	in order to extend your thesis
+% - do not use filler words such as: much, more, many...
+% - do not write statements with out proof such as:
+%   Recently, document analysis has become an important field.
+% - don't ever cite wikipedia
+% - but you should cite all papers, your work is based upon
+% - if you chose a specific method, always state the reason
+% - some general hints for literature research:
+% 		- http://dblp.mpi-inf.mpg.de/dblp-mirror/index.php
+% 			the webpage may seem old-fashioned, but it has 
+% 			a live search and indexes all important conferences
+% 			(not solely IEEE or ACM...). additionally links to 
+% 			the bibtex and the *.pdf are provided
+% 		- http://ieeexplore.ieee.org/Xplore/dynhome.jsp
+% 			the official IEEE search engine (you need a TU VPN
+% 			in order to access the *.pdfs)
+%			- http://portal.acm.org/portal.cfm
+% 			crappy, but the official acm search engine
+% 		- http://jabref.sourceforge.net/
+% 			nice tool to organize your references
+% 		- http://www.citeulike.org/
+% 			some people think it is best...
+% - if you are bored while writing: 
+%   http://stud3.tuwien.ac.at/~e0226595/james-bomb/index.htm
+% readme ----------------------------------------------------------
+
+\begin{document}
+
+\maketitlepage
+\pagenumbering{roman}
+\tableofcontents
+% put your abstract here
+\abstract{
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie 
+consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan 
+et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis 
+dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer 
+adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore 
+magna aliquam erat volutpat.
+
+Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit 
+lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor 
+in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu 
+feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui 
+blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+
+Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet 
+doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, 
+consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet 
+dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud 
+exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+}
+\clearpage
+\pagenumbering{arabic}
+
+\include{s1_introduction}
+%\include{s2_related-work}
+%\include{s3_methodology}
+%\include{s4_results}
+%\include{s5_conclusion}
+
+% bibliography
+\addcontentsline{toc}{section}{Bibliography}
+\bibliographystyle{alpha}
+\bibliography{cvl_tr}
+
+\end{document}
+

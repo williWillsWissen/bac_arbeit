@@ -1,0 +1,112 @@
+%-------------------------------------------------
+% CVL Technical Report - Template
+% Author: Markus Diem, based on TU template (Thomas Krennwallner)
+% Date: 05.07.2010
+% Affiliation:
+%		Vienna University of Technology
+%		Faculty of Informatics
+%		Institute of Computer Aided Automation
+% 	Computer Vision Lab
+%-------------------------------------------------
+
+% page formating ------------------------------------------------------
+\hoffset -6mm
+\voffset -6mm
+\textwidth 16cm
+\textheight 23cm
+
+% misc ----------------------------------------------------------------
+% titles
+\titleformat{\paragraph}[hang]{\normalfont\bfseries}{}{0pt}{}
+\titlespacing{\paragraph}{0mm}{10pt}{3pt}
+
+% personalize item symbols
+\renewcommand*{\acsfont}[1]{\normalfont{\normalsize{#1}}}
+\newenvironment{itemized}{\renewcommand\labelitemi
+            {$\circ$}\begin{itemize}}{\end{itemize}}
+            
+% glagolica font
+\font\obl = obl10 scaled \magstep 1
+\newcommand*{\glag}[1]		{{\obl #1}\,}		% glagolitic font
+
+% formulas
+\newcommand*{\degr}		{\,^\circ}						% degree
+\newcommand*{\perc}		{\, \%}								% percent
+
+% font
+\newcommand*{\super}[1]		{\textsuperscript{#1}}	% superscript
+\newcommand*{\sub}[1]			{$_{\textrm{#1}}$}			% subscript
+
+% text macro
+\newcommand*{\setB}				{\textsc{setB}}
+\newcommand*{\eg}					{e.g.\;}
+\newcommand*{\etal}				{et~al.\;}
+
+% make abstract -------------------------------------------------------
+%\newcommand*{\makeabstract}{
+%  \noindent {\bfseries Abstract \medskip \\}
+%  \@abstract
+%}
+
+%\long\def\abstract#1{\gdef\@abstract{#1}}
+
+% make title page -----------------------------------------------------
+\newcommand*{\maketitlepage} {
+	
+	\pagenumbering{Alph}
+	
+	\begin{titlepage}
+
+	% TU Logo ------------------------------
+	\begin{minipage}{0.5\textwidth}
+	\begin{flushleft}
+	\hspace{-7.8mm} 	% there is a strange margin in here...
+	\includegraphics[height = 20mm]{img/tu_logo.pdf}
+	\end{flushleft}
+	\end{minipage}
+	% CVL Logo -----------------------------
+	\begin{minipage}{0.455\textwidth}
+	\begin{flushright}
+	\includegraphics[height = 20mm]{img/cvl_logo.jpg}
+	\end{flushright}
+	\end{minipage}
+	
+	\vspace{5cm}
+	
+%	% Report Number ------------------------
+%	\begin{flushright}
+%	Technical Report \\ CVL-TR-\trnumber
+%	\end{flushright}
+%	
+%	\vspace{2mm}
+	
+	% Report Title -------------------------
+	\begin{center}
+		{\sffamily\bfseries\Huge \@title} \medskip
+	\end{center}
+
+	% Report Info --------------------------
+	\begin{center}
+	{\Large \@author \vspace{2cm}} \\
+	Computer Vision Lab \\
+	Institute of Computer Aided Automation \\
+	Vienna University of Technology \medskip \\
+  \@date \\
+	\end{center}
+
+	\vspace{5cm}
+	\begin{tabbing} 
+	Supervisor: \= blabla \kill
+	Supervisor:	\> \supervisor \\
+	\@ifundefined{subsupervisor}{}{
+							\> \subsupervisor
+	}
+	\end{tabbing}
+	\vspace{5mm}
+	
+	% Abstract ------------------
+	%\makeabstract
+	
+%	\end{adjustwidth}
+	\end{titlepage}
+}
