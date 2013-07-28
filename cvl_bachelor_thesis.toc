@@ -10,12 +10,13 @@
 \contentsline {section}{\numberline {2}Related Work}{2}{section.2}
 \contentsline {subsection}{\numberline {2.1}Funktionsumfang von Betrachtungstools}{2}{subsection.2.1}
 \contentsline {section}{\numberline {3}Methodology}{3}{section.3}
-\contentsline {subsection}{\numberline {3.1}Verwendetet Technologien}{3}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.1}Verwendetet Technologien und Protokolle}{3}{subsection.3.1}
 \contentsline {subsubsection}{\numberline {3.1.1}HTTP}{3}{subsubsection.3.1.1}
-\contentsline {subsubsection}{\numberline {3.1.2}JSON}{3}{subsubsection.3.1.2}
-\contentsline {subsubsection}{\numberline {3.1.3}AJAX}{3}{subsubsection.3.1.3}
-\contentsline {subsubsection}{\numberline {3.1.4}Objectiv J}{3}{subsubsection.3.1.4}
-\contentsline {subsubsection}{\numberline {3.1.5}Cappuccino}{3}{subsubsection.3.1.5}
+\contentsline {subsubsection}{\numberline {3.1.2}REST}{3}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.3}JSON}{3}{subsubsection.3.1.3}
+\contentsline {subsubsection}{\numberline {3.1.4}AJAX}{3}{subsubsection.3.1.4}
+\contentsline {subsubsection}{\numberline {3.1.5}Objectiv J}{3}{subsubsection.3.1.5}
+\contentsline {subsubsection}{\numberline {3.1.6}Cappuccino}{3}{subsubsection.3.1.6}
 \contentsline {subsection}{\numberline {3.2}Kommunikation mit KRESHMOI}{3}{subsection.3.2}
 \contentsline {subsubsection}{\numberline {3.2.1}Query nach Bildern}{3}{subsubsection.3.2.1}
 \contentsline {subsubsection}{\numberline {3.2.2}Laden der Bilder}{3}{subsubsection.3.2.2}
@@ -25,7 +26,9 @@
 \contentsline {subsubsection}{\numberline {3.3.3}2DView}{3}{subsubsection.3.3.3}
 \contentsline {subsubsection}{\numberline {3.3.4}Kommunikations Module}{3}{subsubsection.3.3.4}
 \contentsline {subsection}{\numberline {3.4}Usability}{3}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}Workflow bei der Befundung}{3}{subsubsection.3.4.1}
 \contentsline {section}{\numberline {4}Results}{4}{section.4}
 \contentsline {subsection}{\numberline {4.1}Geschwindigkeit}{4}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Usability}{4}{subsection.4.2}
 \contentsline {section}{\numberline {5}Conclusion}{5}{section.5}
+\contentsline {section}{Bibliography}{6}{section.5}
