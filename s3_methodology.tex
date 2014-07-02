@@ -16,7 +16,23 @@
 \subsubsection{HTTP}
 \label{sec:HTTP}
 
-%----------------------------------------------
+HTTP (Hyper Text Transfer Protokoll) ist ein Protokoll zur übertragung von Daten über ein Netzwerk welches auf TCP aufsetzt.
+Der Datenaustausch findet zwischen zwei Kommunikationspartner findet in der From von Nachrichten statt, 
+wobei der Client eine Anfrage an einen Server stellt und dieser die Anfrage bearbeitet und eine Antwort retuniert.
+\\
+Eine Nachricht setzt sich aus einem Header und einen Body zusammen.
+Der Body enthält die Nutzdaten und der Header enthält Metadaten über die Nutzdaten.
+Vom Aufbau der Nachricht unterscheiden sich Anfrage und Antwort nur in der ersten Zeile:
+\begin{itemize}
+	\item Anfrage: Enthält die HTTP-Methode, die URL welche auf die Resource am Server zeigt und die Protokollversion.
+	\item Antwort: Enthält die Protokollversion und den Serverstatus. 
+		Der Serverstatus liefert eine Aussage ob der Request erfolgreich bearbeitet wurde bzw welche Art von Fehler bei der Bearbeitung aufgetreten ist.
+\end{itemize}
+HTTP ist ein zustandsloses Protokoll, daher wird nach jeder Anfrage die Verbindung vom Server wieder abgebaut.
+Für eine Zuordnung eines Clients muss dieser eine Session-ID mitsenden welche normalerweise im Header enthalten ist.
+% TODO: RFC zietieren
+
+%--------------------------------------------- 
 % ** REST
 %----------------------------------------------
 \subsubsection{REST}
@@ -54,6 +70,10 @@ In der aktullen Version wird die Übergabe von Referenzen als Parameter ähnlich
 %----------------------------------------------
 \subsubsection{Cappuccino}
 \label{sec:Cappuccino}
+Bei Cappuccino handelt es sich um ein Web Application Framework zur Erstellung komplexer Benutzeroberflächen in Javascript und Objectiv J.
+Das Framework lehnt sich vom Aussehen als auch von der Benennung der Komponenten sehr stark an das GUI-Framework Cocoa von Apple an.
+GUI-Elemente werden als Objekte erstellt welche von einer View-Klasse erben und innerhalb von anderen Views positioniert werden können.
+Das Interface wird von einem HTML5 fähigen Browser gerendert wobei für dessen Erstellung keinerlei HTML oder CSS kentnisse notwendig sind.
 
 %----------------------------------------------
 % * Kommunikation mit KRESHMOI
