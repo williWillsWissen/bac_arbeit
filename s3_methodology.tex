@@ -17,7 +17,7 @@
 \label{sec:HTTP}
 
 HTTP (Hyper Text Transfer Protokoll) ist ein Protokoll zur übertragung von Daten über ein Netzwerk welches auf TCP aufsetzt.
-Der Datenaustausch findet zwischen zwei Kommunikationspartner findet in der From von Nachrichten statt, 
+Der Datenaustausch zwischen zwei Kommunikationspartner findet in der From von Nachrichten statt, 
 wobei der Client eine Anfrage an einen Server stellt und dieser die Anfrage bearbeitet und eine Antwort retuniert.
 \\
 Eine Nachricht setzt sich aus einem Header und einen Body zusammen.
@@ -37,7 +37,37 @@ Für eine Zuordnung eines Clients muss dieser eine Session-ID mitsenden welche n
 %----------------------------------------------
 \subsubsection{REST}
 \label{sec:HTTP}
-
+REST ist im eigentlichen Sin mehr ein Architekturstiel als ein Protokoll welcher mit HTTP umgesetzt wird.
+Die Idee von REST ist dass eine URL genau eine Resource auf einem Server addressiert, 
+wobei eine Resource eine statische Datei oder das ergebniss einer aktion auf dem Server sein kann.
+\\
+Der Architekturstiel ist lässt sich durch fünf Prizipien zusammenfassen:
+\\
+\\
+\textbf{Resource mit eindeutiger Identifikation:}\\
+Jede Resrouce wird durch eine URI (Uniform Resouce Identifier) weltweit eindeutig identifiziert.
+Diese addressiert unter anderem den Server auf den sich die resource befindet sowie Resource auf dem Server selbst.
+\\
+\\
+\textbf{Hypermedia}\\
+Verknüfungen zu anderen Entitäten und werden als Links auf die jeweiligen Resourcen dargestellt.
+Weiters kann die Steuertung des Applikationszustandes durch Links auf weiter Aktionen durch Hypermedia umgesetzt werden.
+\\
+\\
+\textbf{Standard-Opperationen}\\
+Es gibt ein definiertes Interface welches von jeder Resource zur verfügung gestellt werden muss.
+Dieses umfasst einen relativ kleinen Satz von Opperationen welche auf die Resource ausgeführt werden können.
+\\
+\\
+\textbf{Unterschiedliche repräsentation der Resourcen}\\
+Die Resourcen können unterschiedliche Darstellungsformen haben.
+Ein Client kann also eine Resource in einem bestimmten Format (z.B.: XML, HTML, JSON) anfordern sofern diese Darstellung vom Server unterstüzt wird.
+In HTTP wird die gewünschte Dartstellung im Header angegeben.
+\\
+\\
+\textbf{Zustandslose Kommunikation}\\
+Der Server hällt keine Zustandsinformationen über den Client welcher über die Dauer eines Requests hinaus geht.
+Daher muss der Zustand einer Anwendung entweder am Client liegen oder vom Server in eine Resource umgewandelt werden.
 %----------------------------------------------
 % ** JSON
 %----------------------------------------------
@@ -49,6 +79,10 @@ Für eine Zuordnung eines Clients muss dieser eine Session-ID mitsenden welche n
 %----------------------------------------------
 \subsubsection{AJAX}
 \label{sec:AJAX}
+AJAX (Asynchronous JavaScript and XML) ermöglicht es einer Web Anwendung kleinere Mengen von Daten nachzuladen und damit Teile der Webseite zu ändern, 
+statt bei jeder Aktion die Webseite neu zu laden.
+Benötigt die Web Appliketion Daten vom Server wird 
+%TODO: Weiter
 
 %----------------------------------------------
 % ** Objectiv J
@@ -70,8 +104,8 @@ In der aktullen Version wird die Übergabe von Referenzen als Parameter ähnlich
 %----------------------------------------------
 \subsubsection{Cappuccino}
 \label{sec:Cappuccino}
-Bei Cappuccino handelt es sich um ein Web Application Framework zur Erstellung komplexer Benutzeroberflächen in Javascript und Objectiv J.
-Das Framework lehnt sich vom Aussehen als auch von der Benennung der Komponenten sehr stark an das GUI-Framework Cocoa von Apple an.
+Bei Cappuccino handelt es sich um ein Web Application Framework für Objectiv J und Javascript, welches haupsächlich der Erstellung komplexer Benutzeroberflächen dient.
+Das Framework lehnt sich sowol vom Aussehen als auch von der Benennung der Komponenten sehr stark an das GUI-Framework Cocoa von Apple an.
 GUI-Elemente werden als Objekte erstellt welche von einer View-Klasse erben und innerhalb von anderen Views positioniert werden können.
 Das Interface wird von einem HTML5 fähigen Browser gerendert wobei für dessen Erstellung keinerlei HTML oder CSS kentnisse notwendig sind.
 
