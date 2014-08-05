@@ -71,18 +71,36 @@ Dazu muss das User-Interface die grundliegenden Funktionen eines Betrachtungs-To
 %----------------------------------------------
 \subsection{Möglichkeiten zur Umsetzung}
 \label{sec:Möglichkeiten zur Umsetzung}
+Aufgrund der Anforderung dass, das Programm in einem Webbrowser ausgeführter werden soll, gibt es zwei Möglichkeiten die Anwendung umzusetzen.
 
 %----------------------------------------------
 % ** JavaApplet
 %----------------------------------------------
 \subsubsection{JavaApplet}
 \label{sec:JavaApplet}
-
+Bei einem Java Applet wird ein Java Programm in eine Webseite eingebunden und vom dem Browser des Clients geladen.
+Der Browser übergibt das Applet dem Java Interpreter wofür aber ein spezieller Plugin notwendig ist.
+\\
+Der große Vorteil dieses Ansatzes ist dass die Anwendung sehr performant ist.
+Dies ergibt aus den beiden Punkten dass Java Code compiliert wird und dass es möglicht ist die Grafikhardware des Clients zum bearbeiten der Bilder zu verwenden,
+welche für diese Aufgabe besser geeignet ist als die CPU.
+\\
+Dafür müssen die notwendigen Plugins sowie ein aktueller Java Interpreter auf dem Client installiert sein, 
+was bei manchen Betriebssystemen für Mobiledevices gar nicht möglich ist.
 %----------------------------------------------
 % ** HTML5
 %----------------------------------------------
 \subsubsection{HTML5}
 \label{sec:HTML5}
+Bei deisem Ansatz wird die Anwendung in HTML, CSS und JavaScript oder einem Framework welches auf diesen Technologien aufsetzt entwickelt.
+\\
+Da diese Technologien von fast allen neuen Browsern unterstütz werden kann damit ein sehr hoher Grad an Portabilität erreicht werden.
+Weiters sind Webapplikationen für den Benutzer sehr einfach zu verwenden da anstatt einer Installation um die Anwendung nutzen zu können nur eine Webseite geöffnet werden muss.
+\\
+HTML5 unterstüzt Canvas Elemente für 2D Bilder jedoch ist eine Verarbeitung der Bilder durch die Grafikhardware nur begrenzt möglich.
+Für die Verwendung der Grafikarte durch den Browser gibt es die Schnittstelle WebGL welche auf OpenGL ES aufbaut.
+Diese wurde aber noch nicht in allen gängigen Browsern implementiert bzw ist in einigen nocht nicht stabil und muss extra aktiviert werden.
+
 
 
 
