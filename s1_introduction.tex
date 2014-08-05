@@ -11,22 +11,60 @@
 \label{sec:Motivation}
 
 %----------------------------------------------
-% ** Hardware und OS Abrstraktion
+% ** Interaktion mit einer Bildsuchmaschiene
 %----------------------------------------------
-\subsubsection{Hardware und OS Abstraktion}
-\label{sec:Hardware und OS Abstraktion}
+\subsubsection{Interface für Kreshmoi}
+\label{sec:Interface für Kreshmoi}
+Das Ziel von KHRESMOI ist das Durchsuchen und der Zugang zu medizinischen Informationen für verschiedene Benutzergruppen mit unterschiedlichem medizinischen Vorwissen.
+Die Einteilung der Benutzer erfolgt in 3 Kategorien:
+\begin{itemize}
+	\item Personen ohne speziellen medizinischen Kentnissen
+	\item Ärzte
+	\item Radiologen
+\end{itemize}
+Dazu verknüpft KHRESMOI Daten aus verschiedenen heterogenen Resourcen wie Bildern aus PACS, Bildern und Text aus Publikationen in Journalen oder Daten von Webseiten.
+Da sich die verschiedenen Resoucen qualitativ sehr stark voneinander unterscheiden können wird einen Bewertung ihrer Glaubwürdigkeit durchgeführt und dem Benutzer angezeigt.
+\\
+Die Suchanfrage kann in textueller Form oder als Bild-Query sowie als Kombination von beidem gestellt werden.
+Ein weiteres wichtiges Feature hiebei ist die multilinguale Suche, da die Menge an verfügbaren medizinischen Informationen nicht in alle Sprachen gleich ist.
+Dies bedeutet dass die Suchanfrage in mehrere Sprachen übersetzt wird und somit auch anderssprachige Quellen durchsucht werden können.
+Die Zusammenfassungen der Suchergebnisse werden anschließend in die Anfragesprache rückübersetzt wodurch der Benutzer schnell duch die Ergebnissliste navigieren kann.
 
 %----------------------------------------------
 % ** Interaktion mit einer Bildsuchmaschiene
 %----------------------------------------------
 \subsubsection{Interaktion mit einer Bildsuchmaschiene}
 \label{sec:Interaktion mit einer Bildsuchmaschiene}
+Ein Teilprojekt von KHRESHMOI ist das Druchsuchen von medizinischen Bilddaten wobei diese in 2D, 3D oder 4D (Video) vorliegen können.
+Um eine Suchanfrage auf ein Bild stellen zu können müssen an einem Referenz-Bild Bereiche eingezeichnet werden welche dann die Anfrage formen.
+Aus der Textur eines markierten Bereiches wird ein Feature-Vektor extrahiert mit dem anschließend eine Datenbank von zuvor indizierten Bildern durchsucht wird.
+\\
+Ein Frontend einer Bildsuchmaschiene muss daher sowohl Tools zum markieren von interessanten Bereichen, 
+als auch die Funktionalität zur verfnünftigen Berachtung der Bilder bereitstellen.
+\\
+Diese Arbeit spezialisiert sich auf das Durchsuchen von radioloischen Aufnahmen in 2D und 3D welche in einem PACS (Picture Archiving and Communication Systems) abgelegt sind.
+Da in einem Krankenhaus täglich große Mengen an Daten durch radionlogische Aufnahmen produziert werden, 
+bietet eine effizientes Durchsuchen dieser die möglichkeit Sie für Ausbildung und Forschug wieder zu verwenden.
+\\
+Dazu muss das User-Interface die grundliegenden Funktionen eines Betrachtungs-Tools für Röngten- und Computertomographie-Aufnahmen zur verfüfung Stellen:
+\begin{itemize}
+	\item Zoom
+	\item Schnelles anpassen von Kontrast und Helligkeit
+	\item Navigation durch die Schnitte eins 3D-Körpers in einer Schnittachse
+\end{itemize}
+
 
 %----------------------------------------------
-% ** Interaktion mit einer Bildsuchmaschiene
+% ** Hardware und OS Abrstraktion
 %----------------------------------------------
-\subsubsection{Interface für Kreshmoi}
-\label{sec:Interface für Kreshmoi}
+\subsubsection{Hardware und OS Abstraktion}
+\label{sec:Hardware und OS Abstraktion}
+
+%----------------------------------------------
+% * Pflichtenheft
+%----------------------------------------------
+\subsection{Pflichtenheft}
+\label{sec:Pflichtenheft}
 
 %----------------------------------------------
 % * Möglichkeiten zu Umsetzung
@@ -46,10 +84,5 @@
 \subsubsection{HTML5}
 \label{sec:HTML5}
 
-%----------------------------------------------
-% * Pflichtenheft
-%----------------------------------------------
-\subsection{Pflichtenheft}
-\label{sec:Pflichtenheft}
 
 
