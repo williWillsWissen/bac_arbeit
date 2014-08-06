@@ -79,10 +79,13 @@ Daher muss der Zustand einer Anwendung entweder am Client liegen oder vom Server
 %----------------------------------------------
 \subsubsection{AJAX}
 \label{sec:AJAX}
-AJAX (Asynchronous JavaScript and XML) ermöglicht es einer Web Anwendung kleinere Mengen von Daten nachzuladen und damit Teile der Webseite zu ändern, 
+AJAX (Asynchronous JavaScript and XML) ermöglicht es einer Webanwendung kleinere Mengen von Daten nachzuladen und damit Teile der Webseite dynamisch zu ändern, 
 statt bei jeder Aktion die Webseite neu zu laden.
-Benötigt die Web Appliketion Daten vom Server wird 
-%TODO: Weiter
+\\
+Benötigt die Web Appliketion Daten vom Server wird an diesem eine HTTP Anfrage gesendet und Callback-Funktionen für den Fall einer Antwort oder eines Fehlers beim Browser registriert.
+Erhällt der Browser eine Antwort auf sine Anfrage ruft er die Callback-Funktion auf und übergibt die erhalten Daten wodurch die Webanwendung mit der Verarbeitung dieser fortfahren kann.
+\\
+Dies ermöglicht die Entwicklung komplexer Webapplikationen, wobei die Webapplikation selbst mit der Seite geladen wird und die Daten die der Benutzer mit der Anwendung verarbeiten möchte dynamisch von dieser nachgeladen werden können.
 
 %----------------------------------------------
 % ** Objectiv J
