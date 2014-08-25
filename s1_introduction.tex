@@ -29,6 +29,7 @@ Die Suchanfrage kann in textueller Form oder als Bild-Query sowie als Kombinatio
 Ein weiteres wichtiges Feature hiebei ist die multilinguale Suche, da die Menge an verfügbaren medizinischen Informationen nicht in alle Sprachen gleich ist.
 Dies bedeutet dass die Suchanfrage in mehrere Sprachen übersetzt wird und somit auch anderssprachige Quellen durchsucht werden können.
 Die Zusammenfassungen der Suchergebnisse werden anschließend in die Anfragesprache rückübersetzt wodurch der Benutzer schnell duch die Ergebnissliste navigieren kann.
+\cite{kres}
 
 %----------------------------------------------
 % ** Interaktion mit einer Bildsuchmaschiene
@@ -41,6 +42,7 @@ Aus der Textur eines markierten Bereiches wird ein Feature-Vektor extrahiert mit
 \\
 Ein Frontend einer Bildsuchmaschiene muss daher sowohl Tools zum markieren von interessanten Bereichen, 
 als auch die Funktionalität zur verfnünftigen Berachtung der Bilder bereitstellen.
+\cite{kres}
 \\
 Diese Arbeit spezialisiert sich auf das Durchsuchen von radioloischen Aufnahmen in 2D und 3D welche in einem PACS (Picture Archiving and Communication Systems) abgelegt sind.
 Da in einem Krankenhaus täglich große Mengen an Daten durch radionlogische Aufnahmen produziert werden, 
@@ -52,6 +54,7 @@ Dazu muss das User-Interface die grundliegenden Funktionen eines Betrachtungs-To
 	\item Schnelles anpassen von Kontrast und Helligkeit
 	\item Navigation durch die Schnitte eins 3D-Körpers in einer Schnittachse
 \end{itemize}
+%TODO:Cite DAT757 PACS
 
 
 %----------------------------------------------
@@ -77,7 +80,8 @@ Dazu muss das User-Interface die grundliegenden Funktionen eines Betrachtungs-To
 %----------------------------------------------
 \subsection{Möglichkeiten zur Umsetzung}
 \label{sec:Möglichkeiten zur Umsetzung}
-Aufgrund der Anforderung dass, das Programm in einem Webbrowser ausgeführter werden soll, gibt es zwei Möglichkeiten die Anwendung umzusetzen.
+Aufgrund der Anforderung dass, das Programm in einem Webbrowser ausgeführter werden soll, stehen derzeit drei Technologien zur Verfügung um die Anwendung umzusetzen.
+Diese werden in den folgende Absätzen kurz angeführt und ihre Vor- und Nachteile im Bezug auf das Plichtenheft untersucht.
 
 %----------------------------------------------
 % ** JavaApplet
@@ -93,6 +97,8 @@ welche für diese Aufgabe besser geeignet ist als die CPU.
 \\
 Dafür müssen die notwendigen Plugins sowie ein aktueller Java Interpreter auf dem Client installiert sein, 
 was bei manchen Betriebssystemen für Mobiledevices gar nicht möglich ist.
+\cite{japp}
+
 %----------------------------------------------
 % ** HTML5
 %----------------------------------------------
@@ -102,11 +108,24 @@ Bei deisem Ansatz wird die Anwendung in HTML, CSS und JavaScript oder einem Fram
 \\
 Da diese Technologien von fast allen neuen Browsern unterstütz werden kann damit ein sehr hoher Grad an Portabilität erreicht werden.
 Weiters sind Webapplikationen für den Benutzer sehr einfach zu verwenden da anstatt einer Installation um die Anwendung nutzen zu können nur eine Webseite geöffnet werden muss.
+\cite{html-14}
 \\
 HTML5 unterstüzt Canvas Elemente für 2D Bilder jedoch ist eine Verarbeitung der Bilder durch die Grafikhardware nur begrenzt möglich.
 Für die Verwendung der Grafikarte durch den Browser gibt es die Schnittstelle WebGL welche auf OpenGL ES aufbaut.
 Diese wurde aber noch nicht in allen gängigen Browsern implementiert bzw ist in einigen nocht nicht stabil und muss extra aktiviert werden.
+\cite{webgl-14}
 
 
-
-
+%----------------------------------------------
+% ** Flash 
+%----------------------------------------------
+\subsubsection{Flash}
+\label{sec:Flash}
+Flash Anwendungen sind Programme in einem properitären Format deren Lizenz mitlerweile Adobe gehört.
+Diese werden von einem Interpreter dem Flash-Player ausgeführt, welcher es über einen Browserplugin ermöglich Flashcode in Webseiten einzubinden und mit der Webseite zu interagieren.
+\\
+Die Erstellung von Anwendung erfolgt in Entwicklungsumgebung Flash wobei Code in der Objektorientieren Sprache Aktion-Script erstellt werden kann.
+Flash bietet eine Umfangreiche Grafik-API mit Unterstützung von Beschleunigung durch die Grafikkarte über OpenGL oder DirectX.
+\\
+Die Darstellung von Flash-Inhalten im Browser setzt den Flash-Player-Plugin voraus.
+Da es sich um ein properitäres Format handelt ist der Support und die Weiterentwickung nicht Sichergestellt.\cite{flash-14}
