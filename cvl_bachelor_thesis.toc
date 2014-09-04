@@ -23,18 +23,19 @@
 \contentsline {subsubsection}{\numberline {3.1.3}JSON}{6}{subsubsection.3.1.3}
 \contentsline {subsubsection}{\numberline {3.1.4}AJAX}{6}{subsubsection.3.1.4}
 \contentsline {subsubsection}{\numberline {3.1.5}Objectiv J}{6}{subsubsection.3.1.5}
-\contentsline {subsubsection}{\numberline {3.1.6}Cappuccino}{6}{subsubsection.3.1.6}
+\contentsline {subsubsection}{\numberline {3.1.6}Cappuccino}{7}{subsubsection.3.1.6}
+\contentsline {subsubsection}{\numberline {3.1.7}WebGL}{7}{subsubsection.3.1.7}
 \contentsline {subsection}{\numberline {3.2}Kommunikation mit KRESHMOI}{7}{subsection.3.2}
 \contentsline {subsubsection}{\numberline {3.2.1}Query nach Bildern}{7}{subsubsection.3.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2}Laden der Bilder}{7}{subsubsection.3.2.2}
-\contentsline {subsection}{\numberline {3.3}Architektur und Komponenten}{7}{subsection.3.3}
-\contentsline {subsubsection}{\numberline {3.3.1}Dom\IeC {\"a}nen Model}{7}{subsubsection.3.3.1}
-\contentsline {subsubsection}{\numberline {3.3.2}Architektur und Aufteilung in Komponenten}{7}{subsubsection.3.3.2}
-\contentsline {subsubsection}{\numberline {3.3.3}2DView}{7}{subsubsection.3.3.3}
-\contentsline {subsubsection}{\numberline {3.3.4}Kommunikations Module}{7}{subsubsection.3.3.4}
-\contentsline {subsection}{\numberline {3.4}Usability}{7}{subsection.3.4}
-\contentsline {subsubsection}{\numberline {3.4.1}Workflow bei der Befundung}{7}{subsubsection.3.4.1}
-\contentsline {section}{\numberline {4}Results}{8}{section.4}
-\contentsline {subsection}{\numberline {4.1}Geschwindigkeit}{8}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Usability}{8}{subsection.4.2}
-\contentsline {section}{\numberline {5}Conclusion}{9}{section.5}
+\contentsline {subsubsection}{\numberline {3.2.2}Laden der Bilder}{8}{subsubsection.3.2.2}
+\contentsline {subsection}{\numberline {3.3}Architektur und Komponenten}{9}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Dom\IeC {\"a}nen Model}{9}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Architektur und Aufteilung in Komponenten}{9}{subsubsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.3}2DView}{9}{subsubsection.3.3.3}
+\contentsline {subsubsection}{\numberline {3.3.4}Kommunikations Module}{9}{subsubsection.3.3.4}
+\contentsline {subsection}{\numberline {3.4}Usability}{9}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}Workflow bei der Befundung}{9}{subsubsection.3.4.1}
+\contentsline {section}{\numberline {4}Results}{10}{section.4}
+\contentsline {subsection}{\numberline {4.1}Geschwindigkeit}{10}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Usability}{10}{subsection.4.2}
+\contentsline {section}{\numberline {5}Conclusion}{11}{section.5}

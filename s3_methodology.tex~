@@ -150,24 +150,19 @@ Der Datenaustausch mit KRESHMOI basiert auf REST wobei sowohl auf die einzelnen 
 %----------------------------------------------
 \subsubsection{Query nach Bildern}
 \label{sec:Query nach Bildern}
-Der Zugriff auf die Suchfunktion erfolgt über eine POST-Operation in welcher die Anfrage und die Antwort in JSON codiert werden.
-Zum Ausführen einer Suchanfrage stehen zwei Resourcen zur verfügung:
-\\
+Der Zugriff auf die Suchfunktion erfolgt über ein POST wobei sowohl in der Anfrage als auch in der Antwort die Daten in JSON codiert werden.
+Zum stellen einer Suchanfrage stehen zwei Resourcen zur verfügung:
 \\
 \textit{/index}\\
 Liefert ein Array von allen Verfügbaren Datensätzen zurück 
 \\
 \\
 \textit{/query}\\
-Liefert ein Array von Datensätzen zurück welche anhand der Übergebenen Suchkriterien gefunden wurden.
+Liefert ein Array von Datensätzen zurück welche anhand der Übergebenen Daten gefunden wurden.
 Eine Suchanfrage basiert immer auf einen Datensatz welcher in der Anfrage übergeben werden muss.
 In diesem Datensatz werden weiters Interessante Bereiche sogenannte ROIs (Region of Interesst) in den einzelnen Schnittbildern definiert.
 Die Übergabe einer ROI erfolgt als Polygon in Form einer Listen von Punkten im drei Dimensionalen Raum des Volumes.
-\begin{lstlisting}[
-	language=json,
-	firstnumber=1,
-	caption=Query
-]
+\begin{lstlisting}[language=json,firstnumber=1]
 {
    "queryid":"",
    "text":"",
@@ -181,14 +176,11 @@ Die Übergabe einer ROI erfolgt als Polygon in Form einer Listen von Punkten im 
 
    ]
 }
+\label{json-example}
 \end{lstlisting}
 
 
-\begin{lstlisting}[
-	language=json,
-	firstnumber=1,
-	caption=Result
-]
+\begin{lstlisting}[language=json,firstnumber=1]
 {
    "rankedImageID": 
    [
@@ -204,28 +196,12 @@ Die Übergabe einer ROI erfolgt als Polygon in Form einer Listen von Punkten im 
    ]
 }
 \end{lstlisting}
-
 %----------------------------------------------
 % ** Laden der Bilder
 %----------------------------------------------
 \subsubsection{Laden der Bilder}
 \label{sec:Laden der Bilder}
-Die Bildaten eines Volumes können über eine GET-Operation geladen werden.
-Dabei wird jedes Volume als eine Resource im Unterverzeichniss \textit{/image/} indentifiziert.
-Über Parameter in der URL werden die Schnittrichtung und und die Nummer des Bildes in der jeweiligen Schnittebene angegeben.
-Wir keine Nummer für das Bild angegeben wählt KRESHMOI eine repräsentatives Bild für die Suchanfrage, welches für die Präsentation der Ergebnisse verwendet wird.
-Für die Schnittebene gibt es entrsprechende der Terminologie für die Bildgebung in der Anatomischen die Optionen:
-\begin{itemize}
-	\item Axial: Die Schnitte erfolgen Wagrecht in der Transversalebene
-	\item Sagital: Die Schnitte erfolgen Senkrecht in der Sagitalebene
-	\item Coronal: Die Schnitte erfolgen Senkrecht in der Frontalebene 
-\end{itemize}
-\\
-\url{http://baseurl/image/IMAGE_ID.jpg?slice=SLICE_NO&direction=DIRECTION_KEY}
-%TODO: Prüfen ob URL ok
-%TODO: Zitieren von KRESHMOI API
-%TODO: Zitieren der Schnittebenen
-%TODO: Bild ist wikipedia ok
+
 
 %----------------------------------------------
 % * Architektur und Komponenten
