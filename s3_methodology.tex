@@ -137,6 +137,12 @@ Der Zugriff auf die Schnittstelle erfolgt über das HTML Canvas Element in welch
 Dies geschieht mittels JavaScript wo die API funktionen zur Übergabe der Nutzdaten, Befehle und der Shaderprogramme bereitstellt.
 
 
+%----------------------------------------------
+% * Funktionalität und Aufbau der Benutzeroberfläche
+%----------------------------------------------
+\subsection{Funktionalität und Aufbau der Benutzeroberfläche}
+\label{sec:Funktionalität und Aufbau der Benutzeroberfläche}
+
 
 %----------------------------------------------
 % * Kommunikation mit KRESHMOI
@@ -176,7 +182,9 @@ Die Übergabe einer ROI erfolgt als Polygon in Form einer Listen von Punkten im 
    [
       "polygon":
       [
-         "point":{"x":0, "y":0, z:0},
+         "point":{"x":0, "y":1, z:0},
+         "point":{"x":1, "y":1, z:0},
+         "point":{"x":0, "y":0, z:0}
       ],
 
    ]
@@ -194,9 +202,9 @@ Die Übergabe einer ROI erfolgt als Polygon in Form einer Listen von Punkten im 
    [
       {
          "imageID": "9587336b132b127b936ad0afd80ca862",
-         "normalDimX": 1,
-         "normalDimY": 380,
-         "normalDimZ": 488,
+         "normalDimX": 52,
+         "normalDimY": 512,
+         "normalDimZ": 512,
          "relevance": 1,
          "report": "",
          "title": "Some Image"
@@ -214,18 +222,22 @@ Die Bildaten eines Volumes können über eine GET-Operation geladen werden.
 Dabei wird jedes Volume als eine Resource im Unterverzeichniss \textit{/image/} indentifiziert.
 Über Parameter in der URL werden die Schnittrichtung und und die Nummer des Bildes in der jeweiligen Schnittebene angegeben.
 Wir keine Nummer für das Bild angegeben wählt KRESHMOI eine repräsentatives Bild für die Suchanfrage, welches für die Präsentation der Ergebnisse verwendet wird.
-Für die Schnittebene gibt es entrsprechende der Terminologie für die Bildgebung in der Anatomischen die Optionen:
+Für die Schnittebene gibt es entrsprechende der Terminologie für die Bildgebung in der Anatomie die Optionen:
 \begin{itemize}
 	\item Axial: Die Schnitte erfolgen Wagrecht in der Transversalebene
 	\item Sagital: Die Schnitte erfolgen Senkrecht in der Sagitalebene
 	\item Coronal: Die Schnitte erfolgen Senkrecht in der Frontalebene 
 \end{itemize}
+Sollen die Regionen welche der Suchanfrage entsprechen in den einzelnen Bildern markiert werden, muss die Query-ID mit übergeben werden um die urspüngliche Suchanfrage zu identifizieren.
 \\
-\url{http://baseurl/image/IMAGE_ID.jpg?slice=SLICE_NO&direction=DIRECTION_KEY}
+\\
+Beispiel:
+\\
+\url{/image/9587336b132b127b936ad0afd80ca86.jpg?slice=1&direction=axial&query=1}
 %TODO: Prüfen ob URL ok
 %TODO: Zitieren von KRESHMOI API
 %TODO: Zitieren der Schnittebenen
-%TODO: Bild ist wikipedia ok
+%TODO: Bild ist wikipedia ok: http://de.wikipedia.org/wiki/Anatomische_Lage-_und_Richtungsbezeichnungen
 
 %----------------------------------------------
 % * Architektur und Komponenten

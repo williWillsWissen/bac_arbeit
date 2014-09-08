@@ -3,10 +3,42 @@
 %----------------------------------------------
 \section{Related Work}
 \label{sec:relatedWork}
+Software für die Bildsuche in radiologischen Daten gibt es bis jetzt noch nicht, 
+allerdings decken sich die Anforderungen großteils mit Betrachtungstools für 2D und 3D Daten aus der Radiologie und Nuklearmedizin.
+Solche Softwareprodukte finden sich in den Betrachtungs-Workstations von PACS-System in Krankenhäusern oder als Betrachtungstools für Datensätze des offenen Standards DICOM.
+\\
+Die beiden Konzepte PACS und DICOM werden im folgenden Kapitel kurz erklärt, sowie die Umsetzung der benötigten Funktionalität in zwei konkreten Softwareproduken diskutiert.
 
 %----------------------------------------------
-% * Motivation 
+% * PACS-Systeme
 %----------------------------------------------
+\subsection{PACS-Systeme}
+\label{sec:PACS-Systeme}
+Ein PACS-System (Picture Archiving and Communication System) dient zum Speichern und Austausch von medizinischen Bilddaten.
+Obwohl es prinzipel für alle bildgebenden Verfahren verwendet werden kann wird es vorwiegend für Daten aus der Radiologie und Nuklearmedizien genutzt.
+\\
+Das Systems setzt sich aus dem PACS Server und den Workstations zusammen.
+Der Server sammelt Daten von den bildgebenden Geräten,
+ verknüpft Sie mit Daten aus einem Krankenhaus Informations System (KIS) oder Radiologie Informations System (RIS) und sorgt für ihre Archivierung in einem Kurz oder Langzeitarchiv. 
+Die Kommunikation mit den bildgebenden Geräten erfolgt meist durch ein Protokoll welches den DICOM Standard implementetiert.
+\\
+Die Befundung erfolgt auf den PACS Workstations welche die Daten vom Server laden und anzeigen.
+Die Workstation stellte die Funktionalität zur Betrachtung und zum Nachbearbeiten der Bilder zur verfügung.
+Änderungen der Daten werden von der Workstation zurück auf den Server geladen.
+Je nach Funktionsumfang stehen auch Tools zur Befundung zur verfügung welche die Daten and das RIS oder KIS weiter geben.
+%TODO: cite pacs - seite 219-224
+%TODO: Wie gehören Seiten zitiert
+
+%----------------------------------------------
+% * DICOM
+%----------------------------------------------
+\subsection{DICOM}
+\label{sec:DICOM}
+DICOM steht für Digital Imaging and Communication in Medicine und ist ein offener Standart welcher die Übertragung und das Speichern von medizinische Bildinformation spezifiziert.
+Die wesentlichen Teile der Spezifikation sind die Datenstruktur für die Bilddaten und zugehörige Metainformationen, 
+Services welche auf diesen Daten operieren, Anforderung an DICOM conforme Hard- und Software-Produkte und das Ablegen der Informationen auf einem Datenträger.
+
+
 \subsection{Funktionsumfang von Betrachtungstools}
 \label{sec:Funktionsumfang von Betrachtungstools}
 
