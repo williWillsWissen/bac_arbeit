@@ -5,7 +5,7 @@
 \contentsline {subsection}{\numberline {1.2}Pflichtenheft}{2}{subsection.1.2}
 \contentsline {subsection}{\numberline {1.3}M\IeC {\"o}glichkeiten zur Umsetzung}{2}{subsection.1.3}
 \contentsline {subsubsection}{\numberline {1.3.1}JavaApplet}{2}{subsubsection.1.3.1}
-\contentsline {subsubsection}{\numberline {1.3.2}HTML5}{2}{subsubsection.1.3.2}
+\contentsline {subsubsection}{\numberline {1.3.2}HTML5}{3}{subsubsection.1.3.2}
 \contentsline {subsubsection}{\numberline {1.3.3}Flash}{3}{subsubsection.1.3.3}
 \contentsline {section}{\numberline {2}Related Work}{4}{section.2}
 \contentsline {subsection}{\numberline {2.1}PACS-Systeme}{4}{subsection.2.1}

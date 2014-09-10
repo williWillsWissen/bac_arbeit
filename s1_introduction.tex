@@ -22,7 +22,7 @@ Die Einteilung der Benutzer erfolgt in 3 Kategorien:
 	\item Ärzte
 	\item Radiologen
 \end{itemize}
-Dazu verknüpft KHRESMOI Daten aus verschiedenen heterogenen Resourcen wie Bildern aus PACS, Bildern und Text aus Publikationen in Journalen oder Daten von Webseiten.
+Dazu verknüpft KHRESMOI Daten aus verschiedenen heterogenen Resourcen wie Bildern aus Radiologie-Archiven, Bildern und Text aus Publikationen in Journalen oder Daten von diversen Webseiten.
 Da sich die verschiedenen Resoucen qualitativ sehr stark voneinander unterscheiden können wird einen Bewertung ihrer Glaubwürdigkeit durchgeführt und dem Benutzer angezeigt.
 \\
 Die Suchanfrage kann in textueller Form oder als Bild-Query sowie als Kombination von beidem gestellt werden.
@@ -82,6 +82,8 @@ Dazu muss das User-Interface die grundliegenden Funktionen eines Betrachtungs-To
 \label{sec:Möglichkeiten zur Umsetzung}
 Aufgrund der Anforderung dass, das Programm in einem Webbrowser ausgeführter werden soll, stehen derzeit drei Technologien zur Verfügung um die Anwendung umzusetzen.
 Diese werden in den folgende Absätzen kurz angeführt und ihre Vor- und Nachteile im Bezug auf das Plichtenheft untersucht.
+Dabei spielt neben der Portabilität der Software, 
+die Performance bei der Verarbeitung der Bilder einen große Rolle, da sowohl das Fenstern als auch das Navigieren durch die einelenen Bilder einer 3D Aufnahme relativ flüssig funktionieren müssen.
 
 %----------------------------------------------
 % ** JavaApplet
@@ -105,14 +107,15 @@ was bei manchen Betriebssystemen für Mobiledevices gar nicht möglich ist.
 \subsubsection{HTML5}
 \label{sec:HTML5}
 Bei deisem Ansatz wird die Anwendung in HTML, CSS und JavaScript oder einem Framework welches auf diesen Technologien aufsetzt entwickelt.
+Die Entwicklung von Programmcode erfolgt bei Webapplikationen in JavaScript oder in Code für einen Interpreter welche in der JavaSript Laufzeitumgebung ausgeführt wird.
 \\
-Da diese Technologien von fast allen neuen Browsern unterstütz werden kann damit ein sehr hoher Grad an Portabilität erreicht werden.
+Da diese Technologien von fast allen neuen Browsern für Desktop und Mobilgeräte unterstütz werden, kann damit ein sehr hoher Grad an Portabilität erreicht werden.
 Weiters sind Webapplikationen für den Benutzer sehr einfach zu verwenden da anstatt einer Installation um die Anwendung nutzen zu können nur eine Webseite geöffnet werden muss.
 \cite{html-14}
 \\
 HTML5 unterstüzt Canvas Elemente für 2D Bilder jedoch ist eine Verarbeitung der Bilder durch die Grafikhardware nur begrenzt möglich.
 Für die Verwendung der Grafikarte durch den Browser gibt es die Schnittstelle WebGL welche auf OpenGL ES aufbaut.
-Diese wurde aber noch nicht in allen gängigen Browsern implementiert bzw ist in einigen nocht nicht stabil und muss extra aktiviert werden.
+Diese wurde jedoch noch nicht in allen gängigen Browsern implementiert oder ist in einigen nocht nicht stabil und muss extra aktiviert werden.
 \cite{webgl-14}
 
 
