@@ -10,14 +10,15 @@
 \contentsline {section}{\numberline {2}Related Work}{4}{section.2}
 \contentsline {subsection}{\numberline {2.1}PACS-Systeme}{4}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}DICOM}{4}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Funktionsumfang von Betrachtungstools}{5}{subsection.2.3}
-\contentsline {subsubsection}{\numberline {2.3.1}Zoom und Scroll}{5}{subsubsection.2.3.1}
-\contentsline {subsubsection}{\numberline {2.3.2}Fensterung und Level}{5}{subsubsection.2.3.2}
-\contentsline {subsubsection}{\numberline {2.3.3}Histogram Modifikation}{5}{subsubsection.2.3.3}
-\contentsline {subsubsection}{\numberline {2.3.4}Negativ bilden}{5}{subsubsection.2.3.4}
-\contentsline {subsubsection}{\numberline {2.3.5}Distanz und Fl\IeC {\"a}chenma\IeC {\ss }}{5}{subsubsection.2.3.5}
-\contentsline {subsubsection}{\numberline {2.3.6}Collagen}{5}{subsubsection.2.3.6}
-\contentsline {subsubsection}{\numberline {2.3.7}Beispiel Osirix}{5}{subsubsection.2.3.7}
+\contentsline {subsection}{\numberline {2.3}XYZ - PACS Workstation}{5}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Osirix}{5}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Funktionsumfang von Betrachtungstools}{5}{subsection.2.5}
+\contentsline {subsubsection}{\numberline {2.5.1}Zoom und Scroll}{5}{subsubsection.2.5.1}
+\contentsline {subsubsection}{\numberline {2.5.2}Fensterung und Level}{5}{subsubsection.2.5.2}
+\contentsline {subsubsection}{\numberline {2.5.3}Histogram Modifikation}{5}{subsubsection.2.5.3}
+\contentsline {subsubsection}{\numberline {2.5.4}Negativ bilden}{5}{subsubsection.2.5.4}
+\contentsline {subsubsection}{\numberline {2.5.5}Distanz und Fl\IeC {\"a}chenma\IeC {\ss }}{5}{subsubsection.2.5.5}
+\contentsline {subsubsection}{\numberline {2.5.6}Collagen}{5}{subsubsection.2.5.6}
 \contentsline {section}{\numberline {3}Methodology}{6}{section.3}
 \contentsline {subsection}{\numberline {3.1}Verwendetet Technologien und Protokolle}{6}{subsection.3.1}
 \contentsline {subsubsection}{\numberline {3.1.1}HTTP}{6}{subsubsection.3.1.1}

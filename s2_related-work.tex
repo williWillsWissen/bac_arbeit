@@ -34,9 +34,31 @@ Je nach Funktionsumfang stehen auch Tools zur Befundung zur verfügung welche di
 %----------------------------------------------
 \subsection{DICOM}
 \label{sec:DICOM}
-DICOM steht für Digital Imaging and Communication in Medicine und ist ein offener Standart welcher die Übertragung und das Speichern von medizinische Bildinformation spezifiziert.
+DICOM steht für Digital Imaging and Communication in Medicine und ist ein offener Standart welcher die Übertragung und das Speichern von medizinischer Bildinformation spezifiziert.
 Die wesentlichen Teile der Spezifikation sind die Datenstruktur für die Bilddaten und zugehörige Metainformationen, 
 Services welche auf diesen Daten operieren, Anforderung an DICOM conforme Hard- und Software-Produkte und das Ablegen der Informationen auf einem Datenträger.
+Das Datenmodel setzt sich in Anlehnung an die reale Welt grundliegend aus den Entitäten Patient, Studie, Serie und Image zusammen zwischen denen jeweils eine 1:n oder 0:n Beziehung besteht.
+Es bietet weiters ausreichen Möglichkeiten zur Erweiterung durch einen Definitionsmechnaissum für alle DICOM Objekte die sogenannte Image Object Defintion.
+
+%----------------------------------------------
+% * 
+%----------------------------------------------
+\subsection{XYZ - PACS Workstation}
+\label{sec:XYZ - PACS Workstation}
+
+
+%----------------------------------------------
+% * Osirix
+%----------------------------------------------
+\subsection{Osirix}
+\label{sec:Osirix}
+OsiriX ist eine Software zur Betrachtung und Nachbearbeitung von DICOM Bildaten.
+Sie wird als freie Open-Source-Software unter der GPL für das Betriebssystem Mac OS X entwickelt.
+OsiriX ist nur für die Forschung und dem privaten gebrauch zugelassen, 
+für einen einen diagnostischen Einsatz in der Medizin steht die kostenpflichtige Version OsiriX MD zur verfügung.
+\\
+Das Programm führt eine Datenbank von DICOM Datensätzen welche von DICOM-Datein importiert bzw auch wieder als solche exportiert werden können.
+Weiters können über das Protokoll die Daten auch von einem PACS-Server geladen werden.
 
 
 \subsection{Funktionsumfang von Betrachtungstools}
@@ -50,7 +72,4 @@ Services welche auf diesen Daten operieren, Anforderung an DICOM conforme Hard- 
 \subsubsection{Collagen}
 %TODO: Kontakt markus .... was gibst schon
 %TODO: Kontakt markus .... pacs workstations
-\subsubsection{Beispiel Osirix}
-\label{sec:Beispiel Osirix}
-%TODO: Wie betrachtet man das bild
 
