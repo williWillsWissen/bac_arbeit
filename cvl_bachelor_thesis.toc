@@ -8,37 +8,31 @@
 \contentsline {section}{\numberline {2}Related Work}{4}{section.2}
 \contentsline {subsection}{\numberline {2.1}PACS-Systeme}{4}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}DICOM}{4}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}XYZ - PACS Workstation}{5}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Osirix}{5}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}Funktionsumfang von Betrachtungstools}{5}{subsection.2.5}
-\contentsline {subsubsection}{\numberline {2.5.1}Zoom und Scroll}{5}{subsubsection.2.5.1}
-\contentsline {subsubsection}{\numberline {2.5.2}Fensterung und Level}{5}{subsubsection.2.5.2}
-\contentsline {subsubsection}{\numberline {2.5.3}Histogram Modifikation}{5}{subsubsection.2.5.3}
-\contentsline {subsubsection}{\numberline {2.5.4}Negativ bilden}{5}{subsubsection.2.5.4}
-\contentsline {subsubsection}{\numberline {2.5.5}Distanz und Fl\IeC {\"a}chenma\IeC {\ss }}{5}{subsubsection.2.5.5}
-\contentsline {subsubsection}{\numberline {2.5.6}Collagen}{5}{subsubsection.2.5.6}
-\contentsline {section}{\numberline {3}Methodology}{6}{section.3}
-\contentsline {subsection}{\numberline {3.1}Verwendetet Technologien und Protokolle}{6}{subsection.3.1}
-\contentsline {subsubsection}{\numberline {3.1.1}HTTP}{6}{subsubsection.3.1.1}
-\contentsline {subsubsection}{\numberline {3.1.2}REST}{6}{subsubsection.3.1.2}
-\contentsline {subsubsection}{\numberline {3.1.3}JSON}{7}{subsubsection.3.1.3}
-\contentsline {subsubsection}{\numberline {3.1.4}AJAX}{7}{subsubsection.3.1.4}
-\contentsline {subsubsection}{\numberline {3.1.5}Objectiv J}{7}{subsubsection.3.1.5}
-\contentsline {subsubsection}{\numberline {3.1.6}Cappuccino}{8}{subsubsection.3.1.6}
-\contentsline {subsubsection}{\numberline {3.1.7}WebGL}{8}{subsubsection.3.1.7}
-\contentsline {subsection}{\numberline {3.2}Funktionalit\IeC {\"a}t und Aufbau der Benutzeroberfl\IeC {\"a}che}{8}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Kommunikation mit KRESHMOI}{8}{subsection.3.3}
-\contentsline {subsubsection}{\numberline {3.3.1}Query nach Bildern}{8}{subsubsection.3.3.1}
-\contentsline {subsubsection}{\numberline {3.3.2}Laden der Bilder}{9}{subsubsection.3.3.2}
-\contentsline {subsection}{\numberline {3.4}Architektur und Komponenten}{10}{subsection.3.4}
-\contentsline {subsubsection}{\numberline {3.4.1}Dom\IeC {\"a}nen Model}{10}{subsubsection.3.4.1}
-\contentsline {subsubsection}{\numberline {3.4.2}Architektur und Aufteilung in Komponenten}{10}{subsubsection.3.4.2}
-\contentsline {subsubsection}{\numberline {3.4.3}2DView}{10}{subsubsection.3.4.3}
-\contentsline {subsubsection}{\numberline {3.4.4}Kommunikations Module}{10}{subsubsection.3.4.4}
-\contentsline {subsection}{\numberline {3.5}Usability}{10}{subsection.3.5}
-\contentsline {subsubsection}{\numberline {3.5.1}Workflow bei der Befundung}{10}{subsubsection.3.5.1}
-\contentsline {section}{\numberline {4}Results}{11}{section.4}
-\contentsline {subsection}{\numberline {4.1}Geschwindigkeit}{11}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Usability}{11}{subsection.4.2}
-\contentsline {section}{\numberline {5}Conclusion}{12}{section.5}
-\contentsline {section}{Bibliography}{13}{section.5}
+\contentsline {subsection}{\numberline {2.3}XYZ - PACS Workstation}{4}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Osirix}{4}{subsection.2.4}
+\contentsline {paragraph}{Funktionsumfang}{5}{subsection.2.4}
+\contentsline {section}{\numberline {3}Methodology}{7}{section.3}
+\contentsline {subsection}{\numberline {3.1}Verwendetet Technologien und Protokolle}{7}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}HTTP}{7}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}REST}{7}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.3}JSON}{8}{subsubsection.3.1.3}
+\contentsline {subsubsection}{\numberline {3.1.4}AJAX}{8}{subsubsection.3.1.4}
+\contentsline {subsubsection}{\numberline {3.1.5}Objectiv J}{8}{subsubsection.3.1.5}
+\contentsline {subsubsection}{\numberline {3.1.6}Cappuccino}{9}{subsubsection.3.1.6}
+\contentsline {subsubsection}{\numberline {3.1.7}WebGL}{9}{subsubsection.3.1.7}
+\contentsline {subsection}{\numberline {3.2}Funktionalit\IeC {\"a}t und Aufbau der Benutzeroberfl\IeC {\"a}che}{9}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Kommunikation mit KRESHMOI}{9}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Query nach Bildern}{9}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Laden der Bilder}{10}{subsubsection.3.3.2}
+\contentsline {subsection}{\numberline {3.4}Architektur und Komponenten}{11}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}Dom\IeC {\"a}nen Model}{11}{subsubsection.3.4.1}
+\contentsline {subsubsection}{\numberline {3.4.2}Architektur und Aufteilung in Komponenten}{11}{subsubsection.3.4.2}
+\contentsline {subsubsection}{\numberline {3.4.3}2DView}{11}{subsubsection.3.4.3}
+\contentsline {subsubsection}{\numberline {3.4.4}Kommunikations Module}{11}{subsubsection.3.4.4}
+\contentsline {subsection}{\numberline {3.5}Usability}{11}{subsection.3.5}
+\contentsline {subsubsection}{\numberline {3.5.1}Workflow bei der Befundung}{11}{subsubsection.3.5.1}
+\contentsline {section}{\numberline {4}Results}{12}{section.4}
+\contentsline {subsection}{\numberline {4.1}Geschwindigkeit}{12}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Usability}{12}{subsection.4.2}
+\contentsline {section}{\numberline {5}Conclusion}{13}{section.5}
+\contentsline {section}{Bibliography}{14}{section.5}
