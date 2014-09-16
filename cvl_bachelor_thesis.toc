@@ -1,7 +1,5 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}
-\contentsline {subsection}{\numberline {1.1}Motivation}{1}{subsection.1.1}
-\contentsline {subsubsection}{\numberline {1.1.1}Interface f\IeC {\"u}r Kreshmoi}{1}{subsubsection.1.1.1}
-\contentsline {subsubsection}{\numberline {1.1.2}Interaktion mit einer Bildsuchmaschiene}{1}{subsubsection.1.1.2}
+\contentsline {subsection}{\numberline {1.1}KRESHMOI}{1}{subsection.1.1}
 \contentsline {subsection}{\numberline {1.2}Pflichtenheft}{2}{subsection.1.2}
 \contentsline {subsection}{\numberline {1.3}M\IeC {\"o}glichkeiten zur Umsetzung}{2}{subsection.1.3}
 \contentsline {subsubsection}{\numberline {1.3.1}JavaApplet}{2}{subsubsection.1.3.1}
@@ -43,3 +41,4 @@
 \contentsline {subsection}{\numberline {4.1}Geschwindigkeit}{11}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Usability}{11}{subsection.4.2}
 \contentsline {section}{\numberline {5}Conclusion}{12}{section.5}
+\contentsline {section}{Bibliography}{13}{section.5}

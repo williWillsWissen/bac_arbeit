@@ -11,6 +11,7 @@ doc: $(sourcefile).tex $(capter_targets)
 	pdflatex $(sourcefile).tex
 	bibtex $(sourcefile).aux
 	pdflatex $(sourcefile).tex
+	pdflatex $(sourcefile).tex
 
 clean:  
 	rm -f $(sourcefile).pdf $(sourcefile).aux $(sourcefile).out $(sourcefile).log

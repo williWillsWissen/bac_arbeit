@@ -3,18 +3,22 @@
 %----------------------------------------------
 \section{Introduction}
 \label{sec:introduction}
+Das Ziel dieser Projektarbeit war die Entwicklung eines Webbasierten Frontends für eine Suchmaschine welche das Durchsuchen von radiologischen Bildern aus der Medizin ermöglicht.
+Die Suchmaschine selbst ist ein Teil des KRESHMOI-Projekts welches sich generell mit der Aufbereitung und dem Durchsuchen von medizinischen Informationen beschäftigt.
+Das System KRESHMOI wird in diesem Kapitel erklärt und im speziellen auf die Suche für radiologische Bilder eingegangen.
+Weiters werden die Anforderungen an das Frontend angeführt und auf die Mögichkeiten zur Umsetzung mit den am aktuellen Entwicklungstand verfügbaren Technologien diskutiert.
 
 %----------------------------------------------
 % * Motivation 
 %----------------------------------------------
-\subsection{Motivation}
+\subsection{KRESHMOI}
 \label{sec:Motivation}
 
 %----------------------------------------------
 % ** Interaktion mit einer Bildsuchmaschiene
 %----------------------------------------------
-\subsubsection{Interface für Kreshmoi}
-\label{sec:Interface für Kreshmoi}
+%\subsubsection{Interface für Kreshmoi}
+%\label{sec:Interface für Kreshmoi}
 Das Ziel von KHRESMOI ist das Durchsuchen und der Zugang zu medizinischen Informationen für verschiedene Benutzergruppen mit unterschiedlichem medizinischen Vorwissen.
 Die Einteilung der Benutzer erfolgt in 3 Kategorien:
 \begin{itemize}
@@ -24,37 +28,37 @@ Die Einteilung der Benutzer erfolgt in 3 Kategorien:
 \end{itemize}
 Dazu verknüpft KHRESMOI Daten aus verschiedenen heterogenen Resourcen wie Bildern aus Radiologie-Archiven, Bildern und Text aus Publikationen in Journalen oder Daten von diversen Webseiten.
 Da sich die verschiedenen Resoucen qualitativ sehr stark voneinander unterscheiden können wird einen Bewertung ihrer Glaubwürdigkeit durchgeführt und dem Benutzer angezeigt.
-\\
+%%
 Die Suchanfrage kann in textueller Form oder als Bild-Query sowie als Kombination von beidem gestellt werden.
 Ein weiteres wichtiges Feature hiebei ist die multilinguale Suche, da die Menge an verfügbaren medizinischen Informationen nicht in alle Sprachen gleich ist.
 Dies bedeutet dass die Suchanfrage in mehrere Sprachen übersetzt wird und somit auch anderssprachige Quellen durchsucht werden können.
-Die Zusammenfassungen der Suchergebnisse werden anschließend in die Anfragesprache rückübersetzt wodurch der Benutzer schnell duch die Ergebnissliste navigieren kann.
-\cite{kres}
+Die Zusammenfassungen der Suchergebnisse werden anschließend in die Anfragesprache rückübersetzt, 
+wodurch der Benutzer schnell duch die Ergebnissliste navigieren kann \cite{kres}.
 
 %----------------------------------------------
 % ** Interaktion mit einer Bildsuchmaschiene
 %----------------------------------------------
-\subsubsection{Interaktion mit einer Bildsuchmaschiene}
-\label{sec:Interaktion mit einer Bildsuchmaschiene}
+%\subsubsection{Interaktion mit einer Bildsuchmaschiene}
+%\label{sec:Interaktion mit einer Bildsuchmaschiene}
 Ein Teilprojekt von KHRESHMOI ist das Druchsuchen von medizinischen Bilddaten wobei diese in 2D, 3D oder 4D (Video) vorliegen können.
-Um eine Suchanfrage auf ein Bild stellen zu können müssen an einem Referenz-Bild Bereiche eingezeichnet werden welche dann die Anfrage formen.
+Um eine Suchanfrage auf ein Bild stellen zu können müssen an einem Ausgabgsbild Positiv- oder Negativ-Bereiche eingezeichnet werden welche dann die Anfrage formen.
 Aus der Textur eines markierten Bereiches wird ein Feature-Vektor extrahiert mit dem anschließend eine Datenbank von zuvor indizierten Bildern durchsucht wird.
-\\
+%
 Ein Frontend einer Bildsuchmaschiene muss daher sowohl Tools zum markieren von interessanten Bereichen, 
-als auch die Funktionalität zur verfnünftigen Berachtung der Bilder bereitstellen.
-\cite{kres}
-\\
-Diese Arbeit spezialisiert sich auf das Durchsuchen von radioloischen Aufnahmen in 2D und 3D welche in einem PACS (Picture Archiving and Communication Systems) abgelegt sind.
+als auch die Funktionalität zur verfnünftigen Berachtung der Bilder bereitstellen \cite{kres}.
+
+Diese Arbeit spezialisiert sich auf die Interaktion mit dem Teilsystem für das Durchsuchen von radioloischen Aufnahmen in 2D und 3D,
+welche in einem PACS (Picture Archiving and Communication Systems) abgelegt sind.
 Da in einem Krankenhaus täglich große Mengen an Daten durch radionlogische Aufnahmen produziert werden, 
-bietet eine effizientes Durchsuchen dieser die möglichkeit Sie für Ausbildung und Forschug wieder zu verwenden.
-\\
+bietet eine effizientes Durchsuchen dieser die möglichkeit Sie für Ausbildung und Forschung wieder zu verwenden.
+%
 Dazu muss das User-Interface die grundliegenden Funktionen eines Betrachtungs-Tools für Röngten- und Computertomographie-Aufnahmen zur verfüfung Stellen:
 \begin{itemize}
 	\item Zoom
 	\item Schnelles anpassen von Kontrast und Helligkeit
 	\item Navigation durch die Schnitte eins 3D-Körpers in einer Schnittachse
 \end{itemize}
-%TODO:Cite DAT757 PACS
+\cite{pacs}
 
 
 %----------------------------------------------
@@ -92,14 +96,13 @@ die Performance bei der Verarbeitung der Bilder einen große Rolle, da sowohl da
 \label{sec:JavaApplet}
 Bei einem Java Applet wird ein Java Programm in eine Webseite eingebunden und vom dem Browser des Clients geladen.
 Der Browser übergibt das Applet dem Java Interpreter wofür aber ein spezieller Plugin notwendig ist.
-\\
+%
 Der große Vorteil dieses Ansatzes ist dass die Anwendung sehr performant ist.
 Dies ergibt aus den beiden Punkten dass Java Code compiliert wird und dass es möglicht ist die Grafikhardware des Clients zum bearbeiten der Bilder zu verwenden,
 welche für diese Aufgabe besser geeignet ist als die CPU.
-\\
+%
 Dafür müssen die notwendigen Plugins sowie ein aktueller Java Interpreter auf dem Client installiert sein, 
-was bei manchen Betriebssystemen für Mobiledevices gar nicht möglich ist.
-\cite{japp}
+was bei manchen Betriebssystemen für Mobiledevices gar nicht möglich ist \cite{japp}.
 
 %----------------------------------------------
 % ** HTML5
@@ -108,15 +111,12 @@ was bei manchen Betriebssystemen für Mobiledevices gar nicht möglich ist.
 \label{sec:HTML5}
 Bei deisem Ansatz wird die Anwendung in HTML, CSS und JavaScript oder einem Framework welches auf diesen Technologien aufsetzt entwickelt.
 Die Entwicklung von Programmcode erfolgt bei Webapplikationen in JavaScript oder in Code für einen Interpreter welche in der JavaSript Laufzeitumgebung ausgeführt wird.
-\\
 Da diese Technologien von fast allen neuen Browsern für Desktop und Mobilgeräte unterstütz werden, kann damit ein sehr hoher Grad an Portabilität erreicht werden.
-Weiters sind Webapplikationen für den Benutzer sehr einfach zu verwenden da anstatt einer Installation um die Anwendung nutzen zu können nur eine Webseite geöffnet werden muss.
-\cite{html-14}
-\\
+Weiters sind Webapplikationen für den Benutzer sehr einfach zu verwenden da anstatt einer Installation um die Anwendung nutzen zu können nur eine Webseite geöffnet werden muss \cite{html-14}.
+
 HTML5 unterstüzt Canvas Elemente für 2D Bilder jedoch ist eine Verarbeitung der Bilder durch die Grafikhardware nur begrenzt möglich.
 Für die Verwendung der Grafikarte durch den Browser gibt es die Schnittstelle WebGL welche auf OpenGL ES aufbaut.
-Diese wurde jedoch noch nicht in allen gängigen Browsern implementiert oder ist in einigen nocht nicht stabil und muss extra aktiviert werden.
-\cite{webgl-14}
+Diese wurde jedoch noch nicht in allen gängigen Browsern implementiert oder ist in einigen nocht nicht stabil und muss extra aktiviert werden \cite{webgl-14}.
 
 
 %----------------------------------------------
@@ -126,9 +126,9 @@ Diese wurde jedoch noch nicht in allen gängigen Browsern implementiert oder ist
 \label{sec:Flash}
 Flash Anwendungen sind Programme in einem properitären Format deren Lizenz mitlerweile Adobe gehört.
 Diese werden von einem Interpreter dem Flash-Player ausgeführt, welcher es über einen Browserplugin ermöglich Flashcode in Webseiten einzubinden und mit der Webseite zu interagieren.
-\\
+%
 Die Erstellung von Anwendung erfolgt in Entwicklungsumgebung Flash wobei Code in der Objektorientieren Sprache Aktion-Script erstellt werden kann.
 Flash bietet eine Umfangreiche Grafik-API mit Unterstützung von Beschleunigung durch die Grafikkarte über OpenGL oder DirectX.
-\\
+%
 Die Darstellung von Flash-Inhalten im Browser setzt den Flash-Player-Plugin voraus.
-Da es sich um ein properitäres Format handelt ist der Support und die Weiterentwickung nicht Sichergestellt.\cite{flash-14}
+Da es sich um ein properitäres Format handelt ist der Support und die Weiterentwickung nicht Sichergestellt \cite{flash-14}.
