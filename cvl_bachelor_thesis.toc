@@ -8,9 +8,9 @@
 \contentsline {section}{\numberline {2}Related Work}{4}{section.2}
 \contentsline {subsection}{\numberline {2.1}PACS-Systeme}{4}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}DICOM}{4}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}XYZ - PACS Workstation}{4}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Osirix}{4}{subsection.2.4}
-\contentsline {paragraph}{Funktionsumfang}{5}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.3}Osirix}{4}{subsection.2.3}
+\contentsline {paragraph}{Funktionsumfang}{5}{figure.1}
+\contentsline {subsection}{\numberline {2.4}XYZ - PACS Workstation}{6}{subsection.2.4}
 \contentsline {section}{\numberline {3}Methodology}{7}{section.3}
 \contentsline {subsection}{\numberline {3.1}Verwendetet Technologien und Protokolle}{7}{subsection.3.1}
 \contentsline {subsubsection}{\numberline {3.1.1}HTTP}{7}{subsubsection.3.1.1}

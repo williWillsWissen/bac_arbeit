@@ -38,13 +38,6 @@ Das Datenmodel setzt sich in Anlehnung an die reale Welt grundliegend aus den En
 Es bietet weiters ausreichen Möglichkeiten zur Erweiterung durch einen Definitionsmechnaissum für alle DICOM Objekte die sogenannte Image Object Defintion \cite{pacs}.
 
 %----------------------------------------------
-% * 
-%----------------------------------------------
-\subsection{XYZ - PACS Workstation}
-\label{sec:XYZ - PACS Workstation}
-
-
-%----------------------------------------------
 % * Osirix
 %----------------------------------------------
 \subsection{Osirix}
@@ -60,14 +53,17 @@ Weiters können über das DICOM-Protokoll die Daten auch von einem PACS-Server g
 
 Von der Navigationsstrutur unterteil sich OsiriX in eine Datenbankebene und eine Betrachtungsebene welche jeweils durch verschiedene Fenster umgesetzt wurden.
 Der vollständigkeit halber sei erwähnt das es auch eine Ebene für 3D Rendering der Volumes gibt welche aber für diese Arbeit keinen weiteren Nutzen darstellt.
-\includegraphics[width=\linewidth]{img/c1_osirix_db_view.jpg}
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/c2_osirix_db_view.jpg}
+	\caption{Datenbankansicht von OsiriX.}
+\end{figure}
 In der Datenbankebene können die Datensätzte importiert, exportiert und durchsucht werden, wobei jede Studie für einen Patienten einen Eintrag in der Liste darstellt.
 Weiters stehen Unterlisten zum Anzeigen der Serien einer Studie zur Verfügung.
 Unter der Listenansicht werden die ausgewählten Einträge als Thumbnails und in einem minimalen 2D Betrachter,
 welche die wichtigsten Funktionen der Betrachtungsebene implementiert zur Vorschau dargestellt.
 In der Betrachtungsebene finden sich die eigentlichen Funktionen und Tools welche für die Interaktion mit den Bildern notwendig sind.
-Hier bietet OsiriX eine große Funktionspalette wobei hier nur auf die Kernfunktionalität eingegangen wird.
-
+Dafür bietet OsiriX eine große Funktionspalette, wobei hier nur auf die Kernfunktionalität eingegangen wird \cite{osirix}.
 \paragraph{Funktionsumfang}
 Die Steuerung für die Interaktionstools erfolgt auch wie bei den PACS Workstations mit der Maus, 
 welcher die spezifiischen Funktionen zugewiesen werden können. Die jeweils zugewiensene Funktion wird durch das Drücekn der Maustaste aktiv.
@@ -80,12 +76,26 @@ welcher die spezifiischen Funktionen zugewiesen werden können. Die jeweils zuge
 	\item Einzeichnen von \textbf{ROIs}. Hierbei werden Punkte, Linien, Polygone, Winkel und noch weitere Geometrien unterstüzt. 
 		Sind in dem Datensatz die notwendigen Informationen vorhanden erfolgt einen automatische Vermessung der ROIs.
 \end{itemize}
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/c2_osirix_2d_view_toolbar.jpg}
+	\caption{Toolbar für die 2D Batrachtungsebene.}
+\end{figure}
 Weiters können mehrere Betrachtungs-Fenster nebeneinander angeordnet werden, wobei sich diese zur Darstellung unterschidlicher Serien bzw Orientierungen eines Datensatzes nutzen lassen. 
 Die Orientierung gibt an entlang welcher Achse die Bilder eines Volumes geschnitten werden.
 Wird in verschiedenen Fenstern eine unterschiedliche Orientierung gewählt,
-so wird beim navigieren durch das Volume in einem Fenster die Position der Schnittebene in den anderen als Linie angezeigt.
-%TODO: Menubar
-%TODO: Bilder 2DView
+so wird beim navigieren durch das Volume in einem Fenster die Position der Schnittebene in den anderen als Linie angezeigt \cite{osirix}.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/c2_osirix_2d_view_splitscreen.jpg}
+	\caption{Darstellung eines Volumes aus zwei verschiedenen Orientrierungen. Die Schnittposition des linken Bildes wird im rechten als grüne Linie dargestellt.}
+\end{figure}
+
+%----------------------------------------------
+% * 
+%----------------------------------------------
+\subsection{XYZ - PACS Workstation}
+\label{sec:XYZ - PACS Workstation}
 
 
 %TODO: Kontakt markus .... was gibst schon
