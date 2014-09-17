@@ -9,17 +9,19 @@
 %----------------------------------------------
 \subsection{Verwendetet Technologien und Protokolle}
 \label{sec:Verwendetet Technologien}
+Bevor auf die eigentliche Umsetzung eingegangen wird werden noch kurz die verwendeten Frameworks und Technologien erklärt.
+Ein Teil davon wie HTTP und Rest wurden bereits durch das Interface für KRESHMOI festgelegt, ein weiter ergab sich durch die Anforderung einer Web-Applikation.
+Die Frameworks und Technologien für Grafik und GUI wurden gewählt weil mit Ihnen eine schnelle Umsetzung der Anforderungen möglich war.
 
 %----------------------------------------------
 % ** HTTP
 %----------------------------------------------
 \subsubsection{HTTP}
 \label{sec:HTTP}
-
 HTTP (Hyper Text Transfer Protokoll) ist ein Protokoll zur übertragung von Daten über ein Netzwerk welches auf TCP aufsetzt.
 Der Datenaustausch zwischen zwei Kommunikationspartner findet in der From von Nachrichten statt, 
 wobei der Client eine Anfrage an einen Server stellt und dieser die Anfrage bearbeitet und eine Antwort retuniert.
-\\
+%
 Eine Nachricht setzt sich aus einem Header und einen Body zusammen.
 Der Body enthält die Nutzdaten und der Header enthält Metadaten über die Nutzdaten.
 Vom Aufbau der Nachricht unterscheiden sich Anfrage und Antwort nur in der ersten Zeile:
@@ -29,8 +31,7 @@ Vom Aufbau der Nachricht unterscheiden sich Anfrage und Antwort nur in der erste
 		Der Serverstatus liefert eine Aussage ob der Request erfolgreich bearbeitet wurde bzw welche Art von Fehler bei der Bearbeitung aufgetreten ist.
 \end{itemize}
 HTTP ist ein zustandsloses Protokoll, daher wird nach jeder Anfrage die Verbindung vom Server wieder abgebaut.
-Für eine Zuordnung eines Clients muss dieser eine Session-ID mitsenden welche normalerweise im Header enthalten ist.
-% TODO: RFC zietieren
+Für eine Zuordnung eines Clients muss dieser eine Session-ID mitsenden welche normalerweise im Header enthalten ist \cite{http}.
 
 %--------------------------------------------- 
 % ** REST
@@ -40,34 +41,27 @@ Für eine Zuordnung eines Clients muss dieser eine Session-ID mitsenden welche n
 REST ist im eigentlichen Sin mehr ein Architekturstiel als ein Protokoll welcher mit HTTP umgesetzt wird.
 Die Idee von REST ist dass eine URL genau eine Resource auf einem Server addressiert, 
 wobei eine Resource eine statische Datei oder das ergebniss einer aktion auf dem Server sein kann.
-\\
 Der Architekturstiel ist lässt sich durch fünf Prizipien zusammenfassen:
-\\
-\\
-\textbf{Resource mit eindeutiger Identifikation:}\\
-Jede Resrouce wird durch eine URI (Uniform Resouce Identifier) weltweit eindeutig identifiziert.
-Diese addressiert unter anderem den Server auf den sich die resource befindet sowie Resource auf dem Server selbst.
-\\
-\\
-\textbf{Hypermedia}\\
-Verknüfungen zu anderen Entitäten und werden als Links auf die jeweiligen Resourcen dargestellt.
-Weiters kann die Steuertung des Applikationszustandes durch Links auf weiter Aktionen durch Hypermedia umgesetzt werden.
-\\
-\\
-\textbf{Standard-Opperationen}\\
-Es gibt ein definiertes Interface welches von jeder Resource zur verfügung gestellt werden muss.
-Dieses umfasst einen relativ kleinen Satz von Opperationen welche auf die Resource ausgeführt werden können.
-\\
-\\
-\textbf{Unterschiedliche repräsentation der Resourcen}\\
-Die Resourcen können unterschiedliche Darstellungsformen haben.
-Ein Client kann also eine Resource in einem bestimmten Format (z.B.: XML, HTML, JSON) anfordern sofern diese Darstellung vom Server unterstüzt wird.
-In HTTP wird die gewünschte Dartstellung im Header angegeben.
-\\
-\\
-\textbf{Zustandslose Kommunikation}\\
-Der Server hällt keine Zustandsinformationen über den Client welcher über die Dauer eines Requests hinaus geht.
-Daher muss der Zustand einer Anwendung entweder am Client liegen oder vom Server in eine Resource umgewandelt werden.
+\begin{itemize}
+	\item \textbf{Resource mit eindeutiger Identifikation:}
+		Jede Resrouce wird durch eine URI (Uniform Resouce Identifier) weltweit eindeutig identifiziert.
+		Diese addressiert unter anderem den Server auf den sich die resource befindet sowie Resource auf dem Server selbst.
+	\item \textbf{Hypermedia:}
+		Verknüfungen zu anderen Entitäten und werden als Links auf die jeweiligen Resourcen dargestellt.
+		Weiters kann die Steuertung des Applikationszustandes durch Links auf weiter Aktionen durch Hypermedia umgesetzt werden.
+	\item \textbf{Standard-Opperationen:}
+		Es gibt ein definiertes Interface welches von jeder Resource zur verfügung gestellt werden muss.
+		Dieses umfasst einen relativ kleinen Satz von Opperationen welche auf die Resource ausgeführt werden können.
+	\item \textbf{Unterschiedliche repräsentation der Resourcen:}
+		Die Resourcen können unterschiedliche Darstellungsformen haben.
+		Ein Client kann also eine Resource in einem bestimmten Format (z.B.: XML, HTML, JSON) anfordern sofern diese Darstellung vom Server unterstüzt wird.
+		In HTTP wird die gewünschte Dartstellung im Header angegeben.
+	\item \textbf{Zustandslose Kommunikation}
+		Der Server hällt keine Zustandsinformationen über den Client welcher über die Dauer eines Requests hinaus geht.
+		Daher muss der Zustand einer Anwendung entweder am Client liegen oder vom Server in eine Resource umgewandelt werden.
+\end{itemize}
+\cite{rest}
+
 %----------------------------------------------
 % ** JSON
 %----------------------------------------------
@@ -77,9 +71,7 @@ Bei JSON (JavaScript Object Notation) handelt es sich um ein Datenformat zum Aut
 JSON findet neben XML vorallem in der Kommunikation zwischen Client und Server bei Webanwendungen Verwendung, 
 wobei JSON Daten wesentlich kompakter und damit Resourcensparender sind.
 Wie bei XML werden Listen und Objekte in einer von Menschen lesbaren Form darestellt.
-\\
-Dabei werden folgende Datentypen unterstützt welche wiederum beliebig tief ineinander Verschachtelt werden können: NULL, Boolean, Zahl, String, Array und Objekt.
-
+Dabei werden folgende Datentypen unterstützt welche wiederum beliebig tief ineinander Verschachtelt werden können: NULL, Boolean, Zahl, String, Array und Objekt \cite{ajax}.
 
 %----------------------------------------------
 % ** AJAX
@@ -88,11 +80,9 @@ Dabei werden folgende Datentypen unterstützt welche wiederum beliebig tief inei
 \label{sec:AJAX}
 AJAX (Asynchronous JavaScript and XML) ermöglicht es einer Webanwendung kleinere Mengen von Daten nachzuladen und damit Teile der Webseite dynamisch zu ändern, 
 statt bei jeder Aktion die Webseite neu zu laden.
-\\
 Benötigt die Web Appliketion Daten vom Server wird an diesem eine HTTP Anfrage gesendet und Callback-Funktionen für den Fall einer Antwort oder eines Fehlers beim Browser registriert.
 Erhällt der Browser eine Antwort auf sine Anfrage ruft er die Callback-Funktion auf und übergibt die erhalten Daten wodurch die Webanwendung mit der Verarbeitung dieser fortfahren kann.
-\\
-Dies ermöglicht die Entwicklung komplexer Webapplikationen, wobei die Webapplikation selbst mit der Seite geladen wird und die Daten die der Benutzer mit der Anwendung verarbeiten möchte dynamisch von dieser nachgeladen werden können.
+Dies ermöglicht die Entwicklung komplexer Webapplikationen, wobei die Webapplikation selbst mit der Seite geladen wird und die Daten die der Benutzer mit der Anwendung verarbeiten möchte dynamisch von dieser nachgeladen werden können \cite{ajax}.
 
 %----------------------------------------------
 % ** Objectiv J
@@ -106,8 +96,7 @@ In Javascript können Objekte durch Prototyping erstellt werden, das Konzept von
 Obj J bietet zusätzlich zu den nativen JS Objekten die definition von Klassen inklusive Vererbung und die generierung von Objekten daraus.
 Obwohl es die Sprache erlaubt für Variablen, Methodenparameter und Rückgaben eine Datentyp zu definieren, 
 werden diese aufgrund von schwacher Typisierung vom Interpreter nicht auf ihre Einhaltung überprüft.
-In der aktullen Version wird die Übergabe von Referenzen als Parameter ähnlich einem Pointer in C unterstützt.
-\cite{capp}
+In der aktullen Version wird die Übergabe von Referenzen als Parameter ähnlich einem Pointer in C unterstützt \cite{capp}.
 
 %----------------------------------------------
 % ** Cappuccino
@@ -117,7 +106,7 @@ In der aktullen Version wird die Übergabe von Referenzen als Parameter ähnlich
 Bei Cappuccino handelt es sich um ein Web Application Framework für Objectiv J und Javascript, welches haupsächlich der Erstellung komplexer Benutzeroberflächen dient.
 Das Framework lehnt sich sowol vom Aussehen als auch von der Benennung der Komponenten sehr stark an das GUI-Framework Cocoa von Apple an.
 GUI-Elemente werden als Objekte erstellt welche von einer View-Klasse erben und innerhalb von anderen Views positioniert werden können.
-Das Interface wird von einem HTML5 fähigen Browser gerendert wobei für dessen Erstellung keinerlei HTML oder CSS kentnisse notwendig sind.
+Das Interface wird von einem HTML5 fähigen Browser gerendert wobei für dessen Erstellung keinerlei HTML oder CSS kentnisse notwendig sind \cite{capp}.
 
 
 %----------------------------------------------
@@ -127,14 +116,22 @@ Das Interface wird von einem HTML5 fähigen Browser gerendert wobei für dessen 
 \label{sec:WebGL}
 WebGL ist eine API für die Erstellung von 2D und 3D Grafiken in Browsern mit der Unterstützung der Grafikkarte.
 Im gegensatz zur Canvas-2D API wo die Bilder in der CPU gerendert werden, ist WebGL aufgrund der Hardwarebeschleunigung wesentlich performanter.
-\\
 WebGL ist eine Shaderbasierte API welche sich sehr stark an OpenGL ES anlehnt.
 Diese bedeutet dass Code für die Recheneinheiten (Shadereinheiten) der Grafikkarte entwickelt wird,
 welchen der Treiber der Karte in Bytecode übersetzt und zur ausführung in den Grafikchip lädt.
-Die Shaderprogramme werden in der Programmiersprache GLSL geschrieben welche sich sehr stark an C anlehnt.
-\\
+Die Shaderprogramme werden in der Programmiersprache GLSL geschrieben welche sich sehr stark an C orientiert.
 Der Zugriff auf die Schnittstelle erfolgt über das HTML Canvas Element in welchem die Ausgabe der Grafikkarte dargestellt wird.
-Dies geschieht mittels JavaScript wo die API funktionen zur Übergabe der Nutzdaten, Befehle und der Shaderprogramme bereitstellt.
+Dies geschieht mittels JavaScript wo die API funktionen zur Übergabe der Nutzdaten, Befehle und der Shaderprogramme bereitstellt \cite{webgl-14}.
+
+%----------------------------------------------
+% ** PixiJS 
+%----------------------------------------------
+\subsubsection{PixiJS}
+\label{sec:PixiJS}
+Da WebGL eine relativ Hardware nahe API ist wurden einige Frameworks entwickelt welche von der Komplexität einer solchen API abstrahieren, zu denen auch PixiJS zählt.
+Dies bietet Funktionen zum Zeichen von Geometrischen Figuren, Füllen von diesen und Laden von Texturen.
+Eine Szene in PixiJS ist als Baum organisiert wobei jeder Knoten in dem Baum wiederum Operationen zur Manipulation wie Transformation, Translation oder Transparenz anbietet.
+Ein weiteres Feature ist dass auf einen Knoten ein Filter mit WebGL Fragment-Shader-Code gesetzt werden kann welcher zur Manipulation der Farbinformation in den einzelnen Bildpunkte dient \cite{pixijs}.
 
 
 %----------------------------------------------

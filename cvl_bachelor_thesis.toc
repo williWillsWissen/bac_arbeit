@@ -20,10 +20,11 @@
 \contentsline {subsubsection}{\numberline {3.1.5}Objectiv J}{8}{subsubsection.3.1.5}
 \contentsline {subsubsection}{\numberline {3.1.6}Cappuccino}{9}{subsubsection.3.1.6}
 \contentsline {subsubsection}{\numberline {3.1.7}WebGL}{9}{subsubsection.3.1.7}
-\contentsline {subsection}{\numberline {3.2}Funktionalit\IeC {\"a}t und Aufbau der Benutzeroberfl\IeC {\"a}che}{9}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Kommunikation mit KRESHMOI}{9}{subsection.3.3}
-\contentsline {subsubsection}{\numberline {3.3.1}Query nach Bildern}{9}{subsubsection.3.3.1}
-\contentsline {subsubsection}{\numberline {3.3.2}Laden der Bilder}{10}{subsubsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.1.8}PixiJS}{9}{subsubsection.3.1.8}
+\contentsline {subsection}{\numberline {3.2}Funktionalit\IeC {\"a}t und Aufbau der Benutzeroberfl\IeC {\"a}che}{10}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Kommunikation mit KRESHMOI}{10}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Query nach Bildern}{10}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Laden der Bilder}{11}{subsubsection.3.3.2}
 \contentsline {subsection}{\numberline {3.4}Architektur und Komponenten}{11}{subsection.3.4}
 \contentsline {subsubsection}{\numberline {3.4.1}Dom\IeC {\"a}nen Model}{11}{subsubsection.3.4.1}
 \contentsline {subsubsection}{\numberline {3.4.2}Architektur und Aufteilung in Komponenten}{11}{subsubsection.3.4.2}
