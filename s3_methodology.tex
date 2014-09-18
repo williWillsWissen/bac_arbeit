@@ -139,6 +139,64 @@ Ein weiteres Feature ist dass auf einen Knoten ein Filter mit WebGL Fragment-Sha
 %----------------------------------------------
 \subsection{Funktionalität und Aufbau der Benutzeroberfläche}
 \label{sec:Funktionalität und Aufbau der Benutzeroberfläche}
+Der Workflow beim Durchsuchen von radiologischen Aufnahmen mit KRESHMOI gliedert sich in folgende Schritte:
+\begin{enumerate}
+	\item Auswahl eines Start-Datensatzes.
+	\item Betrachen des Datensatzes.
+	\item Anotieren einer ROI und eventuelle Eingagbe von Text in die Suchzeile.
+	\item Suche absenden und Ergebniss listen.
+	\item Betrachen von Datensätzen aus der Ergebnissliste.
+	\item Um neue Suchanfrage von ein Ergebnissdatensatz aus zu stellen werden die Schritte von 3 an wiederholt.
+\end{enumerate}
+Entsprechend dieses Ablaufs wird beim start der Applikation eine Liste mit allen Datensätzen geladen, 
+aus welchen einer als Einstiegspunkt in die Suche ausgewählt werden kann.
+Dieser Datensatz wird in den Betrachter der Haupansicht geladen.
+Die Haupansicht setzt sich aus verschiedenen Interaktions-Elementen (Views) zusammen,
+welchen in mehreren möglichen Layouts mit unterschiedlicher Multiplizität und Anordnung miteinander kombiniert werden.
+Von diesen Elementen gibt es Vier verschiedene Typen:
+\begin{itemize}
+	\item Betrachtungsansicht für Volumes (2D-Betrachter)
+	\item Betrachtungsansicht für den Report (Report-Betrachter)
+	\item Präsentationsansicht für die Ergebnisse (Ergebniss-Liste)
+	\item Eingabezeile für Schagwörter mit dem Suchbutton (SuchzeilSuchzeilee)
+\end{itemize}
+Die Fläche welchen die einzelnen Views innerhalb des Browserfensters einnehmen kann zwischen ihnen beliebig verschoben werden, 
+unter der Prämisse dass die Bedienelemente der einezlenen Views genügend Platz haben.
+Auf den Funktionsumfang des 2D-Betrachters und der Ergebniss-Liste wird in den folgenden unterkapiteln etwas genauer eingegangen.
+\begin{figure}[t]
+	\centering
+		\includegraphics[width=0.8\linewidth]{img/c3_application_standard.jpg}
+	\caption{Hauptansicht mit Layout für zwei 2D-Betrachter, Report-Betrachter und Ergebniss-Liste}
+\end{figure}
+
+
+%----------------------------------------------
+% ** Funktionalität des 2D-Betrachters
+%----------------------------------------------
+\subsubsection{Funktionalität des 2D-Betrachters}
+\label{sec:Funktionalität des 2D-Betrachters}
+Der 2D-Betrachter orientiert sich von seinen Funktionen sehr stark an der Betrachtungssoftware einer PACS-Workstaion oder eines DICOM-Betrachters.
+Er ermöglicht die räumliche Naviation durch die Schnitte eines Volumes in einer bestimmten Orientierung sowie das Umschalten zwischen den Orientierungen.
+Weiter kann wenn das Volume aus der Ergebnissliste ausgewählt wurde, 
+also nicht der Startdatensatz ist,
+eine Anzeige mit den Deckungsbereichen der Suche hinzugeschaltet werden. 
+
+Zur Interaktion mit den Volume wird auch wie bei anderen Betrachtern der Maus eine bestimmte Funktion zugewiesen.
+Die Funktionen umfassen Fensterung, Zoom, Bewegen des Bildes und Zeichnen und Löschen von Polygonen (ROIs).
+Das Einzeichenen von ROIs ist um die Benutzung einfach zu halten auf ein einelnes Schnittbild beschränkt.
+Wird das Werkzeug zum Zeichen oder Löschen von Polygonen auf mehreren Schnitten verwendet springt der Betrachte bei deren Verwendung immer wieder auf das Schnittbild mit dem ersten Polygon zurück.
+Das Bild kann Halbtransparent mit dem Report des Datensatzes überblendet werden, was aber die Mausfunktion auf das Scrollen des Reports reduziert.
+In allen anderen Funktionen ist das Scrollen immer an die Navigation durch die Schnitte gebunden.
+
+%----------------------------------------------
+% ** Funktionalität der Ergebniss-Liste
+%----------------------------------------------
+\subsubsection{Funktionalität der Ergebniss-Liste}
+\label{sec:Funktionalität der Ergebniss-Liste}
+Die Ergebniss-Liste präsentiert die Ergebnisse einer Suche welches sie über Drag and Drop in einen Betrachter laden lassen.
+Die Präsentation erfolgt über ein Vorschaubild welches von KRESHMOI als repräsentaties Bild für die Suche gewählt wurde.
+Um ein Suchergebniss im vorfeld zu Beurteilen verfügt die Ergebniss-List ebenfalls über die funktion die Orientierung der Schnitte des Volumes zu ändern und die Vorschaubilder zu zoomen.
+
 
 
 %----------------------------------------------
