@@ -18,9 +18,9 @@ Die Frameworks und Technologien für Grafik und GUI wurden gewählt weil mit Ihn
 %----------------------------------------------
 \subsubsection{HTTP}
 \label{sec:HTTP}
-HTTP (Hyper Text Transfer Protokoll) ist ein Protokoll zur übertragung von Daten über ein Netzwerk welches auf TCP aufsetzt.
+HTTP (Hyper Text Transfer Protokoll) ist ein Protokoll zur Übertragung von Daten über ein Netzwerk welches auf TCP aufsetzt.
 Der Datenaustausch zwischen zwei Kommunikationspartner findet in der From von Nachrichten statt, 
-wobei der Client eine Anfrage an einen Server stellt und dieser die Anfrage bearbeitet und eine Antwort retuniert.
+wobei der Client eine Anfrage an einen Server stellt und dieser die Anfrage bearbeitet und eine Antwort returniert.
 %
 Eine Nachricht setzt sich aus einem Header und einen Body zusammen.
 Der Body enthält die Nutzdaten und der Header enthält Metadaten über die Nutzdaten.
@@ -39,26 +39,26 @@ Für eine Zuordnung eines Clients muss dieser eine Session-ID mitsenden welche n
 \subsubsection{REST}
 \label{sec:HTTP}
 REST ist im eigentlichen Sin mehr ein Architekturstiel als ein Protokoll welcher mit HTTP umgesetzt wird.
-Die Idee von REST ist dass eine URL genau eine Resource auf einem Server addressiert, 
-wobei eine Resource eine statische Datei oder das ergebniss einer aktion auf dem Server sein kann.
-Der Architekturstiel ist lässt sich durch fünf Prizipien zusammenfassen:
+Die Idee von REST ist dass eine URL genau eine Ressource auf einem Server adressiert, 
+wobei eine Ressource eine statische Datei oder das Ergebnis einer Aktion auf dem Server sein kann.
+Der Architekturstiel ist lässt sich durch fünf Prinzipiell zusammenfassen:
 \begin{itemize}
-	\item \textbf{Resource mit eindeutiger Identifikation:}
-		Jede Resrouce wird durch eine URI (Uniform Resouce Identifier) weltweit eindeutig identifiziert.
-		Diese addressiert unter anderem den Server auf den sich die resource befindet sowie Resource auf dem Server selbst.
+	\item \textbf{Ressource mit eindeutiger Identifikation:}
+		Jede Ressource wird durch eine URI (Uniform Resouce Identifier) weltweit eindeutig identifiziert.
+		Diese adressiert unter anderem den Server auf den sich die Ressource befindet sowie Ressource auf dem Server selbst.
 	\item \textbf{Hypermedia:}
-		Verknüfungen zu anderen Entitäten und werden als Links auf die jeweiligen Resourcen dargestellt.
-		Weiters kann die Steuertung des Applikationszustandes durch Links auf weiter Aktionen durch Hypermedia umgesetzt werden.
+		Verknüpfungen zu anderen Entitäten und werden als Links auf die jeweiligen Ressourcen dargestellt.
+		Weiters kann die Steuerung des Applikationszustandes durch Links auf weiter Aktionen durch Hypermedia umgesetzt werden.
 	\item \textbf{Standard-Opperationen:}
-		Es gibt ein definiertes Interface welches von jeder Resource zur verfügung gestellt werden muss.
-		Dieses umfasst einen relativ kleinen Satz von Opperationen welche auf die Resource ausgeführt werden können.
-	\item \textbf{Unterschiedliche repräsentation der Resourcen:}
-		Die Resourcen können unterschiedliche Darstellungsformen haben.
-		Ein Client kann also eine Resource in einem bestimmten Format (z.B.: XML, HTML, JSON) anfordern sofern diese Darstellung vom Server unterstüzt wird.
-		In HTTP wird die gewünschte Dartstellung im Header angegeben.
+		Es gibt ein definiertes Interface welches von jeder Ressource zur Verfügung gestellt werden muss.
+		Dieses umfasst einen relativ kleinen Satz von Operationen welche auf die Ressource ausgeführt werden können.
+	\item \textbf{Unterschiedliche Repräsentation der Resourcen:}
+		Die Ressourcen können unterschiedliche Darstellungsformen haben.
+		Ein Client kann also eine Ressource in einem bestimmten Format (z.B.: XML, HTML, JSON) anfordern sofern diese Darstellung vom Server unterstützt wird.
+		In HTTP wird die gewünschte Darstellung im Header angegeben.
 	\item \textbf{Zustandslose Kommunikation}
-		Der Server hällt keine Zustandsinformationen über den Client welcher über die Dauer eines Requests hinaus geht.
-		Daher muss der Zustand einer Anwendung entweder am Client liegen oder vom Server in eine Resource umgewandelt werden.
+		Der Server hält keine Zustandsinformationen über den Client welcher über die Dauer eines Requests hinaus geht.
+		Daher muss der Zustand einer Anwendung entweder am Client liegen oder vom Server in eine Ressource umgewandelt werden.
 \end{itemize}
 \cite{rest}
 
@@ -67,10 +67,10 @@ Der Architekturstiel ist lässt sich durch fünf Prizipien zusammenfassen:
 %----------------------------------------------
 \subsubsection{JSON}
 \label{sec:JSON}
-Bei JSON (JavaScript Object Notation) handelt es sich um ein Datenformat zum Autausch von Arrays und Objekt-Graphen.
-JSON findet neben XML vorallem in der Kommunikation zwischen Client und Server bei Webanwendungen Verwendung, 
-wobei JSON Daten wesentlich kompakter und damit Resourcensparender sind.
-Wie bei XML werden Listen und Objekte in einer von Menschen lesbaren Form darestellt.
+Bei JSON (JavaScript Object Notation) handelt es sich um ein Datenformat zum Austausch von Arrays und Objekt-Graphen.
+JSON findet neben XML vor allem in der Kommunikation zwischen Client und Server bei Webanwendungen Verwendung, 
+wobei JSON Daten wesentlich kompakter und damit ressourcensparender sind.
+Wie bei XML werden Listen und Objekte in einer von Menschen lesbaren Form darstellt.
 Dabei werden folgende Datentypen unterstützt welche wiederum beliebig tief ineinander Verschachtelt werden können: NULL, Boolean, Zahl, String, Array und Objekt \cite{ajax}.
 
 %----------------------------------------------
@@ -80,8 +80,8 @@ Dabei werden folgende Datentypen unterstützt welche wiederum beliebig tief inei
 \label{sec:AJAX}
 AJAX (Asynchronous JavaScript and XML) ermöglicht es einer Webanwendung kleinere Mengen von Daten nachzuladen und damit Teile der Webseite dynamisch zu ändern, 
 statt bei jeder Aktion die Webseite neu zu laden.
-Benötigt die Web Appliketion Daten vom Server wird an diesem eine HTTP Anfrage gesendet und Callback-Funktionen für den Fall einer Antwort oder eines Fehlers beim Browser registriert.
-Erhällt der Browser eine Antwort auf sine Anfrage ruft er die Callback-Funktion auf und übergibt die erhalten Daten wodurch die Webanwendung mit der Verarbeitung dieser fortfahren kann.
+Benötigt die Web Applikation Daten vom Server wird an diesem eine HTTP Anfrage gesendet und Callback-Funktionen für den Fall einer Antwort oder eines Fehlers beim Browser registriert.
+Erhält der Browser eine Antwort auf seine Anfrage ruft er die Callback-Funktion auf und übergibt die erhalten Daten wodurch die Webanwendung mit der Verarbeitung dieser fortfahren kann.
 Dies ermöglicht die Entwicklung komplexer Webapplikationen, wobei die Webapplikation selbst mit der Seite geladen wird und die Daten die der Benutzer mit der Anwendung verarbeiten möchte dynamisch von dieser nachgeladen werden können \cite{ajax}.
 
 %----------------------------------------------
@@ -92,21 +92,21 @@ Dies ermöglicht die Entwicklung komplexer Webapplikationen, wobei die Webapplik
 
 Objective J ist eine Programmiersprache welche sich von der Syntax stark an Objective C anlehnt.
 Sie ist eine Erweiterung oder Obermenge von Javascript und wird von einem in Javascript geschriebenen Interpreter abgearbeitet.
-In Javascript können Objekte durch Prototyping erstellt werden, das Konzept von Klassen wird aber nicht unterstüzt.
-Obj J bietet zusätzlich zu den nativen JS Objekten die definition von Klassen inklusive Vererbung und die generierung von Objekten daraus.
-Obwohl es die Sprache erlaubt für Variablen, Methodenparameter und Rückgaben eine Datentyp zu definieren, 
+In Javascript können Objekte durch Prototyping erstellt werden, das Konzept von Klassen wird aber nicht unterstützt.
+Obj J bietet zusätzlich zu den nativen JS Objekten die Definition von Klassen inklusive Vererbung und die Generierung von Objekten daraus.
+Obwohl es die Sprache erlaubt für Variablen, Methodenparameter und Rückgabe einer Funktion eine Datentyp zu definieren, 
 werden diese aufgrund von schwacher Typisierung vom Interpreter nicht auf ihre Einhaltung überprüft.
-In der aktullen Version wird die Übergabe von Referenzen als Parameter ähnlich einem Pointer in C unterstützt \cite{capp}.
+In der aktuellen Version wird die Übergabe von Referenzen als Parameter ähnlich einem Pointer in C unterstützt \cite{capp}.
 
 %----------------------------------------------
 % ** Cappuccino
 %----------------------------------------------
 \subsubsection{Cappuccino}
 \label{sec:Cappuccino}
-Bei Cappuccino handelt es sich um ein Web Application Framework für Objectiv J und Javascript, welches haupsächlich der Erstellung komplexer Benutzeroberflächen dient.
-Das Framework lehnt sich sowol vom Aussehen als auch von der Benennung der Komponenten sehr stark an das GUI-Framework Cocoa von Apple an.
+Bei Cappuccino handelt es sich um ein Web Application Framework für Objectiv J und Javascript, welches hauptsächlich der Erstellung komplexer Benutzeroberflächen dient.
+Das Framework lehnt sich sowohl vom Aussehen als auch von der Benennung der Komponenten sehr stark an das GUI-Framework Cocoa von Apple an.
 GUI-Elemente werden als Objekte erstellt welche von einer View-Klasse erben und innerhalb von anderen Views positioniert werden können.
-Das Interface wird von einem HTML5 fähigen Browser gerendert wobei für dessen Erstellung keinerlei HTML oder CSS kentnisse notwendig sind \cite{capp}.
+Das Interface wird von einem HTML5 fähigen Browser gerendert wobei für dessen Erstellung keinerlei HTML oder CSS Kenntnisse notwendig sind \cite{capp}.
 
 
 %----------------------------------------------
@@ -115,13 +115,13 @@ Das Interface wird von einem HTML5 fähigen Browser gerendert wobei für dessen 
 \subsubsection{WebGL}
 \label{sec:WebGL}
 WebGL ist eine API für die Erstellung von 2D und 3D Grafiken in Browsern mit der Unterstützung der Grafikkarte.
-Im gegensatz zur Canvas-2D API wo die Bilder in der CPU gerendert werden, ist WebGL aufgrund der Hardwarebeschleunigung wesentlich performanter.
+Im Gegensatz zur Canvas-2D API wo die Bilder in der CPU gerendert werden, ist WebGL aufgrund der Hardwarebeschleunigung wesentlich performanter.
 WebGL ist eine Shaderbasierte API welche sich sehr stark an OpenGL ES anlehnt.
 Diese bedeutet dass Code für die Recheneinheiten (Shadereinheiten) der Grafikkarte entwickelt wird,
-welchen der Treiber der Karte in Bytecode übersetzt und zur ausführung in den Grafikchip lädt.
+welchen der Treiber der Karte in Bytecode übersetzt und zur Ausführung in den Grafikchip lädt.
 Die Shaderprogramme werden in der Programmiersprache GLSL geschrieben welche sich sehr stark an C orientiert.
 Der Zugriff auf die Schnittstelle erfolgt über das HTML Canvas Element in welchem die Ausgabe der Grafikkarte dargestellt wird.
-Dies geschieht mittels JavaScript wo die API funktionen zur Übergabe der Nutzdaten, Befehle und der Shaderprogramme bereitstellt \cite{webgl-14}.
+Dies geschieht mittels JavaScript wo die API Funktionen zur Übergabe der Nutzdaten, Befehle und der Shaderprogramme bereitstellt \cite{webgl-14}.
 
 %----------------------------------------------
 % ** PixiJS 
@@ -142,10 +142,10 @@ Ein weiteres Feature ist dass auf einen Knoten ein Filter mit WebGL Fragment-Sha
 Der Workflow beim Durchsuchen von radiologischen Aufnahmen mit KRESHMOI gliedert sich in folgende Schritte:
 \begin{enumerate}
 	\item Auswahl eines Start-Datensatzes.
-	\item Betrachen des Datensatzes.
-	\item Anotieren einer ROI und eventuelle Eingagbe von Text in die Suchzeile.
-	\item Suche absenden und Ergebniss listen.
-	\item Betrachen von Datensätzen aus der Ergebnissliste.
+	\item Betrachten des Datensatzes.
+	\item Anotieren einer ROI und eventuelle Eingabe von Text in die Suchzeile.
+	\item Suche absenden und Ergebnis listen.
+	\item Betrachen von Datensätzen aus der Ergebnisliste.
 	\item Um neue Suchanfrage von ein Ergebnissdatensatz aus zu stellen werden die Schritte von 3 an wiederholt.
 \end{enumerate}
 Entsprechend dieses Ablaufs wird beim start der Applikation eine Liste mit allen Datensätzen geladen, 
@@ -157,16 +157,16 @@ Von diesen Elementen gibt es Vier verschiedene Typen:
 \begin{itemize}
 	\item Betrachtungsansicht für Volumes (2D-Betrachter)
 	\item Betrachtungsansicht für den Report (Report-Betrachter)
-	\item Präsentationsansicht für die Ergebnisse (Ergebniss-Liste)
-	\item Eingabezeile für Schagwörter mit dem Suchbutton (SuchzeilSuchzeilee)
+	\item Präsentationsansicht für die Ergebnisse (Ergebnis-Liste)
+	\item Eingabezeile für Schlagwörter mit dem Suchbutton (Suchzeile)
 \end{itemize}
 Die Fläche welchen die einzelnen Views innerhalb des Browserfensters einnehmen kann zwischen ihnen beliebig verschoben werden, 
-unter der Prämisse dass die Bedienelemente der einezlenen Views genügend Platz haben.
-Auf den Funktionsumfang des 2D-Betrachters und der Ergebniss-Liste wird in den folgenden unterkapiteln etwas genauer eingegangen.
+unter der Prämisse dass die Bedienelemente der einzelnen Views genügend Platz haben.
+Auf den Funktionsumfang des 2D-Betrachters und der Ergebnis-Liste wird in den folgenden Unterkapiteln etwas genauer eingegangen.
 \begin{figure}[t]
 	\centering
 		\includegraphics[width=0.8\linewidth]{img/c3_application_standard.jpg}
-	\caption{Hauptansicht mit Layout für zwei 2D-Betrachter, Report-Betrachter und Ergebniss-Liste}
+	\caption{Hauptansicht mit Layout für zwei 2D-Betrachter, Report-Betrachter und Ergebnis-Liste}
 \end{figure}
 
 
@@ -176,16 +176,16 @@ Auf den Funktionsumfang des 2D-Betrachters und der Ergebniss-Liste wird in den f
 \subsubsection{Funktionalität des 2D-Betrachters}
 \label{sec:Funktionalität des 2D-Betrachters}
 Der 2D-Betrachter orientiert sich von seinen Funktionen sehr stark an der Betrachtungssoftware einer PACS-Workstaion oder eines DICOM-Betrachters.
-Er ermöglicht die räumliche Naviation durch die Schnitte eines Volumes in einer bestimmten Orientierung sowie das Umschalten zwischen den Orientierungen.
+Er ermöglicht die räumliche Navigation durch die Schnitte eines Volumes in einer bestimmten Orientierung sowie das Umschalten zwischen den Orientierungen.
 Weiter kann wenn das Volume aus der Ergebnissliste ausgewählt wurde, 
 also nicht der Startdatensatz ist,
-eine Anzeige mit den Deckungsbereichen der Suche hinzugeschaltet werden. 
+eine Anzeige mit den Deckungsbereichen der Suche hinzu geschaltet werden. 
 
 Zur Interaktion mit den Volume wird auch wie bei anderen Betrachtern der Maus eine bestimmte Funktion zugewiesen.
 Die Funktionen umfassen Fensterung, Zoom, Bewegen des Bildes und Zeichnen und Löschen von Polygonen (ROIs).
-Das Einzeichenen von ROIs ist um die Benutzung einfach zu halten auf ein einelnes Schnittbild beschränkt.
+Das Einzeichnen von ROIs ist um die Benutzung einfach zu halten auf ein einzelnes Schnittbild beschränkt.
 Wird das Werkzeug zum Zeichen oder Löschen von Polygonen auf mehreren Schnitten verwendet springt der Betrachte bei deren Verwendung immer wieder auf das Schnittbild mit dem ersten Polygon zurück.
-Das Bild kann Halbtransparent mit dem Report des Datensatzes überblendet werden, was aber die Mausfunktion auf das Scrollen des Reports reduziert.
+Das Bild kann halb Transparent mit dem Report des Datensatzes überblendet werden, was aber die Mausfunktion auf das Scrollen des Reports reduziert.
 In allen anderen Funktionen ist das Scrollen immer an die Navigation durch die Schnitte gebunden.
 
 %----------------------------------------------
@@ -193,10 +193,15 @@ In allen anderen Funktionen ist das Scrollen immer an die Navigation durch die S
 %----------------------------------------------
 \subsubsection{Funktionalität der Ergebniss-Liste}
 \label{sec:Funktionalität der Ergebniss-Liste}
-Die Ergebniss-Liste präsentiert die Ergebnisse einer Suche welches sie über Drag and Drop in einen Betrachter laden lassen.
-Die Präsentation erfolgt über ein Vorschaubild welches von KRESHMOI als repräsentaties Bild für die Suche gewählt wurde.
-Um ein Suchergebniss im vorfeld zu Beurteilen verfügt die Ergebniss-List ebenfalls über die funktion die Orientierung der Schnitte des Volumes zu ändern und die Vorschaubilder zu zoomen.
+Die Ergebnis-Liste präsentiert die Ergebnisse einer Suche welches sie über Drag and Drop in einen Betrachter laden lassen.
+Die Präsentation erfolgt über ein Vorschaubild welches von KRESHMOI als repräsentatives Bild für die Suche gewählt wurde.
+Um ein Suchergebniss im Vorfeld zu Beurteilen verfügt die Ergebnis-List ebenfalls über die Funktion die Orientierung der Schnitte des Volumes zu ändern und die Vorschaubilder zu zoomen.
 
+%----------------------------------------------
+% * Technische Umsetzung
+%----------------------------------------------
+\subsection{Technische Umsetzung}
+\label{sec:Technische Umsetzung}
 
 
 %----------------------------------------------
@@ -204,15 +209,15 @@ Um ein Suchergebniss im vorfeld zu Beurteilen verfügt die Ergebniss-List ebenfa
 %----------------------------------------------
 \subsection{Kommunikation mit KRESHMOI}
 \label{sec:Kommunikation mit KRESHMOI}
-Der Datenaustausch mit KRESHMOI basiert auf REST wobei sowohl auf die einzelnen Slices von einem Volume, als auch auf die Suche als Resoure über eine URL zugegrifen werden kann.
+Der Datenaustausch mit KRESHMOI basiert auf REST wobei sowohl auf die einzelnen Slices von einem Volume, als auch auf die Suche als Ressource über eine URL zugegriffen werden kann.
 
 %----------------------------------------------
-% ** Query nach Bildern
+% ** Query nach Bilderns
 %----------------------------------------------
 \subsubsection{Query nach Bildern}
 \label{sec:Query nach Bildern}
 Der Zugriff auf die Suchfunktion erfolgt über eine POST-Operation in welcher die Anfrage und die Antwort in JSON codiert werden.
-Zum Ausführen einer Suchanfrage stehen zwei Resourcen zur verfügung:
+Zum Ausführen einer Suchanfrage stehen zwei Ressourcen zur Verfügung:
 \\
 \\
 \textit{/index}\\
@@ -223,7 +228,7 @@ Liefert ein Array von allen Verfügbaren Datensätzen zurück
 Liefert ein Array von Datensätzen zurück welche anhand der Übergebenen Suchkriterien gefunden wurden.
 Eine Suchanfrage basiert immer auf einen Datensatz welcher in der Anfrage übergeben werden muss.
 In diesem Datensatz werden weiters Interessante Bereiche sogenannte ROIs (Region of Interesst) in den einzelnen Schnittbildern definiert.
-Die Übergabe einer ROI erfolgt als Polygon in Form einer Listen von Punkten im drei Dimensionalen Raum des Volumes.
+Die Übergabe einer ROI erfolgt als Polygon in Form einer Listen von Punkten im Dreidimensionalen Raum des Volumes.
 \begin{lstlisting}[
 	language=json,
 	firstnumber=1,
@@ -273,17 +278,17 @@ Die Übergabe einer ROI erfolgt als Polygon in Form einer Listen von Punkten im 
 %----------------------------------------------
 \subsubsection{Laden der Bilder}
 \label{sec:Laden der Bilder}
-Die Bildaten eines Volumes können über eine GET-Operation geladen werden.
-Dabei wird jedes Volume als eine Resource im Unterverzeichniss \textit{/image/} indentifiziert.
+Die Bilddaten eines Volumes können über eine GET-Operation geladen werden.
+Dabei wird jedes Volume als eine Resource im Unterverzeichnis \textit{/image/} identifiziert.
 Über Parameter in der URL werden die Schnittrichtung und und die Nummer des Bildes in der jeweiligen Schnittebene angegeben.
 Wir keine Nummer für das Bild angegeben wählt KRESHMOI eine repräsentatives Bild für die Suchanfrage, welches für die Präsentation der Ergebnisse verwendet wird.
-Für die Schnittebene gibt es entrsprechende der Terminologie für die Bildgebung in der Anatomie die Optionen:
+Für die Schnittebene gibt es entsprechende der Terminologie für die Bildgebung in der Anatomie die Optionen:
 \begin{itemize}
-	\item Axial: Die Schnitte erfolgen Wagrecht in der Transversalebene
+	\item Axial: Die Schnitte erfolgen Waagrecht in der Transversalebene
 	\item Sagital: Die Schnitte erfolgen Senkrecht in der Sagitalebene
 	\item Coronal: Die Schnitte erfolgen Senkrecht in der Frontalebene 
 \end{itemize}
-Sollen die Regionen welche der Suchanfrage entsprechen in den einzelnen Bildern markiert werden, muss die Query-ID mit übergeben werden um die urspüngliche Suchanfrage zu identifizieren.
+Sollen die Regionen welche der Suchanfrage entsprechen in den einzelnen Bildern markiert werden, muss die Query-ID mit übergeben werden um die ursprüngliche Suchanfrage zu identifizieren.
 \\
 \\
 Beispiel:

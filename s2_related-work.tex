@@ -14,51 +14,51 @@ Die beiden Konzepte PACS und DICOM werden im folgenden Kapitel kurz erklärt, so
 \subsection{PACS-Systeme}
 \label{sec:PACS-Systeme}
 Ein PACS-System (Picture Archiving and Communication System) dient zum Speichern und Austausch von medizinischen Bilddaten.
-Obwohl es prinzipel für alle bildgebenden Verfahren verwendet werden kann wird es vorwiegend für Daten aus der Radiologie und Nuklearmedizien genutzt.
+Obwohl es prinzipiell für alle bildgebenden Verfahren verwendet werden kann wird es vorwiegend für Daten aus der Radiologie und Nuklearmedizien genutzt.
 %
 Das Systems setzt sich aus dem PACS Server und den Workstations zusammen.
 Der Server sammelt Daten von den bildgebenden Geräten,
- verknüpft Sie mit Daten aus einem Krankenhaus Informations System (KIS) oder Radiologie Informations System (RIS) und sorgt für ihre Archivierung in einem Kurz oder Langzeitarchiv. 
-Die Kommunikation mit den bildgebenden Geräten erfolgt meist durch ein Protokoll welches den DICOM Standard implementetiert.
+ verknüpft Sie mit Daten aus einem Krankenhaus Informations System (KIS) oder Radiologie Informations System (RIS) und sorgt für ihre Archivierung in einem Kurz- oder Langzeitarchiv. 
+Die Kommunikation mit den bildgebenden Geräten erfolgt meist durch ein Protokoll welches den DICOM Standard implementiert.
 %
 Die Befundung erfolgt auf den PACS Workstations welche die Daten vom Server laden und anzeigen.
-Die Workstation stellte die Funktionalität zur Betrachtung und zum Nachbearbeiten der Bilder zur verfügung.
+Die Workstation stellte die Funktionalität zur Betrachtung und zum Nachbearbeiten der Bilder zur Verfügung.
 Änderungen der Daten werden von der Workstation zurück auf den Server geladen.
-Je nach Funktionsumfang stehen auch Tools zur Befundung zur verfügung welche die Daten and das RIS oder KIS weiter geben \cite{pacs}.
+Je nach Funktionsumfang stehen auch Tools zur Befundung zur Verfügung welche die Daten and das RIS oder KIS weiter geben \cite{pacs}.
 
 %----------------------------------------------
 % * DICOM
 %----------------------------------------------
 \subsection{DICOM}
 \label{sec:DICOM}
-DICOM steht für Digital Imaging and Communication in Medicine und ist ein offener Standart welcher die Übertragung und das Speichern von medizinischer Bildinformation spezifiziert.
+DICOM steht für Digital Imaging and Communication in Medicine und ist ein offener Standard welcher die Übertragung und das Speichern von medizinischer Bildinformation spezifiziert.
 Die wesentlichen Teile der Spezifikation sind die Datenstruktur für die Bilddaten und zugehörige Metainformationen, 
-Services welche auf diesen Daten operieren, Anforderung an DICOM conforme Hard- und Software-Produkte und das Ablegen der Informationen auf einem Datenträger.
-Das Datenmodel setzt sich in Anlehnung an die reale Welt grundliegend aus den Entitäten Patient, Studie, Serie und Image zusammen zwischen denen jeweils eine 1:n oder 0:n Beziehung besteht.
-Es bietet weiters ausreichen Möglichkeiten zur Erweiterung durch einen Definitionsmechnaissum für alle DICOM Objekte die sogenannte Image Object Defintion \cite{pacs}.
+Services welche auf diesen Daten operieren, Anforderung an DICOM konforme Hard- und Software-Produkte und das Ablegen der Informationen auf einem Datenträger.
+Das Datenmodell setzt sich in Anlehnung an die reale Welt grundlegend aus den Entitäten Patient, Studie, Serie und Image zusammen zwischen denen jeweils eine 1:n oder 0:n Beziehung besteht.
+Es bietet weiters ausreichend Möglichkeiten zur Erweiterung durch einen Definitionsmechnanissmus für alle DICOM Objekte die sogenannte Image Object Defintion \cite{pacs}.
 
 %----------------------------------------------
 % * Osirix
 %----------------------------------------------
 \subsection{Osirix}
 \label{sec:Osirix}
-OsiriX ist eine Software zur Betrachtung und Nachbearbeitung von DICOM Bildaten.
+OsiriX ist eine Software zur Betrachtung und Nachbearbeitung von DICOM Bilddaten.
 Sie wird als freie Open-Source-Software unter der GPL für das Betriebssystem Mac OS X entwickelt.
-OsiriX ist nur für die Forschung und dem privaten gebrauch zugelassen, 
-für einen einen diagnostischen Einsatz in der Medizin steht die kostenpflichtige Version OsiriX MD zur verfügung.
+OsiriX ist nur für die Forschung und dem privaten Gebrauch zugelassen, 
+für einen einen diagnostischen Einsatz in der Medizin steht die kostenpflichtige Version OsiriX MD zur Verfügung.
 %
 Das Programm führt eine Datenbank von DICOM Datensätzen, 
 welche von DICOM-Datein importiert bzw auch wieder als solche exportiert werden können.
 Weiters können über das DICOM-Protokoll die Daten auch von einem PACS-Server geladen werden \cite{osirix}.
 
-Von der Navigationsstrutur unterteil sich OsiriX in eine Datenbankebene und eine Betrachtungsebene welche jeweils durch verschiedene Fenster umgesetzt wurden.
-Der vollständigkeit halber sei erwähnt das es auch eine Ebene für 3D Rendering der Volumes gibt welche aber für diese Arbeit keinen weiteren Nutzen darstellt.
+Von der Navigationsstruktur unterteilt sich OsiriX in eine Datenbankebene und eine Betrachtungsebene welche jeweils durch verschiedene Fenster umgesetzt wurden.
+Der Vollständigkeit halber sei erwähnt das es auch eine Ebene für 3D Rendering der Volumes gibt welche aber für diese Arbeit keinen weiteren Nutzen darstellt.
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=0.8\linewidth]{img/c2_osirix_db_view.jpg}
 	\caption{Datenbankansicht von OsiriX.}
 \end{figure}
-In der Datenbankebene können die Datensätzte importiert, exportiert und durchsucht werden, wobei jede Studie für einen Patienten einen Eintrag in der Liste darstellt.
+In der Datenbankebene können die Datensätze importiert, exportiert und durchsucht werden, wobei jede Studie für einen Patienten einen Eintrag in der Liste darstellt.
 Weiters stehen Unterlisten zum Anzeigen der Serien einer Studie zur Verfügung.
 Unter der Listenansicht werden die ausgewählten Einträge als Thumbnails und in einem minimalen 2D Betrachter,
 welche die wichtigsten Funktionen der Betrachtungsebene implementiert zur Vorschau dargestellt.
@@ -66,14 +66,14 @@ In der Betrachtungsebene finden sich die eigentlichen Funktionen und Tools welch
 Dafür bietet OsiriX eine große Funktionspalette, wobei hier nur auf die Kernfunktionalität eingegangen wird \cite{osirix}.
 \paragraph{Funktionsumfang}
 Die Steuerung für die Interaktionstools erfolgt auch wie bei den PACS Workstations mit der Maus, 
-welcher die spezifiischen Funktionen zugewiesen werden können. Die jeweils zugewiensene Funktion wird durch das Drücekn der Maustaste aktiv.
+welcher die spezifischen Funktionen zugewiesen werden können. Die jeweils zugewiesene Funktion wird durch das Drücken der Maustaste aktiv.
 \begin{itemize}
 	\item Bei der \textbf{Fensterung} wird mit der X-Achse wird die Fensterbreite (Kontrast) und mit der Y-Achse das Fensterzentrum (Helligkeit) angepasst.
 	\item \textbf{Positionierung} des Bildes innerhalb der Anzeigefläche. Geht das Bild über die Anzeigefläche wird dies durch einen farbige Linie an der jeweiligen Kante signalisiert.
 	\item \textbf{Zoom} durch das verschieben der Maus entlang einer Achse.
 	\item \textbf{Rotation} um das Bildzentrum durch das verschieben der Maus entlang der X-Achse.
 	\item \textbf{Navigation} durch das Volume. Die Achse in der die Maus nach einem Klick zuerst verschoben wird, wird für die Navigation gewählt, die andere bleibt inaktiv.
-	\item Einzeichnen von \textbf{ROIs}. Hierbei werden Punkte, Linien, Polygone, Winkel und noch weitere Geometrien unterstüzt. 
+	\item Einzeichnen von \textbf{ROIs}. Hierbei werden Punkte, Linien, Polygone, Winkel und noch weitere Geometrien unterstützt. 
 		Sind in dem Datensatz die notwendigen Informationen vorhanden erfolgt einen automatische Vermessung der ROIs.
 \end{itemize}
 \begin{figure}[t]
@@ -81,7 +81,7 @@ welcher die spezifiischen Funktionen zugewiesen werden können. Die jeweils zuge
 	\includegraphics[width=0.8\linewidth]{img/c2_osirix_2d_view_toolbar.jpg}
 	\caption{Toolbar für die 2D Batrachtungsebene.}
 \end{figure}
-Weiters können mehrere Betrachtungs-Fenster nebeneinander angeordnet werden, wobei sich diese zur Darstellung unterschidlicher Serien bzw Orientierungen eines Datensatzes nutzen lassen. 
+Weiters können mehrere Betrachtungs-Fenster nebeneinander angeordnet werden, wobei sich diese zur Darstellung unterschiedlicher Serien bzw Orientierungen eines Datensatzes nutzen lassen. 
 Die Orientierung gibt an entlang welcher Achse die Bilder eines Volumes geschnitten werden.
 Wird in verschiedenen Fenstern eine unterschiedliche Orientierung gewählt,
 so wird beim navigieren durch das Volume in einem Fenster die Position der Schnittebene in den anderen als Linie angezeigt \cite{osirix}.
