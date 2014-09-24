@@ -5,3 +5,7 @@
 *.swp
 *.bbl
 *.blg
+cvl_bachelor_thesis.fdb_latexmk
+cvl_bachelor_thesis.synctex.gz
+cvl_bachelor_thesis.synctex.gz(busy)
+cvl_bachelor_thesis.pdf
