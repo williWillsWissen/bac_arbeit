@@ -25,18 +25,21 @@
 \contentsline {subsubsection}{\numberline {3.2.1}Funktionalit\IeC {\"a}t des 2D-Betrachters}{10}{subsubsection.3.2.1}
 \contentsline {subsubsection}{\numberline {3.2.2}Funktionalit\IeC {\"a}t der Ergebniss-Liste}{11}{subsubsection.3.2.2}
 \contentsline {subsection}{\numberline {3.3}Technische Umsetzung}{11}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Kommunikation mit KRESHMOI}{11}{subsection.3.4}
-\contentsline {subsubsection}{\numberline {3.4.1}Query nach Bildern}{11}{subsubsection.3.4.1}
-\contentsline {subsubsection}{\numberline {3.4.2}Laden der Bilder}{12}{subsubsection.3.4.2}
-\contentsline {subsection}{\numberline {3.5}Architektur und Komponenten}{13}{subsection.3.5}
-\contentsline {subsubsection}{\numberline {3.5.1}Dom\IeC {\"a}nen Model}{13}{subsubsection.3.5.1}
-\contentsline {subsubsection}{\numberline {3.5.2}Architektur und Aufteilung in Komponenten}{13}{subsubsection.3.5.2}
-\contentsline {subsubsection}{\numberline {3.5.3}2DView}{13}{subsubsection.3.5.3}
-\contentsline {subsubsection}{\numberline {3.5.4}Kommunikations Module}{13}{subsubsection.3.5.4}
-\contentsline {subsection}{\numberline {3.6}Usability}{13}{subsection.3.6}
-\contentsline {subsubsection}{\numberline {3.6.1}Workflow bei der Befundung}{13}{subsubsection.3.6.1}
-\contentsline {section}{\numberline {4}Results}{14}{section.4}
-\contentsline {subsection}{\numberline {4.1}Geschwindigkeit}{14}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Usability}{14}{subsection.4.2}
-\contentsline {section}{\numberline {5}Conclusion}{15}{section.5}
-\contentsline {section}{Bibliography}{16}{section.5}
+\contentsline {subsubsection}{\numberline {3.3.1}2D Betrachter}{11}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Berehnung der Fensterung}{11}{subsubsection.3.3.2}
+\contentsline {paragraph}{Canvas 2D API}{11}{equation.3.1}
+\contentsline {subsection}{\numberline {3.4}Kommunikation mit KRESHMOI}{13}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}Query nach Bildern}{13}{subsubsection.3.4.1}
+\contentsline {subsubsection}{\numberline {3.4.2}Laden der Bilder}{14}{subsubsection.3.4.2}
+\contentsline {subsection}{\numberline {3.5}Architektur und Komponenten}{14}{subsection.3.5}
+\contentsline {subsubsection}{\numberline {3.5.1}Dom\IeC {\"a}nen Model}{14}{subsubsection.3.5.1}
+\contentsline {subsubsection}{\numberline {3.5.2}Architektur und Aufteilung in Komponenten}{14}{subsubsection.3.5.2}
+\contentsline {subsubsection}{\numberline {3.5.3}2DView}{14}{subsubsection.3.5.3}
+\contentsline {subsubsection}{\numberline {3.5.4}Kommunikations Module}{14}{subsubsection.3.5.4}
+\contentsline {subsection}{\numberline {3.6}Usability}{14}{subsection.3.6}
+\contentsline {subsubsection}{\numberline {3.6.1}Workflow bei der Befundung}{14}{subsubsection.3.6.1}
+\contentsline {section}{\numberline {4}Results}{15}{section.4}
+\contentsline {subsection}{\numberline {4.1}Geschwindigkeit}{15}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Usability}{15}{subsection.4.2}
+\contentsline {section}{\numberline {5}Conclusion}{16}{section.5}
+\contentsline {section}{Bibliography}{17}{section.5}

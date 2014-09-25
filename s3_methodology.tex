@@ -203,6 +203,79 @@ Um ein Suchergebniss im Vorfeld zu Beurteilen verfügt die Ergebnis-List ebenfal
 \subsection{Technische Umsetzung}
 \label{sec:Technische Umsetzung}
 
+%----------------------------------------------
+% ** 2D Betrachter
+%----------------------------------------------
+\subsubsection{2D Betrachter}
+\label{sec:2D Betrachter}
+
+
+%----------------------------------------------
+% ** Berehnung der Fensterung
+%----------------------------------------------
+\subsubsection{Berehnung der Fensterung}
+\label{sec:Berehnung der Fensterung}
+Die Berechnung der Fensterung ist eine Anpassung von Kontrast und Helligkeit des Bildes,
+wozu für jedes Pixel der Farbwert mit einer Linear Transformation in einen neuen Zielwert überführt werden muss.
+\begin{equation}
+        F(x) = c*x + b
+\end{equation}
+Dabei ist der Kontrast durch $c$ und die Helligkeit durch $b$ gegeben.
+Für diese Berechnung wurde ein Ansatz auf Basis von JavaScript durch die Canvas 2D Api und eine Implementierung mit Web GL getestet.
+
+\paragraph{Canvas 2D API}
+Für die Ausgabe im Browser wird ein HTML5 Canvas Element verwendet,
+auf welches über ein sogenanten Grafikkontext zugegriffen werden kann. 
+Dieser Grafikkontext wird in JavaScript vom Browser als Objekt zur Verfügung gestellt.
+Durch das Kontext Objekt kann der Bildinhalt in ein Array und umgekehrt auch ein Array von Farbwerten in das Bild geschrieben werden.
+Dabei wird das Bild zeilenweise in ein eindimensionales Array Serialisiert, 
+wo jeder Bildpunkt auf 4 Speicherstellen mit einem Integer-Wert zwischen 0 und 255 abgebildet wird.
+Die ersten drei Speicherstellen bilden den Farbwert durch die Anteile von Rot, Grün, Blau und die vierte den Alpha Kanal.
+Für die Fensterung müssen alle Speicherstellen für die Farbe transformiert und wieder auf einen Integer Wert gerundet werden.
+%
+Um unnötige Berechnungen für jedes einzelne Pixel zu sparen, werden pro Fensterung alle Pixelwerte zwischen 0 und 255 einmal vorberechnet und in einer LookUp Tabelle als Array gespeichert.
+Anstadt den Wert für jedes Pixel neu zu berechen und zu runden fungiert bei diesem Ansatz der aktuelle Wert eines Pixels als Schlüssel für die Tabelle welche den neuen Wert des Pixels enthält.
+Die Anzahl der Operationen wird dabei auf 255 Berechnungen und die Anzahl der Speicherzugriffe pro Bildpunkt reduziert.
+\begin{lstlisting}[
+	firstnumber=1,
+]
+function calcWindowForDomElement(domElement, contrast, brightness)
+{
+        var ctx = domElement.getContext("2d");
+        var w = domElement.width;
+        var h = domElement.height;
+
+        var lut = getLookUpTable(contrast, brightness);
+        var imageData = ctx.getImageData(0, 0, w, h);
+        var imageDataSize = (w * h * 4);
+
+        for(var pos = 0; pos < imageDataSize; pos = pos + 4){
+                imageData.data[pos] = lut[imageData.data[pos]];
+                imageData.data[pos + 1] = lut[imageData.data[pos + 1]];
+                imageData.data[pos + 2] = lut[imageData.data[pos + 2]];
+        }
+
+        ctx.putImageData(imageData,0,0);
+}
+\end{lstlisting}
+\begin{lstlisting}[
+	firstnumber=1,
+]
+function getLookUpTable(contrast, brightness){
+        var lut = new Array();
+
+        for(var i = 0; i < 256; i++){
+                var newValue = Math.round(contrast * i + brightness);
+                if(newValue < 0) newValue = 0;
+                if(newValue > 255) newValue = 255;
+                lut[i] = newValue;
+        }
+
+        return lut;
+}
+\end{lstlisting}
+
+
 
 %----------------------------------------------
 % * Kommunikation mit KRESHMOI
