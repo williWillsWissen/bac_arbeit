@@ -5,8 +5,8 @@
 %----------------------------------------------
 \section{Related Work}
 \label{sec:relatedWork}
-Software für die Bildsuche in radiologischen Daten gibt es bis jetzt noch nicht, 
-allerdings decken sich die Anforderungen großteils mit Betrachtungstools für 2D und 3D Daten aus der Radiologie und Nuklearmedizin.
+Software für die Bildsuche in radiologischen Daten gibt es bis jetzt noch nicht, \Rc{ganz so exklusiv für ich das nicht formulieren, eher dass es in kommerziellen system noch nicht verfügbar ist oder so - bissl abschwächen} 
+allerdings decken sich die Anforderungen großteils mit Betrachtungstools für 2D und 3D Daten aus der Radiologie und Nuklearmedizin.\Rc{naja, der betrachtungsteil schon - ansonsten versteh ich nicht genau was du meinst} 
 Solche Softwareprodukte finden sich in den Betrachtungs-Workstations von PACS-System in Krankenhäusern oder als Betrachtungstools für Datensätze des offenen Standards DICOM.
 Die beiden Konzepte PACS und DICOM werden im folgenden Kapitel kurz erklärt, sowie die Umsetzung der benötigten Funktionalität in zwei konkreten Softwareproduken diskutiert.
 
@@ -16,7 +16,7 @@ Die beiden Konzepte PACS und DICOM werden im folgenden Kapitel kurz erklärt, so
 \subsection{PACS-Systeme}
 \label{sec:PACS-Systeme}
 Ein PACS-System (Picture Archiving and Communication System) dient zum Speichern und Austausch von medizinischen Bilddaten.
-Obwohl es prinzipiell für alle bildgebenden Verfahren verwendet werden kann wird es vorwiegend für Daten aus der Radiologie und Nuklearmedizien genutzt.
+Obwohl es prinzipiell für alle bildgebenden Verfahren verwendet werden kann wird es vorwiegend für Daten aus der Radiologie und Nuklearmedizien \Rc{spellcheck}  genutzt.
 %
 Das Systems setzt sich aus dem PACS Server und den Workstations zusammen.
 Der Server sammelt Daten von den bildgebenden Geräten,
@@ -33,8 +33,8 @@ Je nach Funktionsumfang stehen auch Tools zur Befundung zur Verfügung welche di
 %----------------------------------------------
 \subsection{DICOM}
 \label{sec:DICOM}
-DICOM steht für Digital Imaging and Communication in Medicine und ist ein offener Standard welcher die Übertragung und das Speichern von medizinischer Bildinformation spezifiziert.
-Die wesentlichen Teile der Spezifikation sind die Datenstruktur für die Bilddaten und zugehörige Metainformationen, 
+DICOM steht für Digital Imaging and Communication in Medicine \Rc{würd ich kursiv machen, mit emph}  und ist ein offener Standard welcher die Übertragung und das Speichern von medizinischer Bildinformation spezifiziert.
+Die wesentlichen Teile der Spezifikation sind die Datenstruktur für die Bilddaten und zugehörige Metainformationen \Rc{wie zb ...} , 
 Services welche auf diesen Daten operieren, Anforderung an DICOM konforme Hard- und Software-Produkte und das Ablegen der Informationen auf einem Datenträger.
 Das Datenmodell setzt sich in Anlehnung an die reale Welt grundlegend aus den Entitäten Patient, Studie, Serie und Image zusammen zwischen denen jeweils eine 1:n oder 0:n Beziehung besteht.
 Es bietet weiters ausreichend Möglichkeiten zur Erweiterung durch einen Definitionsmechnanissmus für alle DICOM Objekte die sogenannte Image Object Defintion \cite{pacs}.
@@ -53,8 +53,8 @@ Das Programm führt eine Datenbank von DICOM Datensätzen,
 welche von DICOM-Datein importiert bzw auch wieder als solche exportiert werden können.
 Weiters können über das DICOM-Protokoll die Daten auch von einem PACS-Server geladen werden \cite{osirix}.
 
-Von der Navigationsstruktur unterteilt sich OsiriX in eine Datenbankebene und eine Betrachtungsebene welche jeweils durch verschiedene Fenster umgesetzt wurden.
-Der Vollständigkeit halber sei erwähnt das es auch eine Ebene für 3D Rendering der Volumes gibt welche aber für diese Arbeit keinen weiteren Nutzen darstellt.
+\Rc{referenz auf die figure} Von der Navigationsstruktur unterteilt sich OsiriX in eine Datenbankebene und eine Betrachtungsebene welche jeweils durch verschiedene Fenster umgesetzt wurden.
+Der Vollständigkeit halber sei erwähnt das es auch eine Ebene für 3D Rendering der Volumes gibt welche aber für diese Arbeit \Rd{keinen weiteren Nutzen darstellt}\R{nicht relevant ist} .
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=0.8\linewidth]{img/c2_osirix_db_view.jpg}
@@ -63,7 +63,7 @@ Der Vollständigkeit halber sei erwähnt das es auch eine Ebene für 3D Renderin
 In der Datenbankebene können die Datensätze importiert, exportiert und durchsucht werden, wobei jede Studie für einen Patienten einen Eintrag in der Liste darstellt.
 Weiters stehen Unterlisten zum Anzeigen der Serien einer Studie zur Verfügung.
 Unter der Listenansicht werden die ausgewählten Einträge als Thumbnails und in einem minimalen 2D Betrachter,
-welche die wichtigsten Funktionen der Betrachtungsebene implementiert zur Vorschau dargestellt.
+welche die wichtigsten Funktionen der Betrachtungsebene implementiert\R{,} zur Vorschau dargestellt.
 In der Betrachtungsebene finden sich die eigentlichen Funktionen und Tools welche für die Interaktion mit den Bildern notwendig sind.
 Dafür bietet OsiriX eine große Funktionspalette, wobei hier nur auf die Kernfunktionalität eingegangen wird \cite{osirix}.
 \paragraph{Funktionsumfang}
@@ -71,9 +71,9 @@ Die Steuerung für die Interaktionstools erfolgt auch wie bei den PACS Workstati
 welcher die spezifischen Funktionen zugewiesen werden können. Die jeweils zugewiesene Funktion wird durch das Drücken der Maustaste aktiv.
 \begin{itemize}
 	\item Bei der \textbf{Fensterung} wird mit der X-Achse wird die Fensterbreite (Kontrast) und mit der Y-Achse das Fensterzentrum (Helligkeit) angepasst.
-	\item \textbf{Positionierung} des Bildes innerhalb der Anzeigefläche. Geht das Bild über die Anzeigefläche wird dies durch einen farbige Linie an der jeweiligen Kante signalisiert.
-	\item \textbf{Zoom} durch das verschieben der Maus entlang einer Achse.
-	\item \textbf{Rotation} um das Bildzentrum durch das verschieben der Maus entlang der X-Achse.
+	\item \textbf{Positionierung} des Bildes innerhalb der Anzeigefläche. Geht das Bild über die Anzeigefläche \Rc{hinaus?} wird dies durch einen farbige Linie an der jeweiligen Kante signalisiert.
+	\item \textbf{Zoom} durch das verschieben\Rc{grosses V} der Maus entlang einer Achse.
+	\item \textbf{Rotation} um das Bildzentrum durch das verschieben\Rc{Ver...}  der Maus entlang der X-Achse.
 	\item \textbf{Navigation} durch das Volume. Die Achse in der die Maus nach einem Klick zuerst verschoben wird, wird für die Navigation gewählt, die andere bleibt inaktiv.
 	\item Einzeichnen von \textbf{ROIs}. Hierbei werden Punkte, Linien, Polygone, Winkel und noch weitere Geometrien unterstützt. 
 		Sind in dem Datensatz die notwendigen Informationen vorhanden erfolgt einen automatische Vermessung der ROIs.
@@ -86,7 +86,7 @@ welcher die spezifischen Funktionen zugewiesen werden können. Die jeweils zugew
 Weiters können mehrere Betrachtungs-Fenster nebeneinander angeordnet werden, wobei sich diese zur Darstellung unterschiedlicher Serien bzw Orientierungen eines Datensatzes nutzen lassen. 
 Die Orientierung gibt an entlang welcher Achse die Bilder eines Volumes geschnitten werden.
 Wird in verschiedenen Fenstern eine unterschiedliche Orientierung gewählt,
-so wird beim navigieren durch das Volume in einem Fenster die Position der Schnittebene in den anderen als Linie angezeigt \cite{osirix}.
+so wird beim navigieren\Rc{N...}  durch das Volume in einem Fenster die Position der Schnittebene in den anderen als Linie angezeigt \cite{osirix}.
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=0.8\linewidth]{img/c2_osirix_2d_view_splitscreen.jpg}
