@@ -35,6 +35,10 @@
 \definecolor{delim}{RGB}{20,105,176}
 \colorlet{numb}{magenta!60!black}
 
+
+
+
+
 \lstdefinelanguage{json}{
     numbers=left,
     numberstyle=\scriptsize,
@@ -67,6 +71,37 @@
 % creates the titlepage & does all the formating
 \usepackage{cvl-titlepage}
 
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\usepackage{color}
+\DefineNamedColor{named}{RedOrange}{cmyk}{0,0.67,0.87,0.0}
+\DefineNamedColor{named}{Red}{cmyk}{0,0.95,0.87,0}
+\DefineNamedColor{named}{Black}{cmyk}{1,1,1,1}
+\DefineNamedColor{named}{LimeGreen}{cmyk}{0.50,0,1,0}
+\DefineNamedColor{named}{Green}{cmyk}{1,0,1,0}
+\DefineNamedColor{named}{ForestGreen} {cmyk}{0.91,0,0.88,0.12}
+\DefineNamedColor{named}{Emerald}{cmyk}{1,0,0.50,0}
+\DefineNamedColor{named}{Maroon}{cmyk}{0,0.87,0.68,0.32}
+\DefineNamedColor{named}{Fuchsia}{cmyk}{0.47,0.91,0,0.08}
+\DefineNamedColor{named}{HappyBlack}{cmyk}{1,1,1,1}
+\DefineNamedColor{named}{krachblau}{cmyk}{1,0,0,0.05}
+\DefineNamedColor{named}{lightgray}{cmyk}{0,0,0,0.15}
+
+% draft version mit kommentaren:
+%\iftrue
+% \def\Gd#1{} % deleted
+%\def\Mc#1{\textcolor{LimeGreen}{\tt\small\textbf{[#1]}}} % comment
+\def\Cc#1{\textcolor{LimeGreen}{\small\textbf{[#1]}}} % comment
+\def\C#1{\textcolor{LimeGreen}{#1}} % edited
+\def\Cd#1{\textcolor{LimeGreen}{\sout{#1}}} % deleted
+% \def\Md#1{\textcolor{LimeGreen}{\small\textbf{[#1]}}}
+\def\Rc#1{\textcolor{krachblau}{\small\texttt{\textbf{[#1]}}}} % comment
+\def\Gc#1{\textcolor{Green}{\small\texttt{\textbf{[#1]}}}} % comment
+\def\R#1{\textcolor{krachblau}{\textbf{#1}}} % edited
+\def\G#1{\textcolor{Green}{\textbf{#1}}} % edited
+\def\Rd#1{\textcolor{krachblau}{{\sout{#1}}}} % deleted
+\def\Gd#1{\textcolor{Green}{{\sout{#1}}}} % deleted
+%\def\lorem#1{\textcolor{lightgray}{\emph{#1}}} % deleted
 
 % ------------------------------------------------
 %	How to make LaTeX copy & paste -able for WORD (final spell checking):
