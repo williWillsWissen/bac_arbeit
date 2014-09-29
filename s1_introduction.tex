@@ -5,10 +5,10 @@
 %----------------------------------------------
 \section{Introduction}
 \label{sec:introduction}
-Das Ziel dieser Projektarbeit war die Entwicklung eines \Rd{W}\R{w}ebbasierten Frontends für eine Suchmaschine welche das Durchsuchen von radiologischen Bildern aus der Medizin ermöglicht.
-Die Suchmaschine selbst ist ein Teil des KRESHMOI-Projekts\Rc{cite}  welches sich generell mit der Aufbereitung und dem Durchsuchen von medizinischen Informationen beschäftigt.
-Das System KRESHMOI wird in diesem Kapitel erklärt und im speziellen \R{wird }auf die Suche für radiologische Bilder eingegangen.
-Weiters werden die Anforderungen an das Frontend angeführt und auf die Möglichkeiten zur Umsetzung mit den am aktuellen Entwicklungstand verfügbaren Technologien diskutiert.
+Das Ziel dieser Projektarbeit war die Entwicklung eines webbasierten Frontends für eine Suchmaschine welche das Durchsuchen von radiologischen Bildern aus der Medizin ermöglicht.
+Die Suchmaschine selbst ist ein Teil des KRESHMOI-Projekts \cite{kres} welches sich generell mit der Aufbereitung und dem Durchsuchen von medizinischen Informationen beschäftigt.
+Das System KRESHMOI wird in diesem Kapitel erklärt und im speziellen wird auf die Suche für radiologische Bilder eingegangen.
+Weiters werden die Anforderungen an das Frontend angeführt und auf die Möglichkeiten zur Umsetzung mit den am aktuellen Entwicklungsstand verfügbaren Technologien diskutiert.
 
 %----------------------------------------------
 % * Motivation 
@@ -28,8 +28,9 @@ Die Einteilung der Benutzer erfolgt in 3 Kategorien:
 	\item Ärzte
 	\item Radiologen
 \end{itemize}
-Dazu verknüpft KHRESMOI Daten aus verschiedenen heterogenen Resourcen wie Bildern aus Radiologie-Archiven, Bildern und Text aus Publikationen in Journalen oder Daten von \Rd{diversen} \R{medizinisch relevanten }Webseiten.
-Da sich die verschiedenen Resourcen qualitativ sehr stark voneinander unterscheiden können wird ein\Rd{en} Bewertung ihrer Glaubwürdigkeit durchgeführt und dem Benutzer angezeigt. \Rc{ich würd da gleich einen screenshot des offiziellen GUIs zeigen und durcherklären und sagen dass dazu java nötig ist? und dann nochmal betonen dass es hier um die umsetzung davon mit webtechnologien geht?} 
+Dazu verknüpft KHRESMOI Daten aus verschiedenen heterogenen Ressourcen wie Bildern aus Radiologie-Archiven, Bildern und Text aus Publikationen in Journalen oder Daten von medizinisch relevanten Webseiten.
+Da sich die verschiedenen Resourcen qualitativ sehr stark voneinander unterscheiden können wird ein Bewertung ihrer Glaubwürdigkeit durchgeführt und dem Benutzer angezeigt. \Rc{ich würd da gleich einen screenshot des offiziellen GUIs zeigen und durcherklären und sagen dass dazu java nötig ist? und dann nochmal betonen dass es hier um die umsetzung davon mit webtechnologien geht?} 
+\Cc{Soll ichs in diesem Kapitel machen oder eher ins related work rein geben?}
 %%
 Die Suchanfrage kann in textueller Form oder als Bild-Query sowie als Kombination von beidem gestellt werden.
 Ein weiteres wichtiges Feature hierbei ist die multilinguale Suche, da die Menge an verfügbaren medizinischen Informationen nicht in alle Sprachen gleich ist.
@@ -42,19 +43,19 @@ wodurch der Benutzer schnell durch die Ergebnissliste manchmal navigieren kann \
 %----------------------------------------------
 %\subsubsection{Interaktion mit einer Bildsuchmaschiene}
 %\label{sec:Interaktion mit einer Bildsuchmaschiene}
-Ein Teilprojekt von KHRESHMOI ist das Druchsuchen von medizinischen Bilddaten wobei diese in 2D, 3D oder 4D (Video) vorliegen können. \Rc{naja, videos hamma nie gemacht.} 
-Um eine Suchanfrage auf ein Bild stellen zu können müssen an einem Ausgangsbild Positiv- oder Negativ-Bereiche eingezeichnet werden welche dann die Anfrage formen.\Rc{statt pos / ned würd ich region of interest ROI sagen} 
+Ein Teilprojekt von KHRESHMOI ist das Durchsuchen von medizinischen Bilddaten wobei diese in 2D oder 3D vorliegen können.
+Um eine Suchanfrage auf ein Bild stellen zu können müssen an einem Ausgangsbild \C{eine oder mehrere sogenannte "Region(s) Of Interest" (ROI) eingezeichnet werden,} welche dann die Anfrage formen.
 Aus der Textur eines markierten Bereiches wird ein Feature-Vektor extrahiert mit dem anschließend eine Datenbank von zuvor indizierten Bildern durchsucht wird.
 %
 Ein Frontend einer Bildsuchmaschiene muss daher sowohl Tools zum markieren von interessanten Bereichen, 
 als auch die Funktionalität zur vernünftigen Betrachtung der Bilder bereitstellen \cite{kres}.
 
-Diese Arbeit spezialisiert sich auf die Interaktion mit dem Teilsystem für das Durchsuchen von radioloischen Aufnahmen in 2D und 3D,
+Diese Arbeit spezialisiert sich auf die Interaktion mit dem Teilsystem für das Durchsuchen von radiologischen Aufnahmen in 2D und 3D,
 welche in einem PACS (Picture Archiving and Communication Systems) abgelegt sind.
 Da in einem Krankenhaus täglich große Mengen an Daten durch radiologische Aufnahmen produziert werden, 
-bietet eine effizientes Durchsuchen dieser die Möglichkeit Sie\Rc{kleines sie}  für Ausbildung und Forschung wieder zu verwenden.
+bietet eine effizientes Durchsuchen dieser die Möglichkeit  sie für Ausbildung und Forschung wieder zu verwenden.
 %
-Dazu muss das User-Interface die grundliegenden Funktionen eines Betrachtungstools für Röngten- und Computertomographie-Aufnahmen zur verfügung Stellen\Rc{grosses V, kleines s, http://www.duden.de/rechtschreibung/Verfuegung} :
+Dazu muss das User-Interface die grundlegenden Funktionen eines Betrachtungstools für Röngten- und Computertomographie-Aufnahmen zur Verfügung Stellen:
 \begin{itemize}
 	\item Zoom
 	\item Schnelles anpassen von Kontrast und Helligkeit
@@ -76,7 +77,7 @@ Dazu muss das User-Interface die grundliegenden Funktionen eines Betrachtungstoo
 	\item Tools zum Anotieren von Bereichen innerhalb der Bildern welche zur Interaktion mit der Bildsuche dienen.
 	\item Präsentation der Suchergebnisse.
 	\item Anzeige der den Bildern oder Volumes zugehörigen Reports.
-	\item Ansicht zum vergleichen \R{grosses V - bitte german spellcheck}von verschiedenen Ergebnissen.
+	\item Ansicht zum Vergleichen von verschiedenen Ergebnissen.
 	\item Modulare Komposition der verschiedenen Ansichten.
 	\item Umsetzung der Applikation im Webbrowser.
 \end{itemize}
@@ -86,25 +87,30 @@ Dazu muss das User-Interface die grundliegenden Funktionen eines Betrachtungstoo
 %----------------------------------------------
 \subsection{Möglichkeiten zur Umsetzung}
 \label{sec:Möglichkeiten zur Umsetzung}
-Aufgrund der Anforderung\R{,} dass\Rd{,} das Programm in einem Webbrowser ausgeführt werden soll, stehen derzeit drei Technologien zur Verfügung um die Anwendung umzusetzen.
+Aufgrund der Anforderung, dass das Programm in einem Webbrowser ausgeführt werden soll, stehen derzeit drei Technologien zur Verfügung um die Anwendung umzusetzen.
 Diese werden in den folgende Absätzen kurz angeführt und ihre Vor- und Nachteile im Bezug auf das Pflichtenheft untersucht.
 Dabei spielt neben der Portabilität der Software, 
-die Performance bei der Verarbeitung der Bilder einen große Rolle, da sowohl das Fenstern als auch das Navigieren durch die einzelnen Bilder einer 3D Aufnahme \Rd{relativ} flüssig funktionieren müssen.
+die Performance bei der Verarbeitung der Bilder einen große Rolle, da sowohl das Fenstern als auch das Navigieren durch die einzelnen Bilder einer 3D Aufnahme flüssig funktionieren müssen.
 
 %----------------------------------------------
 % ** JavaApplet
 %----------------------------------------------
 \subsubsection{JavaApplet}
 \label{sec:JavaApplet}
-Bei einem Java Applet \Rc{cite}  wird ein Java Programm in eine Webseite eingebunden und vom dem Browser des Clients geladen.
-Der Browser übergibt das Applet dem Java Interpreter wofür aber ein spezieller Plugin notwendig ist.\Rc{ich sag immer das plugin. geht der auch?} 
+Bei einem Java Applet \cite{japp} wird ein Java Programm in eine Webseite eingebunden und vom dem Browser des Clients geladen.
+Der Browser übergibt das Applet dem Java Interpreter wofür aber ein spezielles Plugin notwendig ist. 
 %
 Der große Vorteil dieses Ansatzes ist dass die Anwendung sehr performant ist.
-Dies ergibt aus den beiden Punkten dass Java Code compiliert wird und dass es möglichst ist die Grafikhardware des Clients zum bearbeiten\Rc{zum == zu dem. danach hauptwort. grosses B}  der Bilder zu verwenden,
+Dies ergibt aus den beiden Punkten dass Java Code compiliert wird und dass es möglichst ist die Grafikhardware des Clients zum Bearbeiten der Bilder zu verwenden,
 welche für diese Aufgabe besser geeignet ist als die CPU.
 %
 Dafür müssen die notwendigen Plugins sowie ein aktueller Java Interpreter auf dem Client installiert sein, 
-was bei manchen Betriebssystemen für Mobilgeräte wie Tablets gar nicht möglich ist \cite{japp}. \Rc{evtl hinweis auf java security wahnsinn} 
+was bei manchen Betriebssystemen für Mobilgeräte wie Tablets gar nicht möglich ist \cite{japp}. 
+\C{Als weiterer Nachteil gilt, dass JavaApplets ein nicht zu vernachlässigendes Sicherheitsrisiko darstellen,
+obwohl prinzipiell nicht zertifiziert Applets durch eine Sandbox vom restlichen System isoliert werden.
+Diese entstehen unter anderem durch Schwachstellen in der Sandbox, durch mangelnde Überprüfung der Zertifikate, 
+zu schwache Sicherheitseinstellungen und durch Täuschung der Benutzer mit Testzertifikaten \cite{java_risks_cisico} \cite{java_risks_bmi}}.
+
 
 %----------------------------------------------
 % ** HTML5
@@ -112,12 +118,12 @@ was bei manchen Betriebssystemen für Mobilgeräte wie Tablets gar nicht möglic
 \subsubsection{HTML5}
 \label{sec:HTML5}
 Bei diesem Ansatz wird die Anwendung in HTML, CSS und JavaScript oder einem Framework welches auf diesen Technologien aufsetzt entwickelt.
-Die Entwicklung von Programmcode erfolgt bei Webapplikationen in JavaScript oder in Code für einen Interpreter welche in der JavaS\R{c}ript Laufzeitumgebung ausgeführt wird.
-Da diese Technologien von fast allen neuen Browsern für Desktop und Mobilgeräte unterstütz werden, kann damit ein sehr hoher Grad an Portabilität erreicht werden.
+Die Entwicklung von Programmcode erfolgt bei Webapplikationen in JavaScript oder in Code für einen Interpreter welche in der JavaScript Laufzeitumgebung ausgeführt wird.
+Da diese Technologien von fast allen neuen Browsern für Desktop und Mobilgeräte unterstützt werden, kann damit ein sehr hoher Grad an Portabilität erreicht werden.
 Weiters sind Webapplikationen für den Benutzer sehr einfach zu verwenden da anstatt einer Installation um die Anwendung nutzen zu können nur eine Webseite geöffnet werden muss \cite{html}.
 
-HTML5 \Rc{cite}  unterstützt Canvas Elemente für 2D Bilder jedoch ist eine Verarbeitung der Bilder durch die Grafikhardware nur begrenzt möglich.
-Für die Verwendung der Grafikarte durch den Browser gibt es die Schnittstelle WebGL \Rc{cite} welche auf OpenGL ES \Rc{cite} aufbaut.
+HTML5 \cite{html} unterstützt Canvas Elemente für 2D Bilder jedoch ist eine Verarbeitung der Bilder durch die Grafikhardware nur begrenzt möglich.
+Für die Verwendung der Grafikarte durch den Browser gibt es die Schnittstelle WebGL \cite{webgl-14} welche auf OpenGL ES \cite{opengl-es-sepc} aufbaut.
 Diese wurde jedoch noch nicht in allen gängigen Browsern implementiert oder ist in einigen noch nicht stabil und muss extra aktiviert werden \cite{webgl-14}.
 
 
@@ -126,11 +132,11 @@ Diese wurde jedoch noch nicht in allen gängigen Browsern implementiert oder ist
 %----------------------------------------------
 \subsubsection{Flash}
 \label{sec:Flash}
-Flash Anwendungen sind Programme in einem proprietären Format \Rc{deren Lizenz mittlerweile}\R{das der Firma}  Adobe gehört.
-Diese werden von einem Interpreter\R{ (}dem Flash-Player\R{)} ausgeführt, welcher es über einen Browserplugin ermöglicht Flashcode in Webseiten einzubinden und mit der Webseite zu interagieren.
+Flash Anwendungen sind Programme in einem proprietären Format das der Firma Adobe gehört.
+Diese werden von einem Interpreter (dem Flash-Player) ausgeführt, welcher es über einen Browserplugin ermöglicht Flashcode in Webseiten einzubinden und mit der Webseite zu interagieren.
 %
-Die Erstellung von Anwendung erfolgt in \R{der }Entwicklungsumgebung Flash \Rc{die heisst echt so?} wobei Code in der objektorientieren Sprache Aktion-Script erstellt werden kann.
-Flash bietet eine Umfangreiche \Rc{kleines u...}  Grafik-API mit Unterstützung von Beschleunigung durch die Grafikkarte über OpenGL oder DirectX.
+Die Erstellung von Anwendung erfolgt in der Entwicklungsumgebung Flash wobei Code in der objektorientieren Sprache Aktion-Script erstellt werden kann.
+Flash bietet eine umfangreiche Grafik-API mit Unterstützung von Beschleunigung durch die Grafikkarte über OpenGL oder DirectX.
 %
-Die Darstellung von Flash-Inhalten im Browser setzt den\Rc{das?}  Flash-Player-Plugin voraus.
-Da es sich um ein proprietäres Format handelt ist der Support und die Weiterentwickung nicht Sichergestellt \Rc{grosses S? ned im ernst ;-) bitte check mal alles durch, kannsts ja zb ins word kopieren und grammatikprüfung einschalten} \cite{flash-14}.
+Die Darstellung von Flash-Inhalten im Browser setzt das Flash-Player-Plugin voraus.
+Da es sich um ein proprietäres Format handelt ist der Support und die Weiterentwickung nicht sichergestellt \cite{flash-14}.
