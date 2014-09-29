@@ -239,41 +239,45 @@ Um unnötige Berechnungen für jedes einzelne Pixel zu sparen, werden pro Fenste
 Anstadt den Wert für jedes Pixel neu zu berechen und zu runden fungiert bei diesem Ansatz der aktuelle Wert eines Pixels als Schlüssel für die Tabelle welche den neuen Wert des Pixels enthält.
 Die Anzahl der Operationen wird dabei auf 255 Berechnungen und die Anzahl der Speicherzugriffe pro Bildpunkt reduziert.
 \begin{lstlisting}[
+	language=JavaScript,
 	firstnumber=1,
+	caption=Query
 ]
 function calcWindowForDomElement(domElement, contrast, brightness)
 {
-        var ctx = domElement.getContext("2d");
-        var w = domElement.width;
-        var h = domElement.height;
+    var ctx = domElement.getContext("2d");
+    var w = domElement.width;
+    var h = domElement.height;
 
-        var lut = getLookUpTable(contrast, brightness);
-        var imageData = ctx.getImageData(0, 0, w, h);
-        var imageDataSize = (w * h * 4);
+    var lut = getLookUpTable(contrast, brightness);
+    var image = ctx.getImageData(0, 0, w, h);
+    var imageData = image.data;
+    var imageDataSize = (w * h * 4);
 
-        for(var pos = 0; pos < imageDataSize; pos = pos + 4){
-                imageData.data[pos] = lut[imageData.data[pos]];
-                imageData.data[pos + 1] = lut[imageData.data[pos + 1]];
-                imageData.data[pos + 2] = lut[imageData.data[pos + 2]];
-        }
+    for(var pos = 0; pos < imageDataSize; pos = pos + 4){
+        imageData[pos] = lut[imageData[pos]];
+        imageData[pos + 1] = lut[imageData[pos + 1]];
+        imageData[pos + 2] = lut[imageData[pos + 2]];
+    }
 
-        ctx.putImageData(imageData,0,0);
+    ctx.putImageData(image,0,0);
 }
 \end{lstlisting}
 \begin{lstlisting}[
+	language=JavaScript,
 	firstnumber=1,
 ]
 function getLookUpTable(contrast, brightness){
-        var lut = new Array();
+    var lut = new Array();
 
-        for(var i = 0; i < 256; i++){
-                var newValue = Math.round(contrast * i + brightness);
-                if(newValue < 0) newValue = 0;
-                if(newValue > 255) newValue = 255;
-                lut[i] = newValue;
-        }
+    for(var i = 0; i < 256; i++){
+        var newValue = Math.round(contrast * i + brightness);
+        if(newValue < 0) newValue = 0;
+        if(newValue > 255) newValue = 255;
+        lut[i] = newValue;
+    }
 
-        return lut;
+    return lut;
 }
 \end{lstlisting}
 
