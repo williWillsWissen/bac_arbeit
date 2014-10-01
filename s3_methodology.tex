@@ -11,9 +11,10 @@
 %----------------------------------------------
 \subsection{Verwendetet Technologien und Protokolle}
 \label{sec:Verwendetet Technologien}
-Bevor auf die eigentliche Umsetzung eingegangen wird werden \Rd{noch kurz} die verwendeten Frameworks und Technologien \Rd{erklärt}\R{dargestellt}.
-Ein Teil davon\R{,} wie HTTP und \Rd{Rest}\R{REST,} wurden bereits durch das Interface für KRESHMOI festgelegt, ein weiter ergab sich durch die Anforderung einer Web-Applikation.
-Die Frameworks und Technologien für Grafik und GUI wurden gewählt weil mit Ihnen\Rc{klein...}  eine schnelle Umsetzung der Anforderungen möglich war.
+Bevor auf die eigentliche Umsetzung eingegangen wird werden die verwendeten Frameworks und Technologien dargestellt.
+Ein Teil davon, wie HTTP und REST, wurden bereits durch das Interface für KRESHMOI festgelegt, 
+ein weiter ergab sich durch die Anforderung einer Web-Applikation.
+Die Frameworks und Technologien für Grafik und GUI wurden gewählt weil mit ihnen eine schnelle Umsetzung der Anforderungen möglich war.
 
 %----------------------------------------------
 % ** HTTP
@@ -21,7 +22,7 @@ Die Frameworks und Technologien für Grafik und GUI wurden gewählt weil mit Ihn
 \subsubsection{HTTP}
 \label{sec:HTTP}
 HTTP (Hyper Text Transfer Protokoll) ist ein Protokoll zur Übertragung von Daten über ein Netzwerk welches auf TCP aufsetzt.
-Der Datenaustausch zwischen zwei Kommunikationspartner\R{n} findet in der From\R{Form} von Nachrichten statt, 
+Der Datenaustausch zwischen zwei Kommunikationspartnern findet in der Form von Nachrichten statt, 
 wobei der Client eine Anfrage an einen Server stellt und dieser die Anfrage bearbeitet und eine Antwort returniert.
 %
 Eine Nachricht setzt sich aus einem Header und einen Body zusammen.
@@ -43,23 +44,24 @@ Für eine Zuordnung eines Clients muss dieser eine Session-ID mitsenden welche n
 REST ist im eigentlichen Sin mehr ein Architekturstiel als ein Protokoll welcher mit HTTP umgesetzt wird.
 Die Idee von REST ist dass eine URL genau eine Ressource auf einem Server adressiert, 
 wobei eine Ressource eine statische Datei oder das Ergebnis einer Aktion auf dem Server sein kann.
-Der Architekturstiel ist lässt sich durch fünf Prinzipiell zusammenfassen:
+Dieser Architekturstiel lässt sich durch fünf Prinzipiell zusammenfassen:
 \begin{itemize}
 	\item \textbf{Ressource mit eindeutiger Identifikation:}
 		Jede Ressource wird durch eine URI (Uniform Resouce Identifier) weltweit eindeutig identifiziert.
 		Diese adressiert unter anderem den Server auf den sich die Ressource befindet sowie Ressource auf dem Server selbst.
 	\item \textbf{Hypermedia:}
-		Verknüpfungen zu anderen Entitäten und werden als Links auf die jeweiligen Ressourcen dargestellt.
+		Verknüpfungen zu anderen Entitäten werden als Links auf die jeweiligen Ressourcen dargestellt.
 		Weiters kann die Steuerung des Applikationszustandes durch Links auf weiter Aktionen durch Hypermedia umgesetzt werden.
 	\item \textbf{Standard-Opperationen:}
 		Es gibt ein definiertes Interface welches von jeder Ressource zur Verfügung gestellt werden muss.
 		Dieses umfasst einen relativ kleinen Satz von Operationen welche auf die Ressource ausgeführt werden können.
 	\item \textbf{Unterschiedliche Repräsentation der Resourcen:}
 		Die Ressourcen können unterschiedliche Darstellungsformen haben.
-		Ein Client kann also eine Ressource in einem bestimmten Format (z.B.: XML, HTML, JSON) anfordern sofern diese Darstellung vom Server unterstützt wird.
+		Ein Client kann also eine Ressource in einem bestimmten Format (z.B.: XML, HTML, JSON) anfordern,
+		sofern diese Darstellung vom Server für die jeweilige Ressource unterstützt wird.
 		In HTTP wird die gewünschte Darstellung im Header angegeben.
 	\item \textbf{Zustandslose Kommunikation}
-		Der Server hält keine Zustandsinformationen über den Client welcher über die Dauer eines Requests hinaus geht.
+		Der Server hält keine Zustandsinformationen über den Client welche über die Dauer eines Requests hinaus gehen.
 		Daher muss der Zustand einer Anwendung entweder am Client liegen oder vom Server in eine Ressource umgewandelt werden.
 \end{itemize}
 \cite{rest}
@@ -73,7 +75,7 @@ Bei JSON (JavaScript Object Notation) handelt es sich um ein Datenformat zum Aus
 JSON findet neben XML vor allem in der Kommunikation zwischen Client und Server bei Webanwendungen Verwendung, 
 wobei JSON Daten wesentlich kompakter und damit ressourcensparender sind.
 Wie bei XML werden Listen und Objekte in einer von Menschen lesbaren Form darstellt.
-Dabei werden folgende Datentypen unterstützt welche wiederum beliebig tief ineinander Verschachtelt werden können: NULL, Boolean, Zahl, String, Array und Objekt \cite{ajax}.
+Dabei werden folgende Datentypen unterstützt welche wiederum beliebig tief ineinander verschachtelt werden können: NULL, Boolean, Zahl, String, Array und Objekt \cite{ajax}.
 
 %----------------------------------------------
 % ** AJAX
@@ -84,7 +86,8 @@ AJAX (Asynchronous JavaScript and XML) ermöglicht es einer Webanwendung kleiner
 statt bei jeder Aktion die Webseite neu zu laden.
 Benötigt die Web Applikation Daten vom Server wird an diesem eine HTTP Anfrage gesendet und Callback-Funktionen für den Fall einer Antwort oder eines Fehlers beim Browser registriert.
 Erhält der Browser eine Antwort auf seine Anfrage ruft er die Callback-Funktion auf und übergibt die erhalten Daten wodurch die Webanwendung mit der Verarbeitung dieser fortfahren kann.
-Dies ermöglicht die Entwicklung komplexer Webapplikationen, wobei die Webapplikation selbst mit der Seite geladen wird und die Daten die der Benutzer mit der Anwendung verarbeiten möchte dynamisch von dieser nachgeladen werden können \cite{ajax}.
+Dies ermöglicht die Entwicklung komplexer Webapplikationen, 
+wobei die Webapplikation selbst mit der Seite geladen wird und die Daten die der Benutzer mit der Anwendung verarbeiten möchte dynamisch von der Anwendung nachgeladen werden können \cite{ajax}.
 
 %----------------------------------------------
 % ** Objectiv J
@@ -119,11 +122,27 @@ Das Interface wird von einem HTML5 fähigen Browser gerendert wobei für dessen 
 WebGL ist eine API für die Erstellung von 2D und 3D Grafiken in Browsern mit der Unterstützung der Grafikkarte.
 Im Gegensatz zur Canvas-2D API wo die Bilder in der CPU gerendert werden, ist WebGL aufgrund der Hardwarebeschleunigung wesentlich performanter.
 WebGL ist eine Shaderbasierte API welche sich sehr stark an OpenGL ES anlehnt.
-Diese bedeutet dass Code für die Recheneinheiten (Shadereinheiten) der Grafikkarte entwickelt wird,
+Diese bedeutet dass Code für die Shadereinheiten der Grafikpipeline \ref{fig:webgl_graphics_pipeline} entwickelt wird,
 welchen der Treiber der Karte in Bytecode übersetzt und zur Ausführung in den Grafikchip lädt.
-Die Shaderprogramme werden in der Programmiersprache GLSL geschrieben welche sich sehr stark an C orientiert.
+Die Shaderprogramme werden in der Programmiersprache GLSL geschrieben, welche sich sehr stark an C orientiert.
 Der Zugriff auf die Schnittstelle erfolgt über das HTML Canvas Element in welchem die Ausgabe der Grafikkarte dargestellt wird.
 Dies geschieht mittels JavaScript wo die API Funktionen zur Übergabe der Nutzdaten, Befehle und der Shaderprogramme bereitstellt \cite{webgl-14}.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=5.2cm]{img/graphics_pipeline.jpg}
+	\caption{WebGL Graphik Pipeline}
+	\label{fig:webgl_graphics_pipeline}
+\end{figure}
+
+Zum rendern einer Grafik mit der WebGL Grafik Pipeline werden Arrays von Punkten, welche meist die Ecken eines Dreiecks bilden, in einen Vektorbuffer geschrieben.
+Diese werden anschließend vom Vertex-Shader verarbeitet, welcher zum Beispiel Skalierung, Rotation oder Transformation auf die Geometrien anwendet oder Farbinfomation hinzufügt.
+Anschließend werden aus den Punkten Dreiecke generiert und in der Rasterisierung die Pixel der Dreiecke berechnet.
+Die Pixel bekommen dann vom Fragment-Shader ihre Farbe, welcher diese aus Farbinformationen oder aus zuvor übergebenen Textur-Daten generiert.
+Nach der Durchführung eines Tiefentests, 
+in welchen überprüft wird welche Pixel sichtbar sind und welche von anderen verdeckt werden bzw der Mischung der Farben bei Transparenz, 
+werden die Bildinformationen in den Framebuffer geschrieben,
+von wo aus Sie auf dem Bildschirm angezeigt werden können \cite{webgl-introduction}.
+
 
 %----------------------------------------------
 % ** PixiJS 
@@ -144,13 +163,13 @@ Ein weiteres Feature ist dass auf einen Knoten ein Filter mit WebGL Fragment-Sha
 Der Workflow beim Durchsuchen von radiologischen Aufnahmen mit KRESHMOI gliedert sich in folgende Schritte:
 \begin{enumerate}
 	\item Auswahl eines Start-Datensatzes.
-	\item Betrachten des Datensatzes.
-	\item Anotieren einer ROI und eventuelle Eingabe von Text in die Suchzeile.
-	\item Suche absenden und Ergebnis listen.
+	\item Betrachten des Datensatzes inklusive Fenstern und Zoomen.
+	\item Anotieren einer oder mehrerer ROI(s) und eventuelle Eingabe von Text in die Suchzeile.
+	\item Suche absenden und Ergebnisse listen.
 	\item Betrachen von Datensätzen aus der Ergebnisliste.
 	\item Um neue Suchanfrage von ein Ergebnissdatensatz aus zu stellen werden die Schritte von 3 an wiederholt.
 \end{enumerate}
-Entsprechend dieses Ablaufs wird beim start der Applikation eine Liste mit allen Datensätzen geladen, 
+Entsprechend dieses Ablaufs wird beim Start der Applikation eine Liste mit allen Datensätzen geladen, 
 aus welchen einer als Einstiegspunkt in die Suche ausgewählt werden kann.
 Dieser Datensatz wird in den Betrachter der Haupansicht geladen.
 Die Haupansicht setzt sich aus verschiedenen Interaktions-Elementen (Views) zusammen,
@@ -162,7 +181,7 @@ Von diesen Elementen gibt es Vier verschiedene Typen:
 	\item Präsentationsansicht für die Ergebnisse (Ergebnis-Liste)
 	\item Eingabezeile für Schlagwörter mit dem Suchbutton (Suchzeile)
 \end{itemize}
-Die Fläche welchen die einzelnen Views innerhalb des Browserfensters einnehmen kann zwischen ihnen beliebig verschoben werden, 
+Die Fläche welchen die einzelnen Views innerhalb des Browserfensters einnehmen kann zwischen den Views beliebig verschoben werden, 
 unter der Prämisse dass die Bedienelemente der einzelnen Views genügend Platz haben.
 Auf den Funktionsumfang des 2D-Betrachters und der Ergebnis-Liste wird in den folgenden Unterkapiteln etwas genauer eingegangen.
 \begin{figure}[t]
@@ -178,15 +197,15 @@ Auf den Funktionsumfang des 2D-Betrachters und der Ergebnis-Liste wird in den fo
 \subsubsection{Funktionalität des 2D-Betrachters}
 \label{sec:Funktionalität des 2D-Betrachters}
 Der 2D-Betrachter orientiert sich von seinen Funktionen sehr stark an der Betrachtungssoftware einer PACS-Workstaion oder eines DICOM-Betrachters.
-Er ermöglicht die räumliche Navigation durch die Schnitte eines Volumes in einer bestimmten Orientierung sowie das Umschalten zwischen den Orientierungen.
-Weiter kann wenn das Volume aus der Ergebnissliste ausgewählt wurde, 
+Er ermöglicht die räumliche Navigation durch die Schnitte eines Volumes in einer bestimmten Orientierung, sowie das Umschalten zwischen den Orientierungen.
+Des weiteren kann wenn das Volume aus der Ergebnissliste einer Suche ausgewählt wurde, 
 also nicht der Startdatensatz ist,
 eine Anzeige mit den Deckungsbereichen der Suche hinzu geschaltet werden. 
 
 Zur Interaktion mit den Volume wird auch wie bei anderen Betrachtern der Maus eine bestimmte Funktion zugewiesen.
 Die Funktionen umfassen Fensterung, Zoom, Bewegen des Bildes und Zeichnen und Löschen von Polygonen (ROIs).
 Das Einzeichnen von ROIs ist um die Benutzung einfach zu halten auf ein einzelnes Schnittbild beschränkt.
-Wird das Werkzeug zum Zeichen oder Löschen von Polygonen auf mehreren Schnitten verwendet springt der Betrachte bei deren Verwendung immer wieder auf das Schnittbild mit dem ersten Polygon zurück.
+Wird das Werkzeug zum Zeichen oder Löschen von Polygonen auf mehreren Schnitten verwendet springt der Betrachte bei deren Aktivierung immer wieder auf das Schnittbild mit dem ersten Polygon zurück.
 Das Bild kann halb Transparent mit dem Report des Datensatzes überblendet werden, was aber die Mausfunktion auf das Scrollen des Reports reduziert.
 In allen anderen Funktionen ist das Scrollen immer an die Navigation durch die Schnitte gebunden.
 
@@ -226,22 +245,22 @@ Dabei ist der Kontrast durch $c$ und die Helligkeit durch $b$ gegeben.
 Für diese Berechnung wurde ein Ansatz auf Basis von JavaScript durch die Canvas 2D Api und eine Implementierung mit Web GL getestet.
 
 \paragraph{Canvas 2D API}
-Für die Ausgabe im Browser wird ein HTML5 Canvas Element verwendet,
+Für die graphische Ausgabe im Browser wird ein HTML5 Canvas Element verwendet,
 auf welches über ein sogenanten Grafikkontext zugegriffen werden kann. 
 Dieser Grafikkontext wird in JavaScript vom Browser als Objekt zur Verfügung gestellt.
-Durch das Kontext-Objekt kann der Bildinhalt in ein Array und umgekehrt auch ein Array von Farbwerten in das Bild geschrieben werden.
+Durch das Kontext-Objekt kann der Bildinhalt in ein Array von Farbwerten und umgekehrt auch ein Array von Farbwerten in das Bild geschrieben werden.
 Dabei wird das Bild zeilenweise in ein eindimensionales Array Serialisiert, 
 wo jeder Bildpunkt auf 4 Speicherstellen mit einem Integer-Wert zwischen 0 und 255 abgebildet wird.
 Die ersten drei Speicherstellen bilden den Farbwert durch die Anteile von Rot, Grün, Blau und die vierte den Alpha Kanal.
 Für die Fensterung müssen alle Speicherstellen für die Farbe transformiert und wieder auf einen Integer Wert gerundet werden.
 %
-Um unnötige Berechnungen für jedes einzelne Pixel zu sparen, werden pro Fensterung alle Pixelwerte zwischen 0 und 255 einmal vorberechnet und in einer LookUp Tabelle als Array gespeichert.
-Anstadt den Wert für jedes Pixel neu zu berechen und zu runden fungiert bei diesem Ansatz der aktuelle Wert eines Pixels als Schlüssel für die Tabelle welche den neuen Wert des Pixels enthält.
-Die Anzahl der Operationen wird dabei auf 255 Berechnungen und die Anzahl der Speicherzugriffe pro Bildpunkt reduziert.
+Um unnötige Berechnungen für jedes einzelne Pixel zu sparen, werden pro Fensterungsschritt alle Pixelwerte zwischen 0 und 255 einmal vor berechnet und in einer LookUp Tabelle als Array gespeichert.
+Anstatt den Wert für jedes Pixel neu zu berechen und zu runden fungiert bei diesem Ansatz der aktuelle Wert eines Pixels als Schlüssel für die Tabelle welche den neuen Wert des Pixels enthält.
+Die Anzahl der Operationen wird dabei auf 255 Berechnungen und die Anzahl der Speicherzugriffe pro Bildpunkt sowie die der LookUp Tabelle reduziert.
 \begin{lstlisting}[
 	language=JavaScript,
 	firstnumber=1,
-	caption=Query
+	caption=Ändern von Kontrast und Helligkeit in einem HTML Canvas Element mit einer LookUp Tabelle in JavaScript
 ]
 function calcWindowForDomElement(domElement, contrast, brightness)
 {
@@ -266,6 +285,7 @@ function calcWindowForDomElement(domElement, contrast, brightness)
 \begin{lstlisting}[
 	language=JavaScript,
 	firstnumber=1,
+	caption=Berechnung der LookUp Tabelle
 ]
 function getLookUpTable(contrast, brightness){
     var lut = new Array();
@@ -281,6 +301,39 @@ function getLookUpTable(contrast, brightness){
 }
 \end{lstlisting}
 
+\paragraph{WebGL}
+Die Berechnung der Fensterung in der WebGL Grafik Pipeline erfolgt im Fragment-Shader.
+Dazu wird über die WebGL-API zuerst ein Array von Punkten, 
+welches die Grundfläche in der Form von zwei aneinander liegenden Dreiecken darstellt übergeben.
+Weiters wird das Bild für die Fensterung als Textur in den Speicher der Grafikkarte geladen und die Variablen für Helligkeit und Kontrast übergeben.
+Der Vertex-Shader fügt den Punkten einen Vektor mit Textur-Koordinaten hinzu, welche an den Fragment-Shader weitergereicht werden.
+Dieser kann dann mit Hilfe der Textur-Koordinaten für jedes Pixel der Grundfläche die Farbe des Pixels aus der gepufferten Textur laden.
+Die Repräsentation der Farbe erfolgt mit dem Datentyp $vec4$ welcher eine Vierdimensionalen Vektor für Fließkommazahlen darstellt.
+Die ersten Drei Dimensionen bilden die Drei Grundfarbe Rot, Grün, Blau die vierte den Alpha-Kanal, welche jeweils von einem Wert zwischen 0 und 1 repräsentiert werden.
+Bevor die Farb-Information des Pixels zurückgegeben wird erfolgt die Fensterung durch einen Linear-Transformation auf die drei Farbkanäle des Farbvektors.
+Die Rückgabe der Farbinformation erfolgt durch das ablegen in der Variable $gl\_FragColor$.
+\begin{lstlisting}[
+	language=JavaScript,
+	firstnumber=1,
+	caption=Fragment-Shader-Code zum Rendern und Fenstern der Slices
+]
+    precision mediump float;
+
+    uniform sampler2D u_image;
+    varying vec2 vTextureCoord;
+
+    uniform float contrast;
+    uniform float brightness;
+
+    void main() {
+        vec4 color = texture2D(u_image, vTextureCoord);
+        gl_FragColor.r = color.r * contrast + brightness;
+        gl_FragColor.g = color.g * contrast + brightness;
+        gl_FragColor.b = color.b * contrast + brightness;
+        gl_FragColor.a = color.a;
+    }
+}
+\end{lstlisting}
 
 
 %----------------------------------------------
