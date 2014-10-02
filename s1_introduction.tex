@@ -16,11 +16,6 @@ Weiters werden die Anforderungen an das Frontend angeführt und auf die Möglich
 \subsection{KRESHMOI}
 \label{sec:Motivation}
 
-%----------------------------------------------
-% ** Interaktion mit einer Bildsuchmaschiene
-%----------------------------------------------
-%\subsubsection{Interface für Kreshmoi}
-%\label{sec:Interface für Kreshmoi}
 Das Ziel von KHRESMOI ist das Durchsuchen und der Zugang zu medizinischen Informationen für verschiedene Benutzer-Gruppen mit unterschiedlichem medizinischen Vorwissen.
 Die Einteilung der Benutzer erfolgt in 3 Kategorien:
 \begin{itemize}
@@ -29,20 +24,14 @@ Die Einteilung der Benutzer erfolgt in 3 Kategorien:
 	\item Radiologen
 \end{itemize}
 Dazu verknüpft KHRESMOI Daten aus verschiedenen heterogenen Ressourcen wie Bildern aus Radiologie-Archiven, Bildern und Text aus Publikationen in Journalen oder Daten von medizinisch relevanten Webseiten.
-Da sich die verschiedenen Resourcen qualitativ sehr stark voneinander unterscheiden können wird ein Bewertung ihrer Glaubwürdigkeit durchgeführt und dem Benutzer angezeigt. \Rc{ich würd da gleich einen screenshot des offiziellen GUIs zeigen und durcherklären und sagen dass dazu java nötig ist? und dann nochmal betonen dass es hier um die umsetzung davon mit webtechnologien geht?} 
-\Cc{Soll ichs in diesem Kapitel machen oder eher ins related work rein geben?}
-%%
+Da sich die verschiedenen Resourcen qualitativ sehr stark voneinander unterscheiden können wird ein Bewertung ihrer Glaubwürdigkeit durchgeführt und dem Benutzer angezeigt. 
+%
 Die Suchanfrage kann in textueller Form oder als Bild-Query sowie als Kombination von beidem gestellt werden.
 Ein weiteres wichtiges Feature hierbei ist die multilinguale Suche, da die Menge an verfügbaren medizinischen Informationen nicht in alle Sprachen gleich ist.
 Dies bedeutet dass die Suchanfrage in mehrere Sprachen übersetzt wird und somit auch anderssprachige Quellen durchsucht werden können.
 Die Zusammenfassungen der Suchergebnisse werden anschließend in die Anfragesprache rückübersetzt, 
 wodurch der Benutzer schnell durch die Ergebnissliste manchmal navigieren kann \cite{kres}.
 
-%----------------------------------------------
-% ** Interaktion mit einer Bildsuchmaschiene
-%----------------------------------------------
-%\subsubsection{Interaktion mit einer Bildsuchmaschiene}
-%\label{sec:Interaktion mit einer Bildsuchmaschiene}
 Ein Teilprojekt von KHRESHMOI ist das Durchsuchen von medizinischen Bilddaten wobei diese in 2D oder 3D vorliegen können.
 Um eine Suchanfrage auf ein Bild stellen zu können müssen an einem Ausgangsbild \C{eine oder mehrere sogenannte "Region(s) Of Interest" (ROI) eingezeichnet werden,} welche dann die Anfrage formen.
 Aus der Textur eines markierten Bereiches wird ein Feature-Vektor extrahiert mit dem anschließend eine Datenbank von zuvor indizierten Bildern durchsucht wird.
@@ -59,10 +48,27 @@ Dazu muss das User-Interface die grundlegenden Funktionen eines Betrachtungstool
 \begin{itemize}
 	\item Zoom
 	\item Schnelles anpassen von Kontrast und Helligkeit
-	\item Navigation durch die Schnitte eins 3D-Körpers in einer Schnittachse
+	\item Navigation durch die Schnitte eins 3D-Körpers (Volume) in einer Schnittachse
 \end{itemize}
 \cite{pacs}
 
+%----------------------------------------------
+% ** Java basiertes Interface
+%----------------------------------------------
+\subsubsection{Java basiertes Interface}
+\label{sec:Java basiertes Interface}
+Paralell zu dieser Applikation wurde im Rahmen des KRESMOI-Projektes auch einen auf Java basierendes Interface System entwickelt,
+welches eine Schnittstelle zum vollständigen Funktionsumfang von KRESHMOI ist.
+Bei diesem System gibt es verschiedene Versionen für Desktop, Browser, Mobile und eine spezielle Radiologie-Version \ref{fig:javabased_interface}, welche nur als Java Anwendung vorliegt.
+Diese verfügt ebenfalls über Tools zum Betrachten und Interagieren mit den Volumes und zu erstellen von Bild-Suchanfragen.
+Weitets bietes es Tools zum Durchsuchen von Fällen in einem Krankenhaus und weitere Features wie persönliche Bibliothek und kollaborative Tools.
+Im gegensatz zur Java basierten Radiologie-Version liegt das Augenmerk bei diser Anwendung auf einen möglichst einfachen Zugriff und Verwendung durch den Browser.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/c1_javainterface_indexview.png}
+	\caption{Javabasierte Radiologie-Version des KRESHMOI Interfaces}
+	\label{fig:javabased_interface}
+\end{figure}
 
 %----------------------------------------------
 % * Pflichtenheft
