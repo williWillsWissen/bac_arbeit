@@ -44,7 +44,7 @@ welche in einem PACS (Picture Archiving and Communication Systems) abgelegt sind
 Da in einem Krankenhaus täglich große Mengen an Daten durch radiologische Aufnahmen produziert werden, 
 bietet eine effizientes Durchsuchen dieser die Möglichkeit  sie für Ausbildung und Forschung wieder zu verwenden.
 %
-Dazu muss das User-Interface die grundlegenden Funktionen eines Betrachtungstools für Röngten- und Computertomographie-Aufnahmen zur Verfügung Stellen:
+Dazu muss das User-Interface die grundlegenden Funktionen eines Betrachtungstools für Röntgen- und Computertomographie-Aufnahmen zur Verfügung Stellen:
 \begin{itemize}
 	\item Zoom
 	\item Schnelles anpassen von Kontrast und Helligkeit
@@ -60,9 +60,9 @@ Dazu muss das User-Interface die grundlegenden Funktionen eines Betrachtungstool
 Paralell zu dieser Applikation wurde im Rahmen des KRESMOI-Projektes auch einen auf Java basierendes Interface System entwickelt,
 welches eine Schnittstelle zum vollständigen Funktionsumfang von KRESHMOI ist.
 Bei diesem System gibt es verschiedene Versionen für Desktop, Browser, Mobile und eine spezielle Radiologie-Version \ref{fig:javabased_interface}, welche nur als Java Anwendung vorliegt.
-Diese verfügt ebenfalls über Tools zum Betrachten und Interagieren mit den Volumes und zu erstellen von Bild-Suchanfragen.
-Weitets bietes es Tools zum Durchsuchen von Fällen in einem Krankenhaus und weitere Features wie persönliche Bibliothek und kollaborative Tools.
-Im gegensatz zur Java basierten Radiologie-Version liegt das Augenmerk bei diser Anwendung auf einen möglichst einfachen Zugriff und Verwendung durch den Browser.
+Diese verfügt ebenfalls über Tools zur Betrachtung und Interaktion mit den Volumes und zu erstellen von Bild-Suchanfragen.
+Weiters bietet es Tools zum Durchsuchen von Fällen in einem Krankenhaus und weitere Features wie persönliche Bibliothek und kollaborative Tools.
+Im gegensatz zur Java basierten Radiologie-Version liegt das Augenmerk bei dieser Anwendung auf einen möglichst einfachen Zugriff und Verwendung durch den Browser.
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=0.8\linewidth]{img/c1_javainterface_indexview.png}
@@ -79,7 +79,7 @@ Im gegensatz zur Java basierten Radiologie-Version liegt das Augenmerk bei diser
 	\item Kommunikation mit KRESHMOI über HTTP Anfragen. Dies beinhaltet das Senden von Suchanfragen, Auswerten der Ergebnisse und Laden der zugehörigen Bilder.
 	\item Betrachten von CT Volumes. Navigation durch die einzelnen Schnitte eines Volumes entlang einer auswählbaren Achse.
 	\item Schnelles anpassen von Kontrast und Helligkeit bei den einzelnen Schnittbildern mit der Maus (Fensterung).
-	\item Zoomen und Scrollen des Bildausschnittes in einem Bild oder Volume.
+	\item Zoomen und Scrollen des Bildausschnitts in einem Bild oder Volume.
 	\item Tools zum Anotieren von Bereichen innerhalb der Bildern welche zur Interaktion mit der Bildsuche dienen.
 	\item Präsentation der Suchergebnisse.
 	\item Anzeige der den Bildern oder Volumes zugehörigen Reports.
@@ -129,7 +129,7 @@ Da diese Technologien von fast allen neuen Browsern für Desktop und Mobilgerät
 Weiters sind Webapplikationen für den Benutzer sehr einfach zu verwenden da anstatt einer Installation um die Anwendung nutzen zu können nur eine Webseite geöffnet werden muss \cite{html}.
 
 HTML5 \cite{html} unterstützt Canvas Elemente für 2D Bilder jedoch ist eine Verarbeitung der Bilder durch die Grafikhardware nur begrenzt möglich.
-Für die Verwendung der Grafikarte durch den Browser gibt es die Schnittstelle WebGL \cite{webgl-14} welche auf OpenGL ES \cite{opengl-es-sepc} aufbaut.
+Für die Verwendung der Grafikkarte durch den Browser gibt es die Schnittstelle WebGL \cite{webgl-14} welche auf OpenGL ES \cite{opengl-es-sepc} aufbaut.
 Diese wurde jedoch noch nicht in allen gängigen Browsern implementiert oder ist in einigen noch nicht stabil und muss extra aktiviert werden \cite{webgl-14}.
 
 
@@ -141,8 +141,8 @@ Diese wurde jedoch noch nicht in allen gängigen Browsern implementiert oder ist
 Flash Anwendungen sind Programme in einem proprietären Format das der Firma Adobe gehört.
 Diese werden von einem Interpreter (dem Flash-Player) ausgeführt, welcher es über einen Browserplugin ermöglicht Flashcode in Webseiten einzubinden und mit der Webseite zu interagieren.
 %
-Die Erstellung von Anwendung erfolgt in der Entwicklungsumgebung Flash wobei Code in der objektorientieren Sprache Aktion-Script erstellt werden kann.
+Die Erstellung von Anwendung erfolgt in der Entwicklungsumgebung Flash wobei Code in der objektorientierten Sprache Aktion-Script erstellt werden kann.
 Flash bietet eine umfangreiche Grafik-API mit Unterstützung von Beschleunigung durch die Grafikkarte über OpenGL oder DirectX.
 %
 Die Darstellung von Flash-Inhalten im Browser setzt das Flash-Player-Plugin voraus.
-Da es sich um ein proprietäres Format handelt ist der Support und die Weiterentwickung nicht sichergestellt \cite{flash-14}.
+Da es sich um ein proprietäres Format handelt ist der Support und die Weiterentwicklung nicht sichergestellt \cite{flash-14}.
