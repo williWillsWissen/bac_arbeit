@@ -171,7 +171,7 @@ Der Workflow beim Durchsuchen von radiologischen Aufnahmen mit KRESHMOI gliedert
 \end{enumerate}
 Entsprechend dieses Ablaufs wird beim Start der Applikation eine Liste mit allen Datensätzen geladen, 
 aus welchen einer als Einstiegspunkt in die Suche ausgewählt werden kann.
-Dieser Datensatz wird in den Betrachter der Haupansicht geladen.
+Dieser Datensatz wird in den Betrachter der Haupansicht \ref{fig:omip_aplication_layout} geladen.
 Die Haupansicht setzt sich aus verschiedenen Interaktions-Elementen (Views) zusammen,
 welchen in mehreren möglichen Layouts mit unterschiedlicher Multiplizität und Anordnung miteinander kombiniert werden.
 Von diesen Elementen gibt es Vier verschiedene Typen:
@@ -188,6 +188,7 @@ Auf den Funktionsumfang des 2D-Betrachters und der Ergebnis-Liste wird in den fo
 	\centering
 		\includegraphics[width=0.8\linewidth]{img/c3_application_standard.jpg}
 	\caption{Hauptansicht mit Layout für zwei 2D-Betrachter, Report-Betrachter und Ergebnis-Liste}
+	\label{fig:omip_aplication_layout}
 \end{figure}
 
 
@@ -312,10 +313,10 @@ Die Repräsentation der Farbe erfolgt mit dem Datentyp $vec4$ welcher eine Vierd
 Die ersten Drei Dimensionen bilden die Drei Grundfarbe Rot, Grün, Blau die vierte den Alpha-Kanal, welche jeweils von einem Wert zwischen 0 und 1 repräsentiert werden.
 Bevor die Farb-Information des Pixels zurückgegeben wird erfolgt die Fensterung durch einen Linear-Transformation auf die drei Farbkanäle des Farbvektors.
 Die Rückgabe der Farbinformation erfolgt durch das ablegen in der Variable $gl\_FragColor$.
+\begin{figure}[t]
 \begin{lstlisting}[
 	language=JavaScript,
 	firstnumber=1,
-	caption=Fragment-Shader-Code zum Rendern und Fenstern der Slices
 ]
     precision mediump float;
 
@@ -334,6 +335,8 @@ Die Rückgabe der Farbinformation erfolgt durch das ablegen in der Variable $gl\
     }
 }
 \end{lstlisting}
+\caption{Fragment-Shader-Code zum Rendern und Fenstern der Slices}
+\end{figure}
 
 
 %----------------------------------------------
