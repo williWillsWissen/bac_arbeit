@@ -33,7 +33,7 @@ Die Zusammenfassungen der Suchergebnisse werden anschließend in die Anfragespra
 wodurch der Benutzer schnell durch die Ergebnissliste manchmal navigieren kann \cite{kres}.
 
 Ein Teilprojekt von KHRESHMOI ist das Durchsuchen von medizinischen Bilddaten wobei diese in 2D oder 3D vorliegen können.
-Um eine Suchanfrage auf ein Bild stellen zu können müssen an einem Ausgangsbild \C{eine oder mehrere sogenannte "Region(s) Of Interest" (ROI) eingezeichnet werden,} welche dann die Anfrage formen.
+Um eine Suchanfrage auf ein Bild stellen zu können müssen an einem Ausgangsbild eine oder mehrere sogenannte "Region(s) Of Interest" (ROI) eingezeichnet werden, welche dann die Anfrage formen.
 Aus der Textur eines markierten Bereiches wird ein Feature-Vektor extrahiert mit dem anschließend eine Datenbank von zuvor indizierten Bildern durchsucht wird.
 %
 Ein Frontend einer Bildsuchmaschiene muss daher sowohl Tools zum markieren von interessanten Bereichen, 
@@ -57,12 +57,12 @@ Dazu muss das User-Interface die grundlegenden Funktionen eines Betrachtungstool
 %----------------------------------------------
 \subsubsection{Java basiertes Interface}
 \label{sec:Java basiertes Interface}
-\C{Paralell zu dieser Applikation wurde im Rahmen des KRESMOI-Projektes auch einen auf Java basierendes Interface System entwickelt,
-welches eine Schnittstelle zum vollständigen Funktionsumfang von KRESHMOI ist.
+Paralell zu dieser \Rc{welcher dieser, nicht klar }Applikation wurde im Rahmen des K\R{H}RESMOI-Projektes auch einen auf Java basierendes Interface System entwickelt,
+welches eine Schnittstelle zum vollständigen Funktionsumfang von KRESHMOI \Rd{ist}\R{bietet}.
 Bei diesem System gibt es verschiedene Versionen für Desktop, Browser, Mobile und eine spezielle Radiologie-Version \ref{fig:javabased_interface}, welche nur als Java Anwendung vorliegt.
 Diese verfügt ebenfalls über Tools zur Betrachtung und Interaktion mit den Volumes und zu erstellen von Bild-Suchanfragen.
 Weiters bietet es Tools zum Durchsuchen von Fällen in einem Krankenhaus und weitere Features wie persönliche Bibliothek und kollaborative Tools.
-Im gegensatz zur Java basierten Radiologie-Version liegt das Augenmerk bei dieser Anwendung auf einen möglichst einfachen Zugriff und Verwendung durch den Browser.}
+Im gegensatz zur Java basierten Radiologie-Version liegt das Augenmerk bei dieser Anwendung auf einen möglichst einfachen Zugriff und Verwendung durch den Browser.
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=0.8\linewidth]{img/c1_javainterface_indexview.png}
@@ -112,10 +112,10 @@ welche für diese Aufgabe besser geeignet ist als die CPU.
 %
 Dafür müssen die notwendigen Plugins sowie ein aktueller Java Interpreter auf dem Client installiert sein, 
 was bei manchen Betriebssystemen für Mobilgeräte wie Tablets gar nicht möglich ist \cite{japp}. 
-\C{Als weiterer Nachteil gilt, dass JavaApplets ein nicht zu vernachlässigendes Sicherheitsrisiko darstellen,
+Als weiterer Nachteil gilt, dass JavaApplets ein nicht zu vernachlässigendes Sicherheitsrisiko darstellen,
 obwohl prinzipiell nicht zertifiziert Applets durch eine Sandbox vom restlichen System isoliert werden.
 Diese entstehen unter anderem durch Schwachstellen in der Sandbox, durch mangelnde Überprüfung der Zertifikate, 
-zu schwache Sicherheitseinstellungen und durch Täuschung der Benutzer mit Testzertifikaten \cite{java_risks_cisico} \cite{java_risks_bmi}}.
+zu schwache Sicherheitseinstellungen und durch Täuschung der Benutzer mit Testzertifikaten \cite{java_risks_cisico} \cite{java_risks_bmi}.\Rc{2 cites hinterneinander immer in backslach klammer cite1 cite1 klammer} 
 
 
 %----------------------------------------------
