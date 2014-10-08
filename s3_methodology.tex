@@ -230,6 +230,7 @@ Um ein Suchergebniss im Vorfeld zu Beurteilen verfügt die Ergebnis-List ebenfal
 %----------------------------------------------
 \subsubsection{2D Betrachter}
 \label{sec:2D Betrachter}
+Für die Implementierung des 2D-Betrachters wurde neben Cappuccino für die Bedienelemente auch noch Pixi.JS für das Grafikfenster zur darstellung des Volumes verwendet.
 
 
 %----------------------------------------------
@@ -315,24 +316,23 @@ Bevor die Farb-Information des Pixels zurückgegeben wird erfolgt die Fensterung
 Die Rückgabe der Farbinformation erfolgt durch das ablegen in der Variable $gl\_FragColor$.
 \begin{figure}[t]
 \begin{lstlisting}[
-	language=JavaScript,
+	language=GLSL,
 	firstnumber=1,
 ]
-    precision mediump float;
+precision mediump float;
 
-    uniform sampler2D u_image;
-    varying vec2 vTextureCoord;
+uniform sampler2D u_image;
+varying vec2 vTextureCoord;
 
-    uniform float contrast;
-    uniform float brightness;
+uniform float contrast;
+uniform float brightness;
 
-    void main() {
-        vec4 color = texture2D(u_image, vTextureCoord);
-        gl_FragColor.r = color.r * contrast + brightness;
-        gl_FragColor.g = color.g * contrast + brightness;
-        gl_FragColor.b = color.b * contrast + brightness;
-        gl_FragColor.a = color.a;
-    }
+void main() {
+    vec4 color = texture2D(u_image, vTextureCoord);
+    gl_FragColor.r = color.r * contrast + brightness;
+    gl_FragColor.g = color.g * contrast + brightness;
+    gl_FragColor.b = color.b * contrast + brightness;
+    gl_FragColor.a = color.a;
 }
 \end{lstlisting}
 \caption{Fragment-Shader-Code zum Rendern und Fenstern der Slices}
