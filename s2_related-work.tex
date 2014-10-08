@@ -105,11 +105,18 @@ so wird beim Navigieren durch das Volume in einem Fenster die Position der Schni
 \label{sec:PACS_Workstation}
 Als Beispiel für ein in der radiologischen Praxis (am Allgememeinen Krankenhaus Wien AKH) verwendetes state of the art PACS wurde das AFGA Impax DS3000 zum Vergleich herangezogen. 
 Die Impax DS3000 Radiologie Diagnosestation ist eine Client-Software für ein PACS System.
-Der Aufbau der Software ist ähnlich wie bei OSIRIX \ref{sec:Osirix} in eine Ebene zum Durchsuchen der Datensätze und eine Betrachtungsebene (Siehe Figure \ref{fig:impacs_2d_view}) unterteilt.
+Der Aufbau der Software ist ähnlich wie bei OSIRIX \ref{sec:Osirix} in eine Ebene zum Durchsuchen der Datensätze (Siehe Figure \ref{fig:impacs_db_view}) und eine Betrachtungsebene (Siehe Figure \ref{fig:impacs_2d_view}) unterteilt.
 %
 \begin{figure}[t]
 	\centering
-	\includegraphics[width=0.48\linewidth]{img/c2_impacs_2d_view.jpg}
+	\includegraphics[width=0.7\linewidth]{img/c2_impacs_db_view.jpg}
+	\caption{Datenebene zum Durchsuchen der PACS-Server und Erstellen von Arbeitslisten}
+	\label{fig:impacs_db_view}
+\end{figure}
+%
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.7\linewidth]{img/c2_impacs_2d_view.jpg}
 	\caption{Betrachtungsebene zum Anzeigen der Series}
 	\label{fig:impacs_2d_view}
 \end{figure}
@@ -128,9 +135,10 @@ Auch hier ist eine Aufteilung des Bildschirmes möglich um Bilder aus einer Seri
 %----------------------------------------------
 \subsection{Vergleich der Betrachtungstools}
 \label{sec:Vergleich der Betrachtungstools}
-Die Funktionen zur Interaktion mit den Bilddaten sind bei den beiden erwähnten Software-Produkten sehr ähnlich und auch annähernd gleich umgesetzt.
+Die Funktionen zur Interaktion mit den Bilddaten sind bei den beiden erwähnten Software-Produkten sehr ähnlich \C{und von der Bedienung bis auf kleine Unterschide gleich umgesetzt.
+So zeigt OsiriX Beispielsweise an wenn das Bild über das Betrachtungsfenster hinaus geht.}
 Osirix hat einige Features wie 3D-Rendering welche zwar für die Forschung interessant sind, für die medizinische Befundung aber keine größere Rolle spielen.
-Funktionen zum Durchsuchen der Datensätze anhand einer Bild-Query weisen bei\R{de} Produkte nicht auf.
+Funktionen zum Durchsuchen der Datensätze anhand einer Bild-Query weisen beide Produkte nicht auf.
 \Rc{bei annähernd und grössere wird sich robert melden - versuchs ohne zu formulieren, konkreter zu machen.}
 
 
