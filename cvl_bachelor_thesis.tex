@@ -38,10 +38,11 @@
 \lstdefinelanguage{json}{
     numbers=left,
     numberstyle=\scriptsize,
+    basicstyle=\color{black}\ttfamily\scriptsize,
     stepnumber=1,
     showstringspaces=false,
     breaklines=true,
-    frame=lines,
+    frame=single,
     literate=
      *{0}{{{\color{numb}0}}}{1}
       {1}{{{\color{numb}1}}}{1}
@@ -103,14 +104,15 @@
 \lstdefinelanguage{JavaScript}{
   sensitive=true,
   keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, for},
-  keywordstyle=\color{blue}\bfseries,
+  keywordstyle=\color{blue}\ttfamily,
   ndkeywords={class, export, boolean, throw, implements, import, this},
-  ndkeywordstyle=\color{darkgray}\bfseries,
+  ndkeywordstyle=\color{darkgray}\ttfamily,
   identifierstyle=\color{black},
   comment=[l]{//},
   morecomment=[s]{/*}{*/},
   commentstyle=\color{purple}\ttfamily,
   stringstyle=\color{red}\ttfamily,
+  basicstyle=\color{black}\ttfamily\scriptsize,
   %morestring=[b]',
   numbers=left,
   numberstyle=\scriptsize,
@@ -209,7 +211,8 @@
   morecomment=[l]{//},
   morecomment=[s]{/*}{*/},
   morecomment=[l][keywordstyle4]{\#},
-  keywordstyle=\color{blue}\bfseries,
+  keywordstyle=\color{blue}\ttfamily,
+  basicstyle=\color{black}\ttfamily\scriptsize,
   numbers=left,
   numberstyle=\scriptsize,
   stepnumber=1,
