@@ -236,7 +236,7 @@ wozu für jedes Pixel der Farbwert mit einer Linear Transformation in einen neue
         F(x) = c*x + b
 \end{equation}
 Dabei ist der Kontrast durch $c$ und die Helligkeit durch $b$ gegeben.
-Für diese Berechnung wurde ein Ansatz auf Basis von JavaScript durch die Canvas 2D Api und eine Implementierung mit Web GL getestet.
+Für diese Berechnung wurde ein Ansatz auf Basis von JavaScript durch die Canvas 2D Api (Siehe Listing \ref{lst:window_2d_api} und \ref{lst:window_2d_lut}) und eine Implementierung mit Web GL (Siehe Listing \ref{lst:webgl_fragment_shader}) getestet.
 
 \paragraph{Canvas 2D API}
 Für die graphische Ausgabe im Browser wird ein HTML5 Canvas Element verwendet,
@@ -248,14 +248,16 @@ wo jeder Bildpunkt auf 4 Speicherstellen mit einem Integer-Wert zwischen 0 und 2
 Die ersten drei Speicherstellen bilden den Farbwert durch die Anteile von Rot, Grün, Blau und die vierte den Alpha Kanal.
 Für die Fensterung müssen alle Speicherstellen für die Farbe transformiert und wieder auf einen Integer Wert gerundet werden.
 %
-Um unnötige Berechnungen für jedes einzelne Pixel zu sparen, werden pro Fensterungsschritt alle Pixelwerte zwischen 0 und 255 einmal vor berechnet und in einer LookUp Tabelle als Array gespeichert.
+Um unnötige Berechnungen für jedes einzelne Pixel zu sparen, 
+werden pro Fensterungsschritt alle Pixelwerte zwischen 0 und 255 einmal vor berechnet und in einer LookUp Tabelle (Siehe Listing \ref{lst:window_2d_lut}) als Array gespeichert.
 Anstatt den Wert für jedes Pixel neu zu berechen und zu runden fungiert bei diesem Ansatz der aktuelle Wert eines Pixels als Schlüssel für die Tabelle welche den neuen Wert des Pixels enthält.
 Die Anzahl der Operationen wird dabei auf 255 Berechnungen und die Anzahl der Speicherzugriffe pro Bildpunkt sowie die der LookUp Tabelle reduziert.
 \begin{figure}[t]
 \begin{lstlisting}[
 	language=JavaScript,
 	firstnumber=1,
-	caption=Ändern von Kontrast und Helligkeit in einem HTML Canvas Element mit einer LookUp Tabelle in JavaScript
+	caption=Ändern von Kontrast und Helligkeit in einem HTML Canvas Element mit einer LookUp Tabelle in JavaScript,
+	label={lst:window_2d_api}
 ]
 function calcWindowForDomElement(domElement, contrast, brightness)
 {
@@ -283,7 +285,8 @@ function calcWindowForDomElement(domElement, contrast, brightness)
 \begin{lstlisting}[
 	language=JavaScript,
 	firstnumber=1,
-	caption=Berechnung der LookUp Tabelle
+	caption={Berechnung der LookUp Tabelle},
+	label={lst:window_2d_lut}
 ]
 function getLookUpTable(contrast, brightness){
     var lut = new Array();
@@ -301,7 +304,7 @@ function getLookUpTable(contrast, brightness){
 \end{figure}
 
 \paragraph{WebGL}
-Die Berechnung der Fensterung in der WebGL Grafik Pipeline erfolgt im Fragment-Shader.
+Die Berechnung der Fensterung in der WebGL Grafik Pipeline erfolgt im Fragment-Shader (Siehe Listing \ref{lst:webgl_fragment_shader}).
 Dazu wird über die WebGL-API zuerst ein Array von Punkten, 
 welches die Grundfläche in der Form von zwei aneinander liegenden Dreiecken darstellt übergeben.
 Weiters wird das Bild für die Fensterung als Textur in den Speicher der Grafikkarte geladen und die Variablen für Helligkeit und Kontrast übergeben.
@@ -315,6 +318,8 @@ Die Rückgabe der Farbinformation erfolgt durch das ablegen in der Variable $gl\
 \begin{lstlisting}[
 	language=GLSL,
 	firstnumber=1,
+	caption={Fragment-Shader-Code zum Rendern und Fenstern der Slices},
+	label={lst:webgl_fragment_shader}
 ]
 precision mediump float;
 
@@ -332,7 +337,6 @@ void main() {
     gl_FragColor.a = color.a;
 }
 \end{lstlisting}
-\caption{Fragment-Shader-Code zum Rendern und Fenstern der Slices}
 \end{figure}
 
 
