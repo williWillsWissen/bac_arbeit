@@ -357,7 +357,7 @@ Bei diesen Layern werden Skalierung und Positionierung nur auf den ImageLayer un
 Um die Software möglichst erweiterbar zu gestalten,
 wurde eine LayerKlasse $PixiLayer$ entwickelt welcher eine beliebige Menge von Sublayern hizugefügt werden kann.
 Dabei wird zwischen statischen Sublayern welche jeweils nur die Anzeigefläche ausfüllen und dynamischen Sublayern welche gemeinsam skaliert und positioniert werden können unterschieden.
-Diese Layerklasse erledigt auch die konvertierung von Punkten zwischen den dynamischen und den statischen Sublayern, in Hisicht auf Postion, Skalierung und Layerdimension.
+Diese Layerklasse erledigt auch die konvertierung von Punkten zwischen den dynamischen Sublayer und den statischen Sublayern bzw. der Position im angezeigten Bild, in Hinsicht auf Postion, Skalierung und Layerdimension.
 Da die restliche GUI mit Cappuccino aufgebaut wurde und dieses Framework auch die Ereignisse für Größenänderungen der einzelen Views behandelt,
 müssen diese vom ViewObjekt welches den 2D-Betrachter Kapselt an das Grafikfenster weiter gegeben werden.
 Ansonsten ist das Pixi.JS basierte Grafikfenster durch die LayerKlassen bis auf Funktionen zur Übergabe der Anzeigedaten und zur Punktkonvertierung vom 2D-Betrachter abgeschottet.
