@@ -13,7 +13,7 @@
 \label{sec:Verwendetet Technologien}
 Bevor auf die eigentliche Umsetzung eingegangen wird werden die verwendeten Frameworks und Technologien dargestellt.
 Ein Teil davon, wie HTTP und REST, wurden bereits durch das Interface für KRESHMOI festgelegt, 
-ein weiter ergab sich durch die Anforderung einer Web-Applikation.
+ein weiterer ergab sich durch die Anforderung einer Web-Applikation.
 Die Frameworks und Technologien für Grafik und GUI wurden gewählt weil mit ihnen eine schnelle Umsetzung der Anforderungen möglich war.
 
 %----------------------------------------------
@@ -41,10 +41,10 @@ Für eine Zuordnung eines Clients muss dieser eine Session-ID mitsenden welche n
 %----------------------------------------------
 \subsubsection{REST}
 \label{sec:HTTP}
-REST ist im eigentlichen Sin mehr ein Architekturstiel als ein Protokoll welcher mit HTTP umgesetzt wird.
-Die Idee von REST ist dass eine URL genau eine Ressource auf einem Server adressiert, 
+REST ist im eigentlichen Sin\R{n} mehr ein Architektursti\Rd{e}l als ein Protokoll welcher mit HTTP umgesetzt wird.
+Die Idee von REST ist\R{,} dass eine URL genau eine Ressource auf einem Server adressiert, 
 wobei eine Ressource eine statische Datei oder das Ergebnis einer Aktion auf dem Server sein kann.
-Dieser Architekturstiel lässt sich durch fünf Prinzipiell zusammenfassen:
+Dieser Architektursti\Rd{e}l lässt sich durch fünf Prinzipiell zusammenfassen \Rc{fix sentence}:
 \begin{itemize}
 	\item \textbf{Ressource mit eindeutiger Identifikation:}
 		Jede Ressource wird durch eine URI (Uniform Resouce Identifier) weltweit eindeutig identifiziert.
@@ -62,9 +62,9 @@ Dieser Architekturstiel lässt sich durch fünf Prinzipiell zusammenfassen:
 		In HTTP wird die gewünschte Darstellung im Header angegeben.
 	\item \textbf{Zustandslose Kommunikation}
 		Der Server hält keine Zustandsinformationen über den Client welche über die Dauer eines Requests hinaus gehen.
-		Daher muss der Zustand einer Anwendung entweder am Client liegen oder vom Server in eine Ressource umgewandelt werden.
+		Daher muss der Zustand einer Anwendung entweder am Client liegen oder vom Server in eine Ressource umgewandelt werden \cite{rest}. 
 \end{itemize}
-\cite{rest}
+
 
 %----------------------------------------------
 % ** JSON
@@ -75,19 +75,19 @@ Bei JSON (JavaScript Object Notation) handelt es sich um ein Datenformat zum Aus
 JSON findet neben XML vor allem in der Kommunikation zwischen Client und Server bei Webanwendungen Verwendung, 
 wobei JSON Daten wesentlich kompakter und damit ressourcensparender sind.
 Wie bei XML werden Listen und Objekte in einer von Menschen lesbaren Form darstellt.
-Dabei werden folgende Datentypen unterstützt welche wiederum beliebig tief ineinander verschachtelt werden können: NULL, Boolean, Zahl, String, Array und Objekt \cite{ajax}.
+Dabei werden folgende Datentypen unterstützt\R{,} welche wiederum beliebig tief ineinander verschachtelt werden können: NULL, Boolean, Zahl, String, Array und Objekt \cite{ajax}.
 
 %----------------------------------------------
 % ** AJAX
 %----------------------------------------------
 \subsubsection{AJAX}
 \label{sec:AJAX}
-AJAX (Asynchronous JavaScript and XML) ermöglicht es einer Webanwendung kleinere Mengen von Daten nachzuladen und damit Teile der Webseite dynamisch zu ändern, 
+AJAX (Asynchronous JavaScript and XML) ermöglicht es einer Webanwendung\R{,} kleinere Mengen von Daten nachzuladen und damit Teile der Webseite dynamisch zu ändern, 
 statt bei jeder Aktion die Webseite neu zu laden.
-Benötigt die Web Applikation Daten vom Server wird an diesem eine HTTP Anfrage gesendet und Callback-Funktionen für den Fall einer Antwort oder eines Fehlers beim Browser registriert.
-Erhält der Browser eine Antwort auf seine Anfrage ruft er die Callback-Funktion auf und übergibt die erhalten Daten wodurch die Webanwendung mit der Verarbeitung dieser fortfahren kann.
+Benötigt die We\Rd{b A}\R{a}pplikation Daten vom Server\R{,} wird an diese\Rd{m}\R{n} eine HTTP Anfrage gesendet und Callback-Funktionen für den Fall einer Antwort oder eines Fehlers beim Browser registriert.
+Erhält der Browser eine Antwort auf seine Anfrage ruft er die Callback-Funktion auf und übergibt die erhalten Daten\R{,} wodurch die Webanwendung mit der Verarbeitung dieser fortfahren kann.
 Dies ermöglicht die Entwicklung komplexer Webapplikationen, 
-wobei die Webapplikation selbst mit der Seite geladen wird und die Daten die der Benutzer mit der Anwendung verarbeiten möchte dynamisch von der Anwendung nachgeladen werden können \cite{ajax}.
+wobei die Webapplikation selbst mit der Seite geladen wird und die Daten\R{,} die der Benutzer mit der Anwendung verarbeiten möchte\R{,} dynamisch von der Anwendung nachgeladen werden können \cite{ajax}.
 
 %----------------------------------------------
 % ** Objectiv J
@@ -95,11 +95,11 @@ wobei die Webapplikation selbst mit der Seite geladen wird und die Daten die der
 \subsubsection{Objectiv J}
 \label{sec:Objectiv J}
 
-Objective J ist eine Programmiersprache welche sich von der Syntax stark an Objective C anlehnt.
+Objective J ist eine Programmiersprache welche sich von der Syntax stark an Objective\R{-}C anlehnt.
 Sie ist eine Erweiterung oder Obermenge von Javascript und wird von einem in Javascript geschriebenen Interpreter abgearbeitet.
 In Javascript können Objekte durch Prototyping erstellt werden, das Konzept von Klassen wird aber nicht unterstützt.
-Obj J bietet zusätzlich zu den nativen JS Objekten die Definition von Klassen inklusive Vererbung und die Generierung von Objekten daraus.
-Obwohl es die Sprache erlaubt für Variablen, Methodenparameter und Rückgabe einer Funktion eine Datentyp zu definieren, 
+Obj\Rc{konsistente schreibweise} J bietet zusätzlich zu den nativen JS \Rd{abkuerzung nicht definitert, ausschreiben is eh besser.}Objekten die Definition von Klassen inklusive Vererbung und die Generierung von Objekten daraus.
+Obwohl es die Sprache erlaubt für Variablen, Methodenparameter und Rückgabe einer Funktion eine\Rc{fix} Datentyp zu definieren, 
 werden diese aufgrund von schwacher Typisierung vom Interpreter nicht auf ihre Einhaltung überprüft.
 In der aktuellen Version wird die Übergabe von Referenzen als Parameter ähnlich einem Pointer in C unterstützt \cite{capp}.
 
@@ -108,10 +108,10 @@ In der aktuellen Version wird die Übergabe von Referenzen als Parameter ähnlic
 %----------------------------------------------
 \subsubsection{Cappuccino}
 \label{sec:Cappuccino}
-Bei Cappuccino handelt es sich um ein Web Application Framework für Objectiv J und Javascript, welches hauptsächlich der Erstellung komplexer Benutzeroberflächen dient.
+Bei Cappuccino handelt es sich um ein Web Application Framework für Objectiv\Rc{bindestrich }J und Javascript, welches hauptsächlich der Erstellung komplexer Benutzeroberflächen dient.
 Das Framework lehnt sich sowohl vom Aussehen als auch von der Benennung der Komponenten sehr stark an das GUI-Framework Cocoa von Apple an.
 GUI-Elemente werden als Objekte erstellt welche von einer View-Klasse erben und innerhalb von anderen Views positioniert werden können.
-Das Interface wird von einem HTML5 fähigen Browser gerendert wobei für dessen Erstellung keinerlei HTML oder CSS Kenntnisse notwendig sind \cite{capp}.
+Das Interface wird von einem HTML5\Rc{bindestrich }fähigen Browser gerendert\R{,} wobei für dessen\Rc{des browsers? würd ich umformulieren, klingt verwirrend} Erstellung keinerlei HTML oder CSS Kenntnisse notwendig sind \cite{capp}.
 
 
 %----------------------------------------------
@@ -121,12 +121,12 @@ Das Interface wird von einem HTML5 fähigen Browser gerendert wobei für dessen 
 \label{sec:WebGL}
 WebGL ist eine API für die Erstellung von 2D und 3D Grafiken in Browsern mit der Unterstützung der Grafikkarte.
 Im Gegensatz zur Canvas-2D API wo die Bilder in der CPU gerendert werden, ist WebGL aufgrund der Hardwarebeschleunigung wesentlich performanter.
-WebGL ist eine Shaderbasierte API welche sich sehr stark an OpenGL ES anlehnt.
-Diese bedeutet dass Code für die Shadereinheiten der Grafikpipeline \ref{fig:webgl_graphics_pipeline} entwickelt wird,
+WebGL ist eine \Rd{S}\R{s}haderbasierte API welche sich sehr stark an OpenGL ES anlehnt.
+Dies\Rd{e} bedeutet\R{,} dass Code für die Shadereinheiten der Grafikpipeline \ref{fig:webgl_graphics_pipeline} entwickelt wird,
 welchen der Treiber der Karte in Bytecode übersetzt und zur Ausführung in den Grafikchip lädt.
 Die Shaderprogramme werden in der Programmiersprache GLSL geschrieben, welche sich sehr stark an C orientiert.
 Der Zugriff auf die Schnittstelle erfolgt über das HTML Canvas Element in welchem die Ausgabe der Grafikkarte dargestellt wird.
-Dies geschieht mittels JavaScript wo die API Funktionen zur Übergabe der Nutzdaten, Befehle und der Shaderprogramme bereitstellt \cite{webgl-14}.
+Dies geschieht mittels JavaScript\R{,} wo die API Funktionen zur Übergabe der Nutzdaten, Befehle und der Shaderprogramme bereitstellt\Rc{das ist kein satz} \cite{webgl-14}.
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=5.2cm]{img/graphics_pipeline.jpg}
@@ -134,7 +134,7 @@ Dies geschieht mittels JavaScript wo die API Funktionen zur Übergabe der Nutzda
 	\label{fig:webgl_graphics_pipeline}
 \end{figure}
 
-Zum rendern einer Grafik mit der WebGL Grafik Pipeline werden Arrays von Punkten, welche meist die Ecken eines Dreiecks bilden, in einen Vektorbuffer geschrieben.
+Zum \Rd{r}\R{R}endern einer Grafik mit der WebGL Grafik Pipeline werden Arrays von Punkten, welche meist die Ecken eines Dreiecks bilden, in einen Vektorbuffer geschrieben.
 Diese werden anschließend vom Vertex-Shader verarbeitet, welcher zum Beispiel Skalierung, Rotation oder Transformation auf die Geometrien anwendet oder Farbinfomation hinzufügt.
 Anschließend werden aus den Punkten Dreiecke generiert und in der Rasterisierung die Pixel der Dreiecke berechnet.
 Die Pixel bekommen dann vom Fragment-Shader ihre Farbe, welcher diese aus Farbinformationen oder aus zuvor übergebenen Textur-Daten generiert.
@@ -150,10 +150,11 @@ von wo aus Sie auf dem Bildschirm angezeigt werden können \cite{webgl-introduct
 \subsubsection{PixiJS}
 \label{sec:PixiJS}
 Da WebGL eine relativ Hardware nahe API ist wurden einige Frameworks entwickelt welche von der Komplexität einer solchen API abstrahieren, zu denen auch PixiJS zählt.
-Dies bietet Funktionen zum Zeichen von Geometrischen Figuren, Füllen von diesen und Laden von Texturen.
-Eine Szene in PixiJS ist als Baum organisiert wobei jeder Knoten in dem Baum wiederum Operationen zur Manipulation wie Transformation, Translation oder Transparenz anbietet.
-Ein weiteres Feature ist dass auf einen Knoten ein Filter mit WebGL Fragment-Shader-Code gesetzt werden kann welcher zur Manipulation der Farbinformation in den einzelnen Bildpunkte dient \cite{pixijs}.
+\Rd{Dies}\R{Es} bietet Funktionen zum Zeichen von \Rd{G}\R{g}eometrischen Figuren, Füllen von diesen und Laden von Texturen.
+Eine Szene in PixiJS ist als Baum organisiert\R{,} wobei jeder Knoten in dem Baum wiederum Operationen zur Manipulation wie Transformation, Translation oder Transparenz anbietet.
+Ein weiteres Feature ist\R{,} dass auf einen Knoten ein Filter mit WebGL Fragment-Shader-Code gesetzt werden kann\R{,} welcher zur Manipulation der Farbinformation in den einzelnen Bildpunkte dient \cite{pixijs}.
 
+\Rc{bitte lass am besten immer von wem 2ten korrekturlesen - der inhalt is eh wunderbar!}
 
 %----------------------------------------------
 % * Funktionalität und Aufbau der Benutzeroberfläche
@@ -236,7 +237,7 @@ wozu für jedes Pixel der Farbwert mit einer Linear Transformation in einen neue
         F(x) = c*x + b
 \end{equation}
 Dabei ist der Kontrast durch $c$ und die Helligkeit durch $b$ gegeben.
-Für diese Berechnung wurde ein Ansatz auf Basis von JavaScript durch die Canvas 2D Api (Siehe Listing \ref{lst:window_2d_api} und \ref{lst:window_2d_lut}) und eine Implementierung mit Web GL (Siehe Listing \ref{lst:webgl_fragment_shader}) getestet.
+Für diese Berechnung wurde ein Ansatz auf Basis von JavaScript durch die Canvas 2D API und eine Implementierung mit Web GL getestet.
 
 \paragraph{Canvas 2D API}
 Für die graphische Ausgabe im Browser wird ein HTML5 Canvas Element verwendet,
@@ -248,16 +249,14 @@ wo jeder Bildpunkt auf 4 Speicherstellen mit einem Integer-Wert zwischen 0 und 2
 Die ersten drei Speicherstellen bilden den Farbwert durch die Anteile von Rot, Grün, Blau und die vierte den Alpha Kanal.
 Für die Fensterung müssen alle Speicherstellen für die Farbe transformiert und wieder auf einen Integer Wert gerundet werden.
 %
-Um unnötige Berechnungen für jedes einzelne Pixel zu sparen, 
-werden pro Fensterungsschritt alle Pixelwerte zwischen 0 und 255 einmal vor berechnet und in einer LookUp Tabelle (Siehe Listing \ref{lst:window_2d_lut}) als Array gespeichert.
+Um unnötige Berechnungen für jedes einzelne Pixel zu sparen, werden pro Fensterungsschritt alle Pixelwerte zwischen 0 und 255 einmal vor berechnet und in einer LookUp Tabelle als Array gespeichert.
 Anstatt den Wert für jedes Pixel neu zu berechen und zu runden fungiert bei diesem Ansatz der aktuelle Wert eines Pixels als Schlüssel für die Tabelle welche den neuen Wert des Pixels enthält.
 Die Anzahl der Operationen wird dabei auf 255 Berechnungen und die Anzahl der Speicherzugriffe pro Bildpunkt sowie die der LookUp Tabelle reduziert.
 \begin{figure}[t]
 \begin{lstlisting}[
 	language=JavaScript,
 	firstnumber=1,
-	caption=Ändern von Kontrast und Helligkeit in einem HTML Canvas Element mit einer LookUp Tabelle in JavaScript,
-	label={lst:window_2d_api}
+	caption=Ändern von Kontrast und Helligkeit in einem HTML Canvas Element mit einer LookUp Tabelle in JavaScript
 ]
 function calcWindowForDomElement(domElement, contrast, brightness)
 {
@@ -285,8 +284,7 @@ function calcWindowForDomElement(domElement, contrast, brightness)
 \begin{lstlisting}[
 	language=JavaScript,
 	firstnumber=1,
-	caption={Berechnung der LookUp Tabelle},
-	label={lst:window_2d_lut}
+	caption=Berechnung der LookUp Tabelle
 ]
 function getLookUpTable(contrast, brightness){
     var lut = new Array();
@@ -304,7 +302,7 @@ function getLookUpTable(contrast, brightness){
 \end{figure}
 
 \paragraph{WebGL}
-Die Berechnung der Fensterung in der WebGL Grafik Pipeline erfolgt im Fragment-Shader (Siehe Listing \ref{lst:webgl_fragment_shader}).
+Die Berechnung der Fensterung in der WebGL Grafik Pipeline erfolgt im Fragment-Shader.
 Dazu wird über die WebGL-API zuerst ein Array von Punkten, 
 welches die Grundfläche in der Form von zwei aneinander liegenden Dreiecken darstellt übergeben.
 Weiters wird das Bild für die Fensterung als Textur in den Speicher der Grafikkarte geladen und die Variablen für Helligkeit und Kontrast übergeben.
@@ -318,8 +316,6 @@ Die Rückgabe der Farbinformation erfolgt durch das ablegen in der Variable $gl\
 \begin{lstlisting}[
 	language=GLSL,
 	firstnumber=1,
-	caption={Fragment-Shader-Code zum Rendern und Fenstern der Slices},
-	label={lst:webgl_fragment_shader}
 ]
 precision mediump float;
 
@@ -337,6 +333,7 @@ void main() {
     gl_FragColor.a = color.a;
 }
 \end{lstlisting}
+\caption{Fragment-Shader-Code zum Rendern und Fenstern der Slices}
 \end{figure}
 
 
@@ -357,7 +354,7 @@ Bei diesen Layern werden Skalierung und Positionierung nur auf den ImageLayer un
 Um die Software möglichst erweiterbar zu gestalten,
 wurde eine LayerKlasse $PixiLayer$ entwickelt welcher eine beliebige Menge von Sublayern hizugefügt werden kann.
 Dabei wird zwischen statischen Sublayern welche jeweils nur die Anzeigefläche ausfüllen und dynamischen Sublayern welche gemeinsam skaliert und positioniert werden können unterschieden.
-Diese Layerklasse erledigt auch die konvertierung von Punkten zwischen den dynamischen Sublayer und den statischen Sublayern bzw. der Position im angezeigten Bild, in Hinsicht auf Postion, Skalierung und Layerdimension.
+Diese Layerklasse erledigt auch die konvertierung von Punkten zwischen den dynamischen und den statischen Sublayern, in Hisicht auf Postion, Skalierung und Layerdimension.
 Da die restliche GUI mit Cappuccino aufgebaut wurde und dieses Framework auch die Ereignisse für Größenänderungen der einzelen Views behandelt,
 müssen diese vom ViewObjekt welches den 2D-Betrachter Kapselt an das Grafikfenster weiter gegeben werden.
 Ansonsten ist das Pixi.JS basierte Grafikfenster durch die LayerKlassen bis auf Funktionen zur Übergabe der Anzeigedaten und zur Punktkonvertierung vom 2D-Betrachter abgeschottet.
