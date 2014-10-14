@@ -41,10 +41,10 @@ Für eine Zuordnung eines Clients muss dieser eine Session-ID mitsenden welche n
 %----------------------------------------------
 \subsubsection{REST}
 \label{sec:HTTP}
-REST ist im eigentlichen Sin\R{n} mehr ein Architektursti\Rd{e}l als ein Protokoll welcher mit HTTP umgesetzt wird.
-Die Idee von REST ist\R{,} dass eine URL genau eine Ressource auf einem Server adressiert, 
+REST ist im eigentlichen Sinn mehr ein Architekturstil als ein Protokoll welcher mit HTTP umgesetzt wird.
+Die Idee von REST ist, dass eine URL genau eine Ressource auf einem Server adressiert, 
 wobei eine Ressource eine statische Datei oder das Ergebnis einer Aktion auf dem Server sein kann.
-Dieser Architektursti\Rd{e}l lässt sich durch fünf Prinzipiell zusammenfassen \Rc{fix sentence}:
+Dieser Architekturstil lässt sich durch fünf Prinzipiell zusammenfassen:
 \begin{itemize}
 	\item \textbf{Ressource mit eindeutiger Identifikation:}
 		Jede Ressource wird durch eine URI (Uniform Resouce Identifier) weltweit eindeutig identifiziert.
@@ -75,31 +75,31 @@ Bei JSON (JavaScript Object Notation) handelt es sich um ein Datenformat zum Aus
 JSON findet neben XML vor allem in der Kommunikation zwischen Client und Server bei Webanwendungen Verwendung, 
 wobei JSON Daten wesentlich kompakter und damit ressourcensparender sind.
 Wie bei XML werden Listen und Objekte in einer von Menschen lesbaren Form darstellt.
-Dabei werden folgende Datentypen unterstützt\R{,} welche wiederum beliebig tief ineinander verschachtelt werden können: NULL, Boolean, Zahl, String, Array und Objekt \cite{ajax}.
+Dabei werden folgende Datentypen unterstützt, welche wiederum beliebig tief ineinander verschachtelt werden können: NULL, Boolean, Zahl, String, Array und Objekt \cite{ajax}.
 
 %----------------------------------------------
 % ** AJAX
 %----------------------------------------------
 \subsubsection{AJAX}
 \label{sec:AJAX}
-AJAX (Asynchronous JavaScript and XML) ermöglicht es einer Webanwendung\R{,} kleinere Mengen von Daten nachzuladen und damit Teile der Webseite dynamisch zu ändern, 
+AJAX (Asynchronous JavaScript and XML) ermöglicht es einer Webanwendung,kleinere Mengen von Daten nachzuladen und damit Teile der Webseite dynamisch zu ändern, 
 statt bei jeder Aktion die Webseite neu zu laden.
-Benötigt die We\Rd{b A}\R{a}pplikation Daten vom Server\R{,} wird an diese\Rd{m}\R{n} eine HTTP Anfrage gesendet und Callback-Funktionen für den Fall einer Antwort oder eines Fehlers beim Browser registriert.
-Erhält der Browser eine Antwort auf seine Anfrage ruft er die Callback-Funktion auf und übergibt die erhalten Daten\R{,} wodurch die Webanwendung mit der Verarbeitung dieser fortfahren kann.
+Benötigt die Weapplikation Daten vom Server, wird an diesen eine HTTP Anfrage gesendet und Callback-Funktionen für den Fall einer Antwort oder eines Fehlers beim Browser registriert.
+Erhält der Browser eine Antwort auf seine Anfrage ruft er die Callback-Funktion auf und übergibt die erhalten Daten, wodurch die Webanwendung mit der Verarbeitung dieser fortfahren kann.
 Dies ermöglicht die Entwicklung komplexer Webapplikationen, 
-wobei die Webapplikation selbst mit der Seite geladen wird und die Daten\R{,} die der Benutzer mit der Anwendung verarbeiten möchte\R{,} dynamisch von der Anwendung nachgeladen werden können \cite{ajax}.
+wobei die Webapplikation selbst mit der Seite geladen wird und die Daten, die der Benutzer mit der Anwendung verarbeiten möchte, dynamisch von der Anwendung nachgeladen werden können \cite{ajax}.
 
 %----------------------------------------------
-% ** Objectiv J
+% ** Objectiv-J
 %----------------------------------------------
-\subsubsection{Objectiv J}
-\label{sec:Objectiv J}
+\subsubsection{Objectiv-J}
+\label{sec:Objectiv-J}
 
-Objective J ist eine Programmiersprache welche sich von der Syntax stark an Objective\R{-}C anlehnt.
+Objective-J ist eine Programmiersprache welche sich von der Syntax stark an Objective-C anlehnt.
 Sie ist eine Erweiterung oder Obermenge von Javascript und wird von einem in Javascript geschriebenen Interpreter abgearbeitet.
 In Javascript können Objekte durch Prototyping erstellt werden, das Konzept von Klassen wird aber nicht unterstützt.
-Obj\Rc{konsistente schreibweise} J bietet zusätzlich zu den nativen JS \Rd{abkuerzung nicht definitert, ausschreiben is eh besser.}Objekten die Definition von Klassen inklusive Vererbung und die Generierung von Objekten daraus.
-Obwohl es die Sprache erlaubt für Variablen, Methodenparameter und Rückgabe einer Funktion eine\Rc{fix} Datentyp zu definieren, 
+Objective-J bietet zusätzlich zu den nativen JavaScript Objekten die Definition von Klassen inklusive Vererbung und die Generierung von Objekten daraus.
+Obwohl es die Sprache erlaubt für Variablen, Methodenparameter und Rückgabe einer Funktion einen Datentyp zu definieren, 
 werden diese aufgrund von schwacher Typisierung vom Interpreter nicht auf ihre Einhaltung überprüft.
 In der aktuellen Version wird die Übergabe von Referenzen als Parameter ähnlich einem Pointer in C unterstützt \cite{capp}.
 
@@ -108,10 +108,11 @@ In der aktuellen Version wird die Übergabe von Referenzen als Parameter ähnlic
 %----------------------------------------------
 \subsubsection{Cappuccino}
 \label{sec:Cappuccino}
-Bei Cappuccino handelt es sich um ein Web Application Framework für Objectiv\Rc{bindestrich }J und Javascript, welches hauptsächlich der Erstellung komplexer Benutzeroberflächen dient.
+Bei Cappuccino handelt es sich um ein Web Application Framework für Objectiv-J und JavaScript, welches hauptsächlich der Erstellung komplexer Benutzeroberflächen dient.
 Das Framework lehnt sich sowohl vom Aussehen als auch von der Benennung der Komponenten sehr stark an das GUI-Framework Cocoa von Apple an.
 GUI-Elemente werden als Objekte erstellt welche von einer View-Klasse erben und innerhalb von anderen Views positioniert werden können.
-Das Interface wird von einem HTML5\Rc{bindestrich }fähigen Browser gerendert\R{,} wobei für dessen\Rc{des browsers? würd ich umformulieren, klingt verwirrend} Erstellung keinerlei HTML oder CSS Kenntnisse notwendig sind \cite{capp}.
+Das Interface wird von einem HTML-fähigen Browser gerendert, 
+\C{wobei durch die Abstraktion durch die Komponenten des Frades Frameworks meworks für die Entwicklung keinerlei HTML oder CSS Kenntnisse notwendig sind}\cite{capp}.
 
 
 %----------------------------------------------
@@ -121,12 +122,13 @@ Das Interface wird von einem HTML5\Rc{bindestrich }fähigen Browser gerendert\R{
 \label{sec:WebGL}
 WebGL ist eine API für die Erstellung von 2D und 3D Grafiken in Browsern mit der Unterstützung der Grafikkarte.
 Im Gegensatz zur Canvas-2D API wo die Bilder in der CPU gerendert werden, ist WebGL aufgrund der Hardwarebeschleunigung wesentlich performanter.
-WebGL ist eine \Rd{S}\R{s}haderbasierte API welche sich sehr stark an OpenGL ES anlehnt.
-Dies\Rd{e} bedeutet\R{,} dass Code für die Shadereinheiten der Grafikpipeline \ref{fig:webgl_graphics_pipeline} entwickelt wird,
+WebGL ist eine shaderbasierte API welche sich sehr stark an OpenGL ES anlehnt.
+Dies bedeutet, dass Code für die Shadereinheiten der Grafikpipeline \ref{fig:webgl_graphics_pipeline} entwickelt wird,
 welchen der Treiber der Karte in Bytecode übersetzt und zur Ausführung in den Grafikchip lädt.
 Die Shaderprogramme werden in der Programmiersprache GLSL geschrieben, welche sich sehr stark an C orientiert.
 Der Zugriff auf die Schnittstelle erfolgt über das HTML Canvas Element in welchem die Ausgabe der Grafikkarte dargestellt wird.
-Dies geschieht mittels JavaScript\R{,} wo die API Funktionen zur Übergabe der Nutzdaten, Befehle und der Shaderprogramme bereitstellt\Rc{das ist kein satz} \cite{webgl-14}.
+Dies geschieht mittels JavaScript, wo die API Funktionen zur Übergabe der Nutzdaten, Befehle und der Shaderprogramme bereitstellt\Rc{das ist kein satz} \cite{webgl-14}.
+%TODO: Rene fragen warum dass kein satz ist
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=5.2cm]{img/graphics_pipeline.jpg}
@@ -134,7 +136,7 @@ Dies geschieht mittels JavaScript\R{,} wo die API Funktionen zur Übergabe der N
 	\label{fig:webgl_graphics_pipeline}
 \end{figure}
 
-Zum \Rd{r}\R{R}endern einer Grafik mit der WebGL Grafik Pipeline werden Arrays von Punkten, welche meist die Ecken eines Dreiecks bilden, in einen Vektorbuffer geschrieben.
+Zum Rendern einer Grafik mit der WebGL Grafik Pipeline werden Arrays von Punkten, welche meist die Ecken eines Dreiecks bilden, in einen Vektorbuffer geschrieben.
 Diese werden anschließend vom Vertex-Shader verarbeitet, welcher zum Beispiel Skalierung, Rotation oder Transformation auf die Geometrien anwendet oder Farbinfomation hinzufügt.
 Anschließend werden aus den Punkten Dreiecke generiert und in der Rasterisierung die Pixel der Dreiecke berechnet.
 Die Pixel bekommen dann vom Fragment-Shader ihre Farbe, welcher diese aus Farbinformationen oder aus zuvor übergebenen Textur-Daten generiert.
@@ -150,11 +152,9 @@ von wo aus Sie auf dem Bildschirm angezeigt werden können \cite{webgl-introduct
 \subsubsection{PixiJS}
 \label{sec:PixiJS}
 Da WebGL eine relativ Hardware nahe API ist wurden einige Frameworks entwickelt welche von der Komplexität einer solchen API abstrahieren, zu denen auch PixiJS zählt.
-\Rd{Dies}\R{Es} bietet Funktionen zum Zeichen von \Rd{G}\R{g}eometrischen Figuren, Füllen von diesen und Laden von Texturen.
-Eine Szene in PixiJS ist als Baum organisiert\R{,} wobei jeder Knoten in dem Baum wiederum Operationen zur Manipulation wie Transformation, Translation oder Transparenz anbietet.
-Ein weiteres Feature ist\R{,} dass auf einen Knoten ein Filter mit WebGL Fragment-Shader-Code gesetzt werden kann\R{,} welcher zur Manipulation der Farbinformation in den einzelnen Bildpunkte dient \cite{pixijs}.
-
-\Rc{bitte lass am besten immer von wem 2ten korrekturlesen - der inhalt is eh wunderbar!}
+Es bietet Funktionen zum Zeichen von geometrischen Figuren, Füllen von diesen und Laden von Texturen.
+Eine Szene in PixiJS ist als Baum organisiert, wobei jeder Knoten in dem Baum wiederum Operationen zur Manipulation wie Transformation, Translation oder Transparenz anbietet.
+Ein weiteres Feature ist, dass auf einen Knoten ein Filter mit WebGL Fragment-Shader-Code gesetzt werden kann, welcher zur Manipulation der Farbinformation in den einzelnen Bildpunkte dient \cite{pixijs}.
 
 %----------------------------------------------
 % * Funktionalität und Aufbau der Benutzeroberfläche
@@ -237,7 +237,7 @@ Weiters wird angegeben wie die Fensterung mit zwei verschidenen Technologie impl
 %----------------------------------------------
 % ** Berehnung der Fensterung
 %----------------------------------------------
-\subsubsection{Berehnung der Fensterung}
+\subsubsection{Berechnung der Fensterung}
 \label{sec:Berehnung der Fensterung}
 Die Berechnung der Fensterung ist eine Anpassung von Kontrast und Helligkeit des Bildes,
 wozu für jedes Pixel der Farbwert mit einer Linear Transformation in einen neuen Zielwert überführt werden muss.
