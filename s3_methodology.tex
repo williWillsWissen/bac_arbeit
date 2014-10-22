@@ -431,9 +431,12 @@ Liefert ein Array von allen Verfügbaren Datensätzen zurück
 \\
 \textit{/query}\\
 Liefert ein Array von Datensätzen zurück welche anhand der Übergebenen Suchkriterien gefunden wurden.
-Eine Suchanfrage basiert immer auf einen Datensatz welcher in der Anfrage übergeben werden muss.
-In diesem Datensatz werden weiters Interessante Bereiche sogenannte ROIs (Region of Interesst) in den einzelnen Schnittbildern definiert.
+Eine Suchanfrage basiert immer auf einen Ausgangs-Datensatz welcher in der Anfrage übergeben werden muss.
+Für diesem Datensatz werden auf ein Schnittbild Interessante Bereiche (ROIs) definiert.
 Die Übergabe einer ROI erfolgt als Polygon in Form einer Listen von Punkten im Dreidimensionalen Raum des Volumes.
+
+Als Erbebniss liefert KRESHMOI eine Liste von Ergebniss-Datensätzen welches neben der ID, Bild-Dimension und Titel noch den Report zu dem entsprechenden Datensatz enthällt.
+Die Ergebnisse werden entsprechend der Übereinstimmung mit der Textur aus der Suchanfrage nach ihrer Relevanz sortiert in die Liste eingefügt und weiters wird die Relevanz noch als Kommazahl in den Ergebniss-Datensatz aufgenommen.
 \begin{figure}[t]
 \begin{lstlisting}[
 	language=json,
