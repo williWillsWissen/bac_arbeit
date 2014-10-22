@@ -38,7 +38,7 @@
 
 \lstdefinelanguage{json}{
     numbers=left,
-    numberstyle=\scriptsize,
+    numberstyle=\small,
     stepnumber=1,
     showstringspaces=false,
     breaklines=true,
@@ -104,15 +104,15 @@
 \lstdefinelanguage{JavaScript}{
   sensitive=true,
   keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, for},
-  basicstyle=\color{black}\texttt\small,
-  keywordstyle=\color{blue}\texttt,
+  basicstyle=\color{black}\small,
+  keywordstyle=\color{blue}\small,
   ndkeywords={class, export, boolean, throw, implements, import, this},
-  ndkeywordstyle=\color{darkgray}\texttt,
+  ndkeywordstyle=\color{darkgray}\small,
   identifierstyle=\color{black},
   comment=[l]{//},
   morecomment=[s]{/*}{*/},
-  commentstyle=\color{purple}\texttt,
-  stringstyle=\color{red}\texttt,
+  commentstyle=\color{purple}\small,
+  stringstyle=\color{red}\small,
   %morestring=[b]',
   numbers=left,
   numberstyle=\small,
@@ -211,9 +211,9 @@
   morecomment=[l]{//},
   morecomment=[s]{/*}{*/},
   morecomment=[l][keywordstyle4]{\#},
-  keywordstyle=\color{blue}\texttt,
+  keywordstyle=\color{blue}\small,
   numbers=left,
-  numberstyle=\scriptsize,
+  numberstyle=\small,
   stepnumber=1,
   showstringspaces=false,
   breaklines=true,
@@ -291,15 +291,14 @@
 \tableofcontents
 % put your abstract here
 \abstract{
-Diese Arbeit behandelt die Entwicklung einer \R{Web-}Benutzeroberfl"ache f"ur eine Bildsuchmaschiene zum Durchsuchen von \R{3D-Daten}\Rd{Bildern} aus radiologischen bildgebenden Verfahren\Rd{ f"ur 2D und 3D als Web-Applikation}.
-\Rd{Die Benutzeroberfl"ache dient als Frontend f"ur die Radiologie-Suche des KRESHMOI-Systems.}
+Diese Arbeit behandelt die Entwicklung einer Web-Benutzeroberfl"ache f"ur eine Bildsuchmaschiene zum Durchsuchen von 3D-Daten aus radiologischen bildgebenden Verfahren.
 
 Im Rahmen der Arbeit werden die beiden Betrachtungsprogrammen f"ur radiologische Datens"atze OsiriX und Afga Impax DS3000 im Bezug auf Funktionsumfang und Bedienung analysiert. 
 
 Es wird der Funktionsumfang des entwickelten Betrachters sowie die Tools zum erstellen der Bild-Query und zur Pr"asentation der Ergebnisse beschrieben.
-Weiters wird erkl"art wie die Software mit dem HTML5 Frameworks Cappuccino und Pixi.JS umgesetzt wurde und es werden zwei Ans"atze zur lokalen Nachbearbeitung der Bilder mit der Canvas 2D API und mit WebGL beschrieben und im Bezug auf ihre Performance \Rd{getestet}\R{untersucht}.
+Weiters wird erkl"art wie die Software mit dem HTML5 Frameworks Cappuccino und Pixi.JS umgesetzt wurde und es werden zwei Ans"atze zur lokalen Nachbearbeitung der Bilder mit der Canvas 2D API und mit WebGL beschrieben und im Bezug auf ihre Performance untersucht.
 
-Von den beiden Verfahren f"uhrte nur das \R{r}endering mit WebGL zu einem ausreichend schnellen Ergebniss, welches auch im entwickelten Betrachter implementiert wurde.
+Von den beiden Verfahren f"uhrte nur das rendering mit WebGL zu einem ausreichend schnellen Ergebniss, welches auch im entwickelten Betrachter implementiert wurde.
 }
 \clearpage
 \pagenumbering{arabic}
