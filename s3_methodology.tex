@@ -5,6 +5,15 @@
 %-------------------------------------------------------
 \section{Methodology}
 \label{sec:methodology}
+\C{
+In diesem Kapitel wird die Umsetzung des Web-Frontends für KRESHMOI beschrieben.
+Zuerst werden die wichtigsten Framworks und Technologien vorgestellt welche die technischen Grundlagen der Anwendung bilden.
+Weiters werden alle wichtigen funktionalen Anforderungen der Anwendung aufgezeigt und grundlegend auf die Bedienung der Applikation eingegangen.
+Wie die funktionalen Anforderungen umgesetzt wurden wird im darauf folgenden Unterkapitel beschrieben.
+Hier werden Lösungen für die technische Umsetzung der Fensterung sowie für die nicht funktionale Anforderung einer modularen Applikation präsentiert.
+Zum Schluss wird noch die API für KRESHMOI selbst vorgestellt welche die Anwendung für den Datenaustausch mit den System nutzt.
+}
+
 
 %----------------------------------------------
 % * Verwendetet Technologien
@@ -233,10 +242,10 @@ Weiters wird angegeben wie die Fensterung mit zwei verschiedenen Technologien im
 %----------------------------------------------
 \subsubsection{Framework für dynamischen Layouts}
 \label{sec:Umsetzung der dynamischen Layouts}
-Das eines der zentralen Konzepete bei der Darstellung von Bedien- und Anzeige-Elementen in Cappuccino ist die View Klasse (Siehe Figure \ref{fig:cappuccino_view_concept} ), 
+Eines der zentralen Konzepete bei der Darstellung von Bedien- und Anzeige-Elementen in Cappuccino ist die View Klasse (Siehe Figure \ref{fig:cappuccino_view_concept} ), 
 von welcher all diese Elemente erben.
 In eine View können wiederum weitere Sub-Views eingehängt und innerhalb dieser Positioniert werden.
-Die Darstellung der Elemente erfolgt in einem Fenster, welche als erste View in der Hirachie ihre sogenannte ContentView zur Verfügung stellt.
+Die Darstellung der Instanzierten Elemente erfolgt in einem Fenster, welche als erste View in der Hirachie ihre sogenannte ContentView zur Verfügung stellt.
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=0.6\linewidth]{img/c3_cappuccino_view_concept.jpg}
@@ -255,9 +264,9 @@ im weiteren as Superelemente bezeichnet,
 erben von dieser View-Klasse, 
 wodurch Sie in einer übergeordneten View einfach in verschiedenen Layouts angeordnet werden können.
 Die Anordung der Superelemente sowie die Kommunikation zwischen ihnen erfolgt in einem LayoutController.
-Der LayoutController kapselt das von Ihm erstellte Layout in einer LayoutView welche dann in die ContentView des Fensters eingehängt wird.
+Der LayoutController kapselt das von Ihm erstellte Layout in einer LayoutView welche dann in die ContentView des Anzeige-Fensters eingehängt wird.
 Durch dieses Konzept (Siehe Figure \ref{fig:layout_framework} ) lassen sich die Anzahl und Anordung der Superelemente einfach zur Laufzeit ändern,
-da bei einer Änderung nur ein neuer LayoutController instanziert und seine LayoutView gegen die akutelle in der ContentView getauscht werden muss.
+da bei einer Änderung nur ein neuer LayoutController instanziert und seine LayoutView gegen die akutelle LayoutView in der ContentView getauscht werden muss.
 Zur Erhaltung der Nutzdaten muss jeder LayoutController Funktionen zum Setzen und Abfragen dieser zur Verfügung stellen.
 Die Behandlung von Layout-Änderungen finden im LayoutControllerManager statt, 
 welcher sich um den Austausch der LayoutView kümmert und die Nutzdaten vom alten in den neuen LayoutController überträgt.
@@ -392,29 +401,38 @@ Bei diesen Layern werden Skalierung und Positionierung nur auf den ImageLayer un
 Um die Software möglichst erweiterbar zu gestalten,
 wurde eine LayerKlasse $PixiLayer$ entwickelt welcher eine beliebige Menge von Sublayern hizugefügt werden kann.
 Dabei wird zwischen statischen Sublayern welche jeweils nur die Anzeigefläche ausfüllen und dynamischen Sublayern welche gemeinsam skaliert und positioniert werden können unterschieden.
-Diese Layerklasse erledigt auch die Konvertierung von Punkten zwischen den dynamischen und den statischen Sublayern, in Hisicht auf Postion, Skalierung und Layerdimension.
+Diese Layerklasse erledigt auch die Konvertierung von Punkten zwischen den dynamischen und den statischen Sublayern, im Bezug auf Postion, Skalierung und und der Abmessungen des Layers da das Zentrum als Nullpunkt angenommen wird.
 Da die restliche GUI mit Cappuccino aufgebaut wurde und dieses Framework auch die Ereignisse für Größenänderungen der einzelen Views behandelt,
-müssen diese vom ViewObjekt welches den 2D-Betrachter Kapselt an das Grafikfenster weiter gegeben werden.
-Ansonsten ist das Pixi.JS basierte Grafikfenster durch die LayerKlassen bis auf Funktionen zur Übergabe der Anzeigedaten und zur Punktkonvertierung vom 2D-Betrachter abgeschottet.
-Die eigentliche Logik des Betrachters ist in den Layern zugeordnete Controller-Klassen gekapselt.
+müssen diese vom Cappuccino View-Objekt welches den 2D-Betrachter Kapselt an das Grafikfenster weiter gegeben werden.
+Ansonsten ist das Pixi.JS basierte Grafikfenster durch die Layer- und Sublayler-Klassen bis auf Funktionen zur Übergabe der Anzeigedaten und zur Punktkonvertierung vom 2D-Betrachter abgeschottet.
+Die eigentliche Logik des Betrachters ist in den Sublayern zugeordnete Controller-Klassen gekapselt.
 Die Betrachter-Klasse selbst ist hauptsächlich für die Erstelltung der Bedienelemente und die Behandlung von Events verantwortlich.
+Die Grob-Architektur des Betrachters wird in Abbildung \ref{fig:omip_klass_layout} dargestellt.
+Die Klassen welche mit Pixi.JS interagieren und das Framework steuern sind in der Abbildung orange eingezeichnet.
 \begin{figure}[t]
 	\centering
 		\includegraphics[width=\linewidth]{img/s3_2dview_class_structure.jpg}
 	\caption{Struktur des 2D-Betrachters als Klassendiagramm}
-	\label{fig:omip_aplication_layout}
+	\label{fig:omip_klass_layout}
 \end{figure}
 
 Die Umsetzung der Fensterung im 2D-Betrachter erfolgte wegen der wesentlich besseren Performance in WebGL, 
 was der Grund für die Auswahl von Pixi.JS als Grafik-Framework ist.
 Die Fensterung wurde in einem Filter für Pixi.JS implementiert (Siehe Kapitel \ref{sec:PixiJS} ), welcher den GLSL-Shadercode auf das Schnittbild des Volumes anwendet.
+Neben der Fensterung war das Rendern von Text mit einer umfangreichen Toolbox ein weiters Kriterium für die Verwendung von Pixi.JS gegenüber der Grafik-API von Cappucino.
+
 
 %----------------------------------------------
 % * Kommunikation mit KRESHMOI
 %----------------------------------------------
 \subsection{Kommunikation mit KRESHMOI}
 \label{sec:Kommunikation mit KRESHMOI}
-Der Datenaustausch mit KRESHMOI basiert auf REST wobei sowohl auf die einzelnen Slices von einem Volume, als auch auf die Suche als Ressource über eine URL zugegriffen werden kann.
+\C{
+Die umsetzung von KRESHMOI erfolgte als ein System mit einer Service Orientierten Architektur (SOA).
+Dabei sind die einzelenen Komponenten des Gesamtsystems lose über REST oder SOAP Schnitstellen gekoppelt \cite{kreshmoi-architecture-spec}. 
+Der Datenaustausch mit dem Subsytem für die radiologische Bilsuche basiert auf REST, 
+wobei sowohl auf die einzelnen Slices von einem Volume, als auch auf die Suche als Ressource über eine URL zugegriffen werden kann.
+}
 
 %----------------------------------------------
 % ** Query nach Bilderns
@@ -423,30 +441,32 @@ Der Datenaustausch mit KRESHMOI basiert auf REST wobei sowohl auf die einzelnen 
 \label{sec:Query nach Bildern}
 Der Zugriff auf die Suchfunktion erfolgt über eine POST-Operation in welcher die Anfrage und die Antwort in JSON codiert werden.
 Zum Ausführen einer Suchanfrage stehen zwei Ressourcen zur Verfügung:
-\\
-\\
-\textit{/index}\\
-Liefert ein Array von allen Verfügbaren Datensätzen zurück 
-\\
-\\
-\textit{/query}\\
-Liefert ein Array von Datensätzen zurück welche anhand der Übergebenen Suchkriterien gefunden wurden.
+%
+\paragraph{\textit{/index}}
+Liefert eine Liste von allen Verfügbaren Datensätzen als JSON-Array zurück.
+%
+\paragraph{\textit{/query}}
+Liefert eine Liste von Datensätzen zurück welche anhand der Übergebenen Suchkriterien gefunden wurden.
 Eine Suchanfrage basiert immer auf einen Ausgangs-Datensatz welcher in der Anfrage übergeben werden muss.
 Für diesem Datensatz werden auf ein Schnittbild Interessante Bereiche (ROIs) definiert.
 Die Übergabe einer ROI erfolgt als Polygon in Form einer Listen von Punkten im Dreidimensionalen Raum des Volumes.
 
-Als Erbebniss liefert KRESHMOI eine Liste von Ergebniss-Datensätzen welches neben der ID, Bild-Dimension und Titel noch den Report zu dem entsprechenden Datensatz enthällt.
-Die Ergebnisse werden entsprechend der Übereinstimmung mit der Textur aus der Suchanfrage nach ihrer Relevanz sortiert in die Liste eingefügt und weiters wird die Relevanz noch als Kommazahl in den Ergebniss-Datensatz aufgenommen.
+Als Antwort auf eine der beiden POST Anfragen liefert KRESHMOI eine Liste von Ergebniss-Datensätzen als JSON-Array. 
+Jeder Ergebniss in der Liste enthält neben der ID mit der auf das Volume zugegriffen werden kann noch Bild-Dimension und Titel und den Report.
+Die Ergebnisse werden entsprechend der Übereinstimmung mit der Textur aus der Suchanfrage nach ihrer Relevanz sortiert. 
+Nach dieser gereiht werden Sie in die Liste eingefügt und weiters wird die Relevanz noch als Kommazahl in den Ergebniss-Datensatz aufgenommen.
 \begin{figure}[t]
 \begin{lstlisting}[
 	language=json,
 	firstnumber=1,
-	caption=Query
+	captionpos=b,
+	caption=Beispiel Query mit einem Dreieck als ROI.,
+	label=lst:query_json
 ]
 {
-   "queryid":"",
+   "queryid":"fcce002f-f0b6-4c1b-b2ab-b3ead07fb0b4",
    "text":"",
-   "imageid":"",
+   "imageid":"9587336b132b127b936ad0afd80ca862",
    "roi": 
    [
       "polygon":
@@ -466,7 +486,9 @@ Die Ergebnisse werden entsprechend der Übereinstimmung mit der Textur aus der S
 \begin{lstlisting}[
 	language=json,
 	firstnumber=1,
-	caption=Result
+	captionpos=b,
+	caption=Beispiel Resultat für eine Suchanfrage mit einem Datensatz als Ergebniss.,
+	label=lst:result_json
 ]
 {
    "rankedImageID": 
@@ -489,29 +511,43 @@ Die Ergebnisse werden entsprechend der Übereinstimmung mit der Textur aus der S
 % ** Laden der Bilder
 %----------------------------------------------
 \subsubsection{Laden der Bilder}
-\label{sec:Laden der Bilder}
+\label{sec:Laden_der_Bilder}
 Die Bilddaten eines Volumes können über eine GET-Operation geladen werden.
-Dabei wird jedes Volume als eine Resource im Unterverzeichnis \textit{/image/} identifiziert.
+Dabei wird jedes Volume als eine Resource im Unterverzeichnis \textit{/image/} identifiziert, 
+welche durch die Angabe von Parametern ein konkretes Schnittbild aus dem Volume liefert (Siehe Listing \ref{lst:query_get_volume} ).
 Über Parameter in der URL werden die Schnittrichtung und und die Nummer des Bildes in der jeweiligen Schnittebene angegeben.
 Wir keine Nummer für das Bild angegeben wählt KRESHMOI eine repräsentatives Bild für die Suchanfrage, welches für die Präsentation der Ergebnisse verwendet wird.
-Für die Schnittebene gibt es entsprechende der Terminologie für die Bildgebung in der Anatomie die Optionen:
+Für die Schnittebene gibt es entsprechende der Terminologie für die Bildgebung in der Anatomie (Siehe Figure \ref{fig:planes_body} ) die Optionen:
 \begin{itemize}
 	\item Axial: Die Schnitte erfolgen Waagrecht in der Transversalebene
 	\item Sagital: Die Schnitte erfolgen Senkrecht in der Sagitalebene
 	\item Coronal: Die Schnitte erfolgen Senkrecht in der Frontalebene 
 \end{itemize}
 Sollen die Regionen welche der Suchanfrage entsprechen in den einzelnen Bildern markiert werden, muss die Query-ID mit übergeben werden um die ursprüngliche Suchanfrage zu identifizieren.
-\\
-\\
+\begin{figure}
+	\centering
+	\includegraphics[width=0.3\linewidth]{img/planes_body.jpg}
+	\caption{Bezeichnung der Schnittachsen in der Radiologie}
+	\label{fig:planes_body}
+\end{figure}
 \begin{figure}[t]
 \begin{lstlisting}[
 	frame=single,
 	basicstyle=\small,
-	caption={Beispiel-Anfrage für eine Schnittbild}
+	captionpos=b,
+	caption={Beispiel-Anfrage für eine Schnittbild},
+	label=lst:query_get_volume
 ]
 image/958736b132b7b936ad0afd80ca86.jpg?slice=1&direction=axial&query=1
 \end{lstlisting}
 \end{figure}
+
+\C{
+In diesem Kapitel wurden die wichtigsten Funktionen der Webapplikation vorgestellt.
+Wir haben gesehen wie diese umgesetzt wurden und welche Technologien und Framework-Lösungen dafür verwendet wurden.
+Weiters wurde eine Teil der KRESHMOI API vorgestellt und wie die Applikation mit KRESHMOI kommuniziert.
+}
+
 
 %TODO: Prüfen ob URL ok
 %TODO: Zitieren von KRESHMOI API

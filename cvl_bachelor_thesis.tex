@@ -29,6 +29,8 @@
 \usepackage{changepage}							% for the titlepage
 \usepackage{a4}											% margin
 
+\usepackage{csquotes}
+
 \usepackage{listings}
 \usepackage{xcolor}
 \colorlet{punct}{red!60!black}
@@ -38,11 +40,12 @@
 
 \lstdefinelanguage{json}{
     numbers=left,
-    numberstyle=\small,
+    numberstyle=\footnotesize,
     stepnumber=1,
     showstringspaces=false,
     breaklines=true,
-    frame=lines,
+    frame=single,
+    basicstyle=\footnotesize,
     literate=
      *{0}{{{\color{numb}0}}}{1}
       {1}{{{\color{numb}1}}}{1}
@@ -104,15 +107,15 @@
 \lstdefinelanguage{JavaScript}{
   sensitive=true,
   keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, for},
-  basicstyle=\color{black}\small,
-  keywordstyle=\color{blue}\small,
+  basicstyle=\color{black}\footnotesize,
+  keywordstyle=\color{blue}\footnotesize,
   ndkeywords={class, export, boolean, throw, implements, import, this},
-  ndkeywordstyle=\color{darkgray}\small,
+  ndkeywordstyle=\color{darkgray}\footnotesize,
   identifierstyle=\color{black},
   comment=[l]{//},
   morecomment=[s]{/*}{*/},
-  commentstyle=\color{purple}\small,
-  stringstyle=\color{red}\small,
+  commentstyle=\color{purple}\footnotesize,
+  stringstyle=\color{red}\footnotesize,
   %morestring=[b]',
   numbers=left,
   numberstyle=\small,
@@ -211,9 +214,9 @@
   morecomment=[l]{//},
   morecomment=[s]{/*}{*/},
   morecomment=[l][keywordstyle4]{\#},
-  keywordstyle=\color{blue}\small,
+  keywordstyle=\color{blue}\footnotesize,
   numbers=left,
-  numberstyle=\small,
+  numberstyle=\footnotesize,
   stepnumber=1,
   showstringspaces=false,
   breaklines=true,
