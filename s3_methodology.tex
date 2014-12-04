@@ -450,8 +450,9 @@ Liefert eine Liste von Datensätzen zurück welche anhand der Übergebenen Suchk
 Eine Suchanfrage basiert immer auf einen Ausgangs-Datensatz welcher in der Anfrage übergeben werden muss.
 Für diesem Datensatz werden auf ein Schnittbild Interessante Bereiche (ROIs) definiert.
 Die Übergabe einer ROI erfolgt als Polygon in Form einer Listen von Punkten im Dreidimensionalen Raum des Volumes.
+Die Struktur der Anfrage wird als Beispiel in Listing \ref{lst:query_json} dargestellt.
 
-Als Antwort auf eine der beiden POST Anfragen liefert KRESHMOI eine Liste von Ergebniss-Datensätzen als JSON-Array. 
+Als Antwort auf eine der beiden POST Anfragen liefert KRESHMOI eine Liste von Ergebniss-Datensätzen als JSON-Array (Siehe Listing \ref{lst:result_json} ). 
 Jeder Ergebniss in der Liste enthält neben der ID mit der auf das Volume zugegriffen werden kann noch Bild-Dimension und Titel und den Report.
 Die Ergebnisse werden entsprechend der Übereinstimmung mit der Textur aus der Suchanfrage nach ihrer Relevanz sortiert. 
 Nach dieser gereiht werden Sie in die Liste eingefügt und weiters wird die Relevanz noch als Kommazahl in den Ergebniss-Datensatz aufgenommen.
