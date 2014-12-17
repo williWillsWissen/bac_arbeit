@@ -9,11 +9,45 @@
 %----------------------------------------------
 % * Geschwindigkeit 
 %----------------------------------------------
-\subsection{Geschwindigkeit}
-\label{sec:Geschwindigkeit}
-%Wie viel wird übertragen
-%Wo geht die zeit hin
-%mem
+\subsection{Performance}
+\label{sec:Performance}
+
+In Absatz \ref{sec:Berehnung_der_Fensterung} wurden zwei Ansätze zur Berechnung der Fensterung vorgestellt,
+welche jeweils auf unterschiedlichen vom Browser zur verfügung gestellten API's basieren.
+%TODO: Introducation
+
+\subsubsection{Messung}
+Um zu evaluieren wie performant ein Verfahren ist,
+wurde über einen bestimmten Zeitraum $T_m$ ermittelt, wie viele Bilder durchschnittlich in der Sekunde berechnet werden können.
+Dieser Wert wird als Framerate bezeichnet und in FPS (Frames per Second) angegeben.
+Die Framerate ist von folgenden Faktoren abhängig:
+\begin{itemize}
+	\item Berechnungs-Verfahren
+	\item Anzahl der Pixel im Bild
+	\item Verwendete Hardware
+	\item Verwendeter Browser
+	\item Aktuelle Auslatung der Maschine
+\end{itemize}
+Die ersten vier Parameter wurden für die verschiedenen Messungen variert, während der letzte eine Störgröße dartstellt welche nur bedingt beeinflusst und nicht absolut konstant gehalten werden kann.
+Bei jeder Messung wurden die durchschnittlichen FPS in Abhängigkeit von der Bildgröße aufgenommen.
+Eine Messung besteht daher aus einer Menge Messpunkten wobei jeder die durchschnittliche Framerate für eine bestimmte Bildgröße angiebt.
+Dabei wurde eine quadratisches Bild verwendet und dessen Kantenlänge zwischen zwei Messpunkten jeweils um einen bestimmte Wert $\Delta_{edge}$ vergrößert.
+Die Pixelanzahl zwischen zwei Messpunkten hat somit ein quadratisches Wachstum wie es auch beim Zoomen von Bildern in der Applikation der Fall ist.
+
+Für die Durchführung der Messung wurde eine eigene Messumgebung entwickelt mit welcher es möglich ist die Implementierung der beiden Verfahren mit unterschliedlichen Parametern zu testen.
+Die Messumgebung besteht aus einem Servlet welches mit Spring MVC implementiert wurde und aus einer Clientseitigen Testumgebung für die Implementierungen der beiden Verfahren.
+Eine Messung wird durch den Aufruf einer Resource auf dem Servlet gestartet und parametriert.
+Das Servlet retourniert darauf hin eine Webseite in welcher die Testumgebung als JavaScript ausgeführt wird.
+Diese versucht auf einem Bild die Fensterung mit einer Ziel-Framerate von 60FPS zu berechnen und misst Abfälle in der Framerate.
+Zur Messung wurde das Tool Stats.JS verwendet und geringfügig modifiziert um die gemessenen Werte auslesen zu können.
+Nach ablauf der Messzeit $T_m$ werden die gemessenen Werte zurück an den Server gesendet welcher diese in eine Datenbank schreibt.
+Der Server antwortet darauf mit einem neuen Messpunkt wobei das Testbild zwischen den Messpunkten jedes mal vergrößert wird bis eine vorher festgelegte maximale Größe ereicht ist.
+
+
+%TODO: Framework
+%TODO: Tests
+%TODO: Results
+%TODO: Interpretation
 
 %----------------------------------------------
 % * Usability
