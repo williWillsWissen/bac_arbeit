@@ -13,8 +13,9 @@
 \label{sec:Performance}
 
 In Absatz \ref{sec:Berehnung_der_Fensterung} wurden zwei Ansätze zur Berechnung der Fensterung vorgestellt,
-welche jeweils auf unterschiedlichen vom Browser zur verfügung gestellten API's basieren.
-%TODO: Introducation
+welche jeweils auf unterschiedlichen vom Browser zur Verfügung gestellten API's basieren.
+In diesem Unterkapitel wird gezeigt wie sich diese beiden Verahren im Bezug auf ihre Performance verhalten.
+Dazu wird ein Testsystem vorgestellt mit dem diese gemessen wurde und weiters die Ergebnisse dieser Messungen präsentiert.
 
 \subsubsection{Messverfahren}
 Um zu evaluieren wie performant ein Verfahren ist,
@@ -158,7 +159,14 @@ Beim Rendern mit WegGl führt die schwächere GPU des Tablets zu der schlechtere
 	\label{fig:stat_hardware_webgl_chrome}
 \end{figure}
 
-\subsubsection{Praktische relevanz der Ergebnisse}
+\subsubsection{Zusammenfassug der Ergebnisse}
+Im letzen unterkapitel wurden Messergebnisse für die Performance in Abhängigkeit von Rendering-Verfahren, Hardware und Browser gezeigt.
+Zusammenfassen läst sich sagen, 
+dass unter der Verwendung von WebGl auf einem aktuellen PC, 
+Bilder bis zu einer Auflösung von 9 MegaPixel problemlos fenstern lassen.
+Auf dem verwendeten Tablet liegt die Grenze bei ca einem MegaPixel.
+Rendern mit Canvas 2D liefert im Vergleich zu WebGl wesentlich schlechtere Performance und lässt sich in der Praxis am Tablet nicht sinvoll verwenden.
+
 
 %----------------------------------------------
 % * Usability
@@ -166,4 +174,4 @@ Beim Rendern mit WegGl führt die schwächere GPU des Tablets zu der schlechtere
 \subsection{Usability}
 \label{sec:Usability}
 Usablility
-%markus fragen
+markus fragen
