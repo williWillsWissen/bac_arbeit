@@ -43,7 +43,7 @@ Diese versucht auf einem Bild die Fensterung mit einer Ziel-Framerate von 60FPS 
 Für die eigentliche Messung wurde das Tool Stats.JS verwendet und geringfügig modifiziert um die gemessenen Werte auslesen zu können.
 Nach ablauf der Messzeit $T_m$ werden die gemessenen Werte zurück an den Server gesendet welcher diese in eine Datenbank schreibt.
 Der Server antwortet darauf mit einem neuen Messpunkt wobei das Testbild zwischen den Messpunkten jedes mal um den Wert $\Delta_{edge}$ vergrößert wird, 
-bis es eine vorher festgelegte maximale Bildgröße ereicht hat.
+bis eine vorher festgelegte maximale Bildgröße ereicht ist.
 
 \subsubsection{Ergebnisse}
 Das im letzen Unterkapitel wurde ein Verfahren zur Ermittlung der Framerate in Abhängigkeit von der Bildgröße vorgestellt, 
