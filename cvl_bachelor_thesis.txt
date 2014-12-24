@@ -1,938 +1,328 @@
-Online Medical Imaging Platform
-Willinger Christin
-
-Computer Vision Lab
-Institute of Computer Aided Automation
-Vienna University of Technology
-September 8, 2014
-
-Supervisor: Robert Sablatnig
-
-Contents
-1 Introduction
-1.1 Motivation . . . . . . . . . . . . . . . . . . . . .
-1.1.1 Interface für Kreshmoi . . . . . . . . . .
-1.1.2 Interaktion mit einer Bildsuchmaschiene
-1.2 Pflichtenheft . . . . . . . . . . . . . . . . . . . .
-1.3 Möglichkeiten zur Umsetzung . . . . . . . . . .
-1.3.1 JavaApplet . . . . . . . . . . . . . . . .
-1.3.2 HTML5 . . . . . . . . . . . . . . . . . .
-1.3.3 Flash . . . . . . . . . . . . . . . . . . . .
-
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-
-1
-1
-1
-1
-2
-2
-2
-2
-3
-
-2 Related Work
-2.1 PACS-Systeme . . . . . . . . . . . . . .
-2.2 DICOM . . . . . . . . . . . . . . . . . .
-2.3 Funktionsumfang von Betrachtungstools
-2.3.1 Zoom und Scroll . . . . . . . . .
-2.3.2 Fensterung und Level . . . . . . .
-2.3.3 Histogram Modifikation . . . . .
-2.3.4 Negativ bilden . . . . . . . . . . .
-2.3.5 Distanz und Flächenmaß . . . . .
-2.3.6 Collagen . . . . . . . . . . . . . .
-2.3.7 Beispiel Osirix . . . . . . . . . . .
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-4
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-5
-5
-5
-5
-6
-6
-6
-7
-7
-7
-7
-7
-8
-9
-9
-9
-9
-9
-9
-9
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-3 Methodology
-3.1 Verwendetet Technologien und Protokolle . . . . . .
-3.1.1 HTTP . . . . . . . . . . . . . . . . . . . . .
-3.1.2 REST . . . . . . . . . . . . . . . . . . . . .
-3.1.3 JSON . . . . . . . . . . . . . . . . . . . . .
-3.1.4 AJAX . . . . . . . . . . . . . . . . . . . . .
-3.1.5 Objectiv J . . . . . . . . . . . . . . . . . . .
-3.1.6 Cappuccino . . . . . . . . . . . . . . . . . .
-3.1.7 WebGL . . . . . . . . . . . . . . . . . . . .
-3.2 Funktionalität und Aufbau der Benutzeroberfläche .
-3.3 Kommunikation mit KRESHMOI . . . . . . . . . .
-3.3.1 Query nach Bildern . . . . . . . . . . . . . .
-3.3.2 Laden der Bilder . . . . . . . . . . . . . . .
-3.4 Architektur und Komponenten . . . . . . . . . . . .
-3.4.1 Domänen Model . . . . . . . . . . . . . . .
-3.4.2 Architektur und Aufteilung in Komponenten
-3.4.3 2DView . . . . . . . . . . . . . . . . . . . .
-3.4.4 Kommunikations Module . . . . . . . . . . .
-3.5 Usability . . . . . . . . . . . . . . . . . . . . . . . .
-3.5.1 Workflow bei der Befundung . . . . . . . . .
-i
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-4 Results
-10
-4.1 Geschwindigkeit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
-4.2 Usability . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
 5 Conclusion
 
-11
-Abstract
+28
 
-ii
+Bibliography
 
-1
+29
+Zusammenfassung
+
+Diese Arbeit behandelt die Entwicklung einer Web-Benutzeroberfläche für eine
+Bildsuchmaschiene zum Durchsuchen von 3D-Daten aus radiologischen bildgebenden
+Verfahren.
+Im Rahmen der Arbeit werden die beiden Betrachtungsprogrammen für radiologische Datensätze OsiriX und Afga Impax DS3000 im Bezug auf Funktionsumfang
+und Bedienung analysiert.
+Es wird der Funktionsumfang des entwickelten Betrachters sowie die Tools zum
+erstellen der Bild-Query und zur Präsentation der Ergebnisse beschrieben. Weiters
+wird erklärt wie die Software mit dem HTML5 Frameworks Cappuccino und Pixi.JS
+umgesetzt wurde und es werden zwei Ansätze zur lokalen Nachbearbeitung der Bilder mit der Canvas 2D API und mit WebGL beschrieben und im Bezug auf ihre
+Performance untersucht.
+Von den beiden Verfahren führte nur das rendering mit WebGL zu einem ausreichend schnellen Ergebniss, welches auch im entwickelten Betrachter implementiert
+wurde.
 
 Introduction
 
-1.1
-1.1.1
+Das Ziel dieser Projektarbeit war die Entwicklung eines webbasierten Frontends für
+eine Suchmaschine, welche das Durchsuchen von radiologischen Bildern aus der Medizin ermöglicht. Die Suchmaschine selbst ist ein Teil des KRESHMOI-Projekts [kre],
+welches sich generell mit der Aufbereitung und dem Durchsuchen von medizinischen
+Informationen beschäftigt. Das System KRESHMOI wird in diesem Kapitel erklärt
+und im Speziellen wird auf die Suche für radiologische Bilder eingegangen. Weiters
+werden die Anforderungen an das Frontend angeführt und auf die Möglichkeiten
+zur Umsetzung mit den am aktuellen Entwicklungsstand verfügbaren Technologien
+diskutiert.
 
-Motivation
-Interface für Kreshmoi
+KRESHMOI
 
-Das Ziel von KHRESMOI ist das Durchsuchen und der Zugang zu medizinischen Informationen für verschiedene Benutzergruppen mit unterschiedlichem medizinischen
-Vorwissen. Die Einteilung der Benutzer erfolgt in 3 Kategorien:
-• Personen ohne speziellen medizinischen Kentnissen
+Das Ziel von KHRESMOI ist das Durchsuchen und der Zugang zu medizinischen
+Informationen für verschiedene Benutzer-Gruppen mit unterschiedlichem medizinischen Vorwissen. Die Einteilung der Benutzer erfolgt in 3 Kategorien:
+• Personen ohne spezielle medizinischen Kenntnissen
 • Ärzte
 • Radiologen
-Dazu verknüpft KHRESMOI Daten aus verschiedenen heterogenen Resourcen wie
-Bildern aus PACS, Bildern und Text aus Publikationen in Journalen oder Daten
-von Webseiten. Da sich die verschiedenen Resoucen qualitativ sehr stark voneinander unterscheiden können wird einen Bewertung ihrer Glaubwürdigkeit durchgeführt
-und dem Benutzer angezeigt.
-Die Suchanfrage kann in textueller Form oder als Bild-Query sowie als Kombination
-von beidem gestellt werden. Ein weiteres wichtiges Feature hiebei ist die multilinguale Suche, da die Menge an verfügbaren medizinischen Informationen nicht in alle
-Sprachen gleich ist. Dies bedeutet dass die Suchanfrage in mehrere Sprachen übersetzt wird und somit auch anderssprachige Quellen durchsucht werden können. Die
-Zusammenfassungen der Suchergebnisse werden anschließend in die Anfragesprache
-rückübersetzt wodurch der Benutzer schnell duch die Ergebnissliste navigieren kann.
-[?]
-
-1.1.2
-
-Interaktion mit einer Bildsuchmaschiene
-
-Ein Teilprojekt von KHRESHMOI ist das Druchsuchen von medizinischen Bilddaten
-wobei diese in 2D, 3D oder 4D (Video) vorliegen können. Um eine Suchanfrage auf
-ein Bild stellen zu können müssen an einem Referenz-Bild Bereiche eingezeichnet
-werden welche dann die Anfrage formen. Aus der Textur eines markierten Bereiches
-wird ein Feature-Vektor extrahiert mit dem anschließend eine Datenbank von zuvor
-indizierten Bildern durchsucht wird.
-Ein Frontend einer Bildsuchmaschiene muss daher sowohl Tools zum markieren von
-interessanten Bereichen, als auch die Funktionalität zur verfnünftigen Berachtung
-der Bilder bereitstellen. [?]
-Diese Arbeit spezialisiert sich auf das Durchsuchen von radioloischen Aufnahmen in
-2D und 3D welche in einem PACS (Picture Archiving and Communication Systems)
-abgelegt sind. Da in einem Krankenhaus täglich große Mengen an Daten durch
-radionlogische Aufnahmen produziert werden, bietet eine effizientes Durchsuchen
-dieser die möglichkeit Sie für Ausbildung und Forschug wieder zu verwenden.
-Dazu muss das User-Interface die grundliegenden Funktionen eines BetrachtungsTools für Röngten- und Computertomographie-Aufnahmen zur verfüfung Stellen:
-• Zoom
-• Schnelles anpassen von Kontrast und Helligkeit
+Dazu verknüpft KHRESMOI Daten aus verschiedenen heterogenen Ressourcen wie
+Bilder aus Radiologie-Archiven, Bildern und Text aus Publikationen in Journalen
+oder Daten von medizinisch relevanten Webseiten. Da sich die verschiedenen Resourcen qualitativ sehr stark voneinander unterscheiden können, wird ein Bewertung
+ihrer Glaubwürdigkeit durchgeführt und dem Benutzer angezeigt. Die Suchanfrage
+kann in textueller Form oder als Bild-Query sowie als Kombination von beidem
+gestellt werden. Ein weiteres wichtiges Feature hierbei ist die multilinguale Suche,
+da die Menge an verfügbaren medizinischen Informationen nicht in allen Sprachen
+gleich ist. Dies bedeutet dass die Suchanfrage in mehrere Sprachen übersetzt wird
+und somit auch anderssprachige Quellen durchsucht werden können. Die Zusammenfassungen der Suchergebnisse werden anschließend in die Anfragesprache rückübersetzt, wodurch der Benutzer schnell durch die Ergebnissliste navigieren kann
+[kre].
+Ein Teilprojekt von KHRESHMOI ist das Durchsuchen von medizinischen Bilddaten wobei diese in 2D oder 3D vorliegen können. Um eine Suchanfrage auf ein Bild
+stellen zu können, müssen an einem Ausgangsbild eine oder mehrere sogenannte "Region(s) Of Interest"(ROI) eingezeichnet werden, welche dann die Anfrage formen.
+Aus der Textur eines markierten Bereiches wird ein Feature-Vektor extrahiert mit
+dem anschließend eine Datenbank von zuvor indizierten Bildern durchsucht wird.
+Ein Frontend einer Bildsuchmaschiene muss daher sowohl Tools zum Markieren von
+interessanten Bereichen, als auch die Funktionalität zur vernünftigen Betrachtung
+der Bilder bereitstellen [kre].
+Diese Arbeit spezialisiert sich auf die Interaktion mit dem Teilsystem für das
+Durchsuchen von radiologischen Aufnahmen in 2D und 3D, welche in einem PACS
+(Picture Archiving and Communication Systems) abgelegt sind. Da in einem Krankenhaus täglich große Mengen an Daten durch radiologische Aufnahmen produziert
 
 1
 
-• Navigation durch die Schnitte eins 3D-Körpers in einer Schnittachse
+Abbildung 1: Javabasierte Radiologie-Version des KRESHMOI Interfaces
+werden, bietet eine effizientes Durchsuchen dieser, die Möglichkeit sie für Ausbildung
+und Forschung wieder zu verwenden. Dazu muss das User-Interface die grundlegenden Funktionen eines Betrachtungstools für Röntgen- und ComputertomographieAufnahmen zur Verfügung stellen:
+• Zoom
+• Schnelles Anpassen von Kontrast und Helligkeit
+• Navigation durch die Schnitte eines 3D-Körpers (Volume) in einer Schnittachse
+[Hua10]
+
+Java basiertes Interface
+
+Paralell zur Applikation in dieser Projektarbeit wurde im Rahmen des KHRESMOIProjektes auch ein auf Java basierendes Interface System entwickelt, welches eine
+Schnittstelle zum vollständigen Funktionsumfang von KRESHMOI bietet. Bei diesem System gibt es verschiedene Versionen für Desktop, Browser, Mobile und eine
+spezielle Radiologie-Version (Siehe Figure 1), welche nur als Java Anwendung vorliegt. Diese verfügt ebenfalls über Tools zur Betrachtung und Interaktion mit den
+Volumes und zum Erstellen von Bild-Suchanfragen. Weiters bietet es Tools zum
+Durchsuchen von Fällen in einem Krankenhaus und weitere Features wie persönliche Bibliothek und kollaborative Tools. Im Gegensatz zur Java basierten RadiologieVersion liegt das Augenmerk bei dieser Anwendung auf einen möglichst einfachen
+Zugriff und auf einer einfachen Verwendung durch den Browser.
 
 1.2
 
 Pflichtenheft
 
 • Kommunikation mit KRESHMOI über HTTP Anfragen. Dies beinhaltet das
-Senden von Suchanfragen, auswerten der Ergebnisse und laden der zugehörigen
-Bilder.
-• Betrachen von CT Volumes. Navigation durch die einzelnen Schnitte eines
+Senden von Suchanfragen, Auswerten der Ergebnisse und Laden der zugehöri-
+
+2
+
+gen Bilder.
+• Betrachten von CT Volumes. Navigation durch die einzelnen Schnitte eines
 Volumes entlang einer auswählbaren Achse.
-• Schnelles anpassen von Kontrast und Helligkeit bei den einzelnen Schnittbildern
-mit der Maus (Fensterung).
-• Zoomen und Scrollen des Bildausschnittes in einem Bild oder Volume.
-• Tools zum Anotieren von Bereichen innerhalb der Bildern welche zur Interaktion mit der Bildsuche dienen.
+• Schnelles Anpassen von Kontrast und Helligkeit bei den einzelnen Schnittbildern mit der Maus (Fensterung).
+• Zoomen und Scrollen des Bildausschnitts in einem Bild oder Volume.
+• Tools zum Anotieren von Bereichen innerhalb der Bildern, welche zur Interaktion mit der Bildsuche dienen.
 • Präsentation der Suchergebnisse.
-• Anzeige der den Bildern oder Volumes zugehörigen Reports.
-• Ansicht zum vergleichen von verschiedenen Ergebnissen.
-• Modulare Komposition der verschidenen Ansichten.
+• Anzeige des den Bildern oder Volumes zugehörigen Reports.
+• Ansicht zum Vergleichen von verschiedenen Ergebnissen.
+• Modulare Komposition der verschiedenen Ansichten.
 • Umsetzung der Applikation im Webbrowser.
 
 1.3
 
 Möglichkeiten zur Umsetzung
 
-Aufgrund der Anforderung dass, das Programm in einem Webbrowser ausgeführter
+Aufgrund der Anforderung, dass das Programm in einem Webbrowser ausgeführt
 werden soll, stehen derzeit drei Technologien zur Verfügung um die Anwendung
-umzusetzen. Diese werden in den folgende Absätzen kurz angeführt und ihre Vorund Nachteile im Bezug auf das Plichtenheft untersucht.
+umzusetzen. Diese werden in den folgende Absätzen kurz angeführt und ihre Vorund Nachteile im Bezug auf das Pflichtenheft untersucht. Dabei spielt neben der
+Portabilität der Software, die Performance bei der Verarbeitung der Bilder eine große
+Rolle, da sowohl das Fenstern als auch das Navigieren durch die einzelnen Bilder einer
+3D Aufnahme flüssig funktionieren müssen.
 
 1.3.1
 
 JavaApplet
 
-Bei einem Java Applet wird ein Java Programm in eine Webseite eingebunden und
-vom dem Browser des Clients geladen. Der Browser übergibt das Applet dem Java
-Interpreter wofür aber ein spezieller Plugin notwendig ist.
-Der große Vorteil dieses Ansatzes ist dass die Anwendung sehr performant ist. Dies
-ergibt aus den beiden Punkten dass Java Code compiliert wird und dass es möglicht
-ist die Grafikhardware des Clients zum bearbeiten der Bilder zu verwenden, welche
-für diese Aufgabe besser geeignet ist als die CPU.
-Dafür müssen die notwendigen Plugins sowie ein aktueller Java Interpreter auf dem
-Client installiert sein, was bei manchen Betriebssystemen für Mobiledevices gar nicht
-möglich ist. [?]
+Bei einem Java Applet [Ora] wird ein Java Programm in eine Webseite eingebunden
+und vom Browser des Clients geladen. Der Browser übergibt das Applet dem Java
+Interpreter wofür aber ein spezielles Plugin notwendig ist. Der große Vorteil dieses
+Ansatzes ist, dass die Anwendung sehr performant ist. Dies ergibt aus den beiden
+Punkten dass Java Code compiliert wird und dass es möglichst ist, die Grafikhardware des Clients zum Bearbeiten der Bilder zu verwenden, welche für diese Aufgabe
+besser geeignet ist als die CPU. Dafür müssen die notwendigen Plugins sowie ein aktueller Java Interpreter auf dem Client installiert sein, was bei manchen Betriebssystemen für Mobilgeräte wie Tablets gar nicht möglich ist [Ora]. Als weiterer Nachteil
+gilt, dass JavaApplets ein nicht zu vernachlässigendes Sicherheitsrisiko darstellen, obwohl prinzipiell nicht zertifizierte Applets durch eine Sandbox vom restlichen System
+isoliert werden. Diese entstehen unter anderem durch Schwachstellen in der Sandbox,
+durch mangelnde Überprüfung der Zertifikate, zu schwache Sicherheitseinstellungen
+und durch Täuschung der Benutzer mit Testzertifikaten [CS, fSidI].
 
 1.3.2
 
 HTML5
 
-Bei deisem Ansatz wird die Anwendung in HTML, CSS und JavaScript oder einem
-Framework welches auf diesen Technologien aufsetzt entwickelt.
-Da diese Technologien von fast allen neuen Browsern unterstütz werden kann damit
+Bei diesem Ansatz wird die Anwendung in HTML, CSS und JavaScript oder einem
+Framework, welches auf diesen Technologien aufsetzt entwickelt. Die Entwicklung des
 
-2
+3
 
-ein sehr hoher Grad an Portabilität erreicht werden. Weiters sind Webapplikationen
-für den Benutzer sehr einfach zu verwenden da anstatt einer Installation um die
-Anwendung nutzen zu können nur eine Webseite geöffnet werden muss. [?]
-HTML5 unterstüzt Canvas Elemente für 2D Bilder jedoch ist eine Verarbeitung der
-Bilder durch die Grafikhardware nur begrenzt möglich. Für die Verwendung der
-Grafikarte durch den Browser gibt es die Schnittstelle WebGL welche auf OpenGL
-ES aufbaut. Diese wurde aber noch nicht in allen gängigen Browsern implementiert
-bzw ist in einigen nocht nicht stabil und muss extra aktiviert werden. [?]
+Programmcodes erfolgt bei Webapplikationen in JavaScript oder in Code für einen
+Interpreter, welche in der JavaScript Laufzeitumgebung ausgeführt wird. Da diese
+Technologien von fast allen neuen Browsern für Desktop und Mobilgeräte unterstützt
+werden, kann damit ein sehr hoher Grad an Portabilität erreicht werden. Weiters
+sind Webapplikationen für den Benutzer sehr einfach zu verwenden da anstatt einer
+Installation um die Anwendung nutzen zu können, nur eine Webseite geöffnet werden
+muss [W3C14].
+HTML5 [W3C14] unterstützt Canvas Elemente für 2D Bilder, jedoch ist eine
+Verarbeitung der Bilder durch die Grafikhardware nur begrenzt möglich. Für die
+Verwendung der Grafikkarte durch den Browser gibt es die Schnittstelle WebGL
+[Gro14b] welche auf OpenGL ES [Gro14a] aufbaut. Diese wurde aber noch nicht
+in allen gängigen Browsern implementiert oder ist in einigen noch nicht stabil und
+muss extra aktiviert werden [Gro14b].
 
 1.3.3
 
 Flash
 
-Flash Anwendungen sind Programme in einem properitären Format deren Lizenz
-mitlerweile Adobe gehört. Diese werden von einem Interpreter dem Flash-Player
-ausgeführt, welcher es über einen Browserplugin ermöglich Flashcode in Webseiten
-einzubinden und mit der Webseite zu interagieren.
-Die Erstellung von Anwendung erfolgt in Entwicklungsumgebung Flash wobei Code
-in der Objektorientieren Sprache Aktion-Script erstellt werden kann. Flash bietet
-eine Umfangreiche Grafik-API mit Unterstützung von Beschleunigung durch die
-Grafikkarte über OpenGL oder DirectX.
-Die Darstellung von Flash-Inhalten im Browser setzt den Flash-Player-Plugin voraus. Da es sich um ein properitäres Format handelt ist der Support und die Weiterentwickung nicht Sichergestellt.[?]
+Flash Anwendungen sind Programme in einem proprietären Format, dass der Firma
+Adobe gehört. Diese werden von einem Interpreter (dem Flash-Player) ausgeführt,
+welcher es über einen Browserplugin ermöglicht, Flashcode in Webseiten einzubinden und mit der Webseite zu interagieren. Die Erstellung von Anwendung erfolgt
+in der Entwicklungsumgebung Flash, wobei Code in der objektorientierten Sprache
+Aktion-Script erstellt werden kann. Flash bietet eine umfangreiche Grafik-API mit
+Unterstützung von Beschleunigung durch die Grafikkarte über OpenGL oder DirectX. Die Darstellung von Flash-Inhalten im Browser setzt das Flash-Player-Plugin
+voraus. Da es sich um ein proprietäres Format handelt, ist der Support und die
+Weiterentwicklung nicht sichergestellt [Sys14].
 
-3
+4
 
 2
 
 Related Work
 
-Software für die Bildsuche in radiologischen Daten gibt es bis jetzt noch nicht, allerdings decken sich die Anforderungen großteils mit Betrachtungstools für 2D und 3D
-Daten aus der Radiologie und Nuklearmedizin. Solche Softwareprodukte finden sich
-in den Betrachtungs-Workstations von PACS-System in Krankenhäusern oder als
-Betrachtungstools für Datensätze des offenen Standards DICOM.
-Die beiden Konzepte PACS und DICOM werden im folgenden Kapitel kurz erklärt,
-sowie die Umsetzung der benötigten Funktionalität in zwei konkreten Softwareproduken diskutiert.
+Software für die Bildsuche in radiologischen Daten gibt es bis jetzt noch nicht, allerdings decken sich die Anforderungen großteils mit Betrachtungstools für 2D und
+3D Daten aus der Radiologie und Nuklearmedizin. Solche Softwareprodukte finden sich in den Betrachtungs-Workstations von PACS-Systemen in Krankenhäusern
+oder als Betrachtungstools für Datensätze des offenen Standards DICOM. Die beiden Konzepte PACS und DICOM werden im folgenden Kapitel kurz erklärt, sowie
+die Umsetzung der benötigten Funktionalität in zwei konkreten Softwareprodukten
+diskutiert.
 
 2.1
 
 PACS-Systeme
 
-Ein PACS-System (Picture Archiving and Communication System) dient zum Speichern und Austausch von medizinischen Bilddaten. Obwohl es prinzipel für alle
-bildgebenden Verfahren verwendet werden kann wird es vorwiegend für Daten aus
-der Radiologie und Nuklearmedizien genutzt.
-Das Systems setzt sich aus dem PACS Server und den Workstations zusammen.
-Der Server sammelt Daten von den bildgebenden Geräten, verknüpft Sie mit Daten
-aus einem Krankenhaus Informations System (KIS) oder Radiologie Informations
-System (RIS) und sorgt für ihre Archivierung in einem Kurz oder Langzeitarchiv.
-Die Kommunikation mit den bildgebenden Geräten erfolgt meist durch ein Protokoll
-welches den DICOM Standard implementetiert.
-Die Befundung erfolgt auf den PACS Workstations welche die Daten vom Server
-laden und anzeigen. Die Workstation stellte die Funktionalität zur Betrachtung und
-zum Nachbearbeiten der Bilder zur verfügung. Änderungen der Daten werden von
-der Workstation zurück auf den Server geladen. Je nach Funktionsumfang stehen
-auch Tools zur Befundung zur verfügung welche die Daten and das RIS oder KIS
-weiter geben.
+Ein PACS-System (Picture Archiving and Communication System) dient zum Speichern und Austausch von medizinischen Bilddaten. Obwohl es prinzipiell für alle
+bildgebenden Verfahren verwendet werden kann, wird es vorwiegend für Daten aus
+der Radiologie und Nuklearmedizin genutzt. Das Systems setzt sich aus dem PACS
+Server und den Workstations zusammen. Der Server sammelt Daten von den bildgebenden Geräten, verknüpft Sie mit Daten aus einem Krankenhaus Informations
+System (KIS) oder Radiologie Informations System (RIS) und sorgt für ihre Archivierung in einem Kurz- oder Langzeitarchiv. Die Kommunikation mit den bildgebenden Geräten erfolgt meist durch ein Protokoll, welches den DICOM Standard
+implementiert. Die Befundung erfolgt auf den PACS Workstations welche die Daten vom Server laden und anzeigen. Die Workstation stellte die Funktionalität zur
+Betrachtung und zum Nachbearbeiten der Bilder zur Verfügung. Änderungen der
+Daten werden von der Workstation zurück auf den Server geladen. Je nach Funktionsumfang stehen auch Tools zur Befundung zur Verfügung welche die Daten an
+das RIS oder KIS weiter geben [Hua10].
 
 2.2
 
 DICOM
 
-DICOM steht für Digital Imaging and Communication in Medicine und ist ein offener
-Standart welcher die Übertragung und das Speichern von medizinische Bildinformation spezifiziert.
+DICOM steht für Digital Imaging and Communication in Medicine und ist ein offener Standard, welcher die Übertragung und das Speichern von medizinischer Bildinformation spezifiziert. Die wesentlichen Teile der Spezifikation sind die Datenstruktur für die Bilddaten und zugehörige Informationen wie Patientendaten oder Daten
+über das Aufnahmegerät, Services welche auf diesen Daten operieren, Anforderung
+an DICOM konforme Hard- und Software-Produkte und das Ablegen der Informationen auf einem Datenträger. Das Datenmodell setzt sich in Anlehnung an die reale
+Welt grundlegend aus den Entitäten Patient, Studie, Serie und Image zusammen
+zwischen denen jeweils eine 1:n oder 0:n Beziehung besteht. Es bietet weiters ausreichend Möglichkeiten zur Erweiterung durch einen Definitionsmechnanissmus für
+alle DICOM Objekte die sogenannte Image Object Defintion [Hua10].
 
-4
+2.3
 
-2.3
+Osirix
 
-Funktionsumfang von Betrachtungstools
-
-2.3.1
-
-Zoom und Scroll
-
-2.3.2
-
-Fensterung und Level
-
-2.3.3
-
-Histogram Modifikation
-
-2.3.4
-
-Negativ bilden
-
-2.3.5
-
-Distanz und Flächenmaß
-
-2.3.6
-
-Collagen
-
-2.3.7
-
-Beispiel Osirix
+OsiriX ist eine Software zur Betrachtung und Nachbearbeitung von DICOM Bilddaten. Sie wird als freie Open-Source-Software unter der GPL für das Betriebssystem
 
 5
+
+Abbildung 2: Datenbankansicht von OsiriX.
+Mac OS X entwickelt. OsiriX ist nur für die Forschung und den privaten Gebrauch
+zugelassen, für einen diagnostischen Einsatz in der Medizin steht die kostenpflichtige Version OsiriX MD zur Verfügung. Das Programm führt eine Datenbank von
+DICOM Datensätzen, welche von DICOM-Dateien importiert bzw. auch wieder als
+solche exportiert werden können. Weiters können über das DICOM-Protokoll die
+Daten auch von einem PACS-Server geladen werden [Ros14].
+Von der Navigationsstruktur unterteilt sich OsiriX in eine Datenbankebene (Siehe
+Figure 2) und in eine Betrachtungsebene, welche jeweils durch verschiedene Fenster
+umgesetzt wurden. Der Vollständigkeit halber sei erwähnt, dass es auch eine Ebene
+für 3D Rendering der Volumes gibt welche aber für diese Arbeit nicht relevant ist. In
+der Datenbankebene können die Datensätze importiert, exportiert und durchsucht
+werden, wobei jede Studie für einen Patienten einen Eintrag in der Liste darstellt.
+Weiters stehen Unterlisten zum Anzeigen der Serien einer Studie zur Verfügung. Unter der Listenansicht werden die ausgewählten Einträge als Thumbnails und in einem
+minimalen 2D Betrachter, welche die wichtigsten Funktionen der Betrachtungsebene
+implementiert, zur Vorschau dargestellt. In der Betrachtungsebene (Siehe Figure 3
+und 4) finden sich die eigentlichen Funktionen und Tools, welche für die Interaktion
+mit den Bildern notwendig sind. Dafür bietet OsiriX eine große Funktionspalette,
+wobei hier nur auf die Kernfunktionalität eingegangen wird [Ros14].
+Funktionsumfang
+Die Steuerung der Tools zur Interaktion mit dem Volume erfolgt mit der Maus, welcher die spezifischen Funktionen zugewiesen werden können. Die jeweils zugewiesene
+Funktion wird durch das Drücken der Maustaste aktiv.
+• Bei der Fensterung wird mit der X-Achse die Fensterbreite (Kontrast) und
+mit der Y-Achse das Fensterzentrum (Helligkeit) angepasst.
+• Positionierung des Bildes innerhalb der Anzeigefläche. Geht das Bild über
+die Anzeigefläche hinausm, wird dies durch einen farbige Linie an der jeweiligen
+Kante signalisiert.
+
+6
+
+Abbildung 3: Toolbar für die 2D Batrachtungsebene.
+
+Abbildung 4: Darstellung eines Volumes aus zwei verschiedenen Orientierungen. Die
+Schnittposition des linken Bildes wird im rechten als grüne Linie dargestellt.
+• Zoom durch das Verschieben der Maus entlang einer Achse.
+• Rotation um das Bildzentrum durch das Verschieben der Maus entlang der
+X-Achse.
+• Navigation durch das Volume. Die Achse in der die Maus nach einem Klick
+zuerst verschoben wird, wird für die Navigation gewählt, die andere bleibt
+inaktiv.
+• Einzeichnen von ROIs. Hierbei werden Punkte, Linien, Polygone, Winkel und
+noch weitere Geometrien unterstützt. Sind in dem Datensatz die notwendigen
+Informationen vorhanden erfolgt eine automatische Vermessung der ROIs.
+Weiters können mehrere Betrachtungs-Fenster nebeneinander angeordnet werden,
+wobei sich diese zur Darstellung unterschiedlicher Serien bzw. Orientierungen eines Datensatzes nutzen lassen. Die Orientierung gibt an, entlang welcher Achse die
+Bilder eines Volumes geschnitten werden. Wird in verschiedenen Fenstern eine unterschiedliche Orientierung gewählt, so wird beim Navigieren durch das Volume in
+einem Fenster, die Position der Schnittebene in den anderen als farbige Linie angezeigt [Ros14].
+
+2.4
+
+PACS Workstation - AFGA Impax DS3000
+
+Als Beispiel für ein in der radiologischen Praxis (am Allgememeinen Krankenhaus
+Wien AKH) verwendetes state of the art PACS wurde das AFGA Impax DS3000
+zum Vergleich herangezogen. Die Impax DS3000 Radiologie Diagnosestation ist eine
+
+7
+
+Abbildung 5: Datenebene zum Durchsuchen der PACS-Server und Erstellen von Arbeitslisten
+Client-Software für ein PACS System. Der Aufbau der Software ist ähnlich wie bei
+OSIRIX 2.3 in eine Ebene zum Durchsuchen der Datensätze (Siehe Figure 5) und
+eine Betrachtungsebene (Siehe Figure 6) unterteilt. Die Ebene für die Datensätze
+bietet Funktionen zum Durchsuchen von PACS Archiven anhand verschiedener Parameter wie Name, Patientenkennung oder Geburtsdatum. Weiters können in dieser
+Ebene Arbeitslisten erstellt werden, in der sich die RadiologIn die Fälle für die Befundung zusammenstellen kann. Es gibt auch Tools zum automatischen Erstellen
+von Arbeitslisten anhand von Suchkriterien wie zum Beispiel aller CT-Aufnahmen
+des heutigen Tages. Die Betrachtungsebene bietet mit den Tools für Fensterung, Positionierung, Zoom, Navigation im Volume und dem Einzeichnen von ROIs dieselbe
+Kernfunktionalität wie Osirix. Auch bei Impax DS3000 werden diese Funktionen mit
+der Maus kontrolliert, deren Auswahl über ein Kontextmenu erfolgt, welches mit der
+rechten Maustaste aktiviert wird. Auch hier ist eine Aufteilung des Bildschirmes
+möglich, um Bilder aus einer Serie oder aus verschiedenen Serien miteinander zu
+vergleichen.
+
+2.5
+
+Vergleich der Betrachtungstools
+
+Die Funktionen zur Interaktion mit den Bilddaten sind bei den beiden erwähnten
+Software-Produkten sehr ähnlich und von der Bedienung bis auf kleine Unterschiede
+gleich umgesetzt. So zeigt OsiriX beispielsweise an wenn das Bild über das Betrachtungsfenster hinaus geht. Osirix hat einige Features wie 3D-Rendering, welche zwar
+
+8
+
+Abbildung 6: Betrachtungsebene zum Anzeigen der Series
+für die Forschung interessant sind, für die medizinische Befundung aber keine größere
+Rolle spielen. Funktionen zum Durchsuchen der Datensätze anhand einer Bild-Query
+weisen beide Produkte nicht auf.
+
+9
 
 3
 
 Methodology
 
+In diesem Kapitel wird die Umsetzung des Web-Frontends für KRESHMOI beschrieben. Zuerst werden die wichtigsten Framworks und Technologien vorgestellt welche
+die technischen Grundlagen der Anwendung bilden. Weiters werden alle wichtigen
+funktionalen Anforderungen der Anwendung aufgezeigt und grundlegend auf die
+Bedienung der Applikation eingegangen. Wie die funktionalen Anforderungen umgesetzt wurden wird im darauf folgenden Unterkapitel beschrieben. Hier werden
+Lösungen für die technische Umsetzung der Fensterung sowie für die nicht funktionale Anforderung einer modularen Applikation präsentiert. Zum Schluss wird noch
+die API für KRESHMOI selbst vorgestellt welche die Anwendung für den Datenaustausch mit den System nutzt.
+
 3.1
-3.1.1
 
 Verwendetet Technologien und Protokolle
+
+Bevor auf die eigentliche Umsetzung eingegangen wird werden die verwendeten Frameworks und Technologien dargestellt. Ein Teil davon, wie HTTP und REST, wurden bereits durch das Interface für KRESHMOI festgelegt, ein weiterer ergab sich
+durch die Anforderung einer Web-Applikation. Die Frameworks und Technologien
+für Grafik und GUI wurden gewählt weil mit ihnen eine schnelle Umsetzung der
+Anforderungen möglich war.
+
+3.1.1
+
 HTTP
 
-HTTP (Hyper Text Transfer Protokoll) ist ein Protokoll zur übertragung von Daten
-über ein Netzwerk welches auf TCP aufsetzt. Der Datenaustausch zwischen zwei
-Kommunikationspartner findet in der From von Nachrichten statt, wobei der Client
-eine Anfrage an einen Server stellt und dieser die Anfrage bearbeitet und eine
-Antwort retuniert.
-Eine Nachricht setzt sich aus einem Header und einen Body zusammen. Der Body
-enthält die Nutzdaten und der Header enthält Metadaten über die Nutzdaten. Vom
-Aufbau der Nachricht unterscheiden sich Anfrage und Antwort nur in der ersten
-Zeile:
+HTTP (Hyper Text Transfer Protokoll) ist ein Protokoll zur Übertragung von Daten über ein Netzwerk welches auf TCP aufsetzt. Der Datenaustausch zwischen zwei
+Kommunikationspartnern findet in der Form von Nachrichten statt, wobei der Client eine Anfrage an einen Server stellt und dieser die Anfrage bearbeitet und eine
+Antwort returniert. Eine Nachricht setzt sich aus einem Header und einen Body zusammen. Der Body enthält die Nutzdaten und der Header enthält Metadaten über
+die Nutzdaten. Vom Aufbau der Nachricht unterscheiden sich Anfrage und Antwort
+nur in der ersten Zeile:
 • Anfrage: Enthält die HTTP-Methode, die URL welche auf die Resource am
 Server zeigt und die Protokollversion.
 • Antwort: Enthält die Protokollversion und den Serverstatus. Der Serverstatus
@@ -940,255 +330,377 @@ liefert eine Aussage ob der Request erfolgreich bearbeitet wurde bzw welche
 Art von Fehler bei der Bearbeitung aufgetreten ist.
 HTTP ist ein zustandsloses Protokoll, daher wird nach jeder Anfrage die Verbindung
 vom Server wieder abgebaut. Für eine Zuordnung eines Clients muss dieser eine
-Session-ID mitsenden welche normalerweise im Header enthalten ist.
+Session-ID mitsenden welche normalerweise im Header enthalten ist [Gro99].
 
 3.1.2
 
 REST
 
-REST ist im eigentlichen Sin mehr ein Architekturstiel als ein Protokoll welcher
-mit HTTP umgesetzt wird. Die Idee von REST ist dass eine URL genau eine Resource auf einem Server addressiert, wobei eine Resource eine statische Datei oder
-das ergebniss einer aktion auf dem Server sein kann.
-Der Architekturstiel ist lässt sich durch fünf Prizipien zusammenfassen:
-Resource mit eindeutiger Identifikation:
-Jede Resrouce wird durch eine URI (Uniform Resouce Identifier) weltweit eindeutig
-identifiziert. Diese addressiert unter anderem den Server auf den sich die resource
-befindet sowie Resource auf dem Server selbst.
-Hypermedia
-Verknüfungen zu anderen Entitäten und werden als Links auf die jeweiligen Resourcen dargestellt. Weiters kann die Steuertung des Applikationszustandes durch
-Links auf weiter Aktionen durch Hypermedia umgesetzt werden.
-Standard-Opperationen
-Es gibt ein definiertes Interface welches von jeder Resource zur verfügung gestellt
-werden muss. Dieses umfasst einen relativ kleinen Satz von Opperationen welche
-auf die Resource ausgeführt werden können.
+REST ist im eigentlichen Sinn mehr ein Architekturstil als ein Protokoll welcher mit
+HTTP umgesetzt wird. Die Idee von REST ist, dass eine URL genau eine Ressource
 
-6
+10
 
-Unterschiedliche repräsentation der Resourcen
-Die Resourcen können unterschiedliche Darstellungsformen haben. Ein Client kann
-also eine Resource in einem bestimmten Format (z.B.: XML, HTML, JSON) anfordern sofern diese Darstellung vom Server unterstüzt wird. In HTTP wird die
-gewünschte Dartstellung im Header angegeben.
-Zustandslose Kommunikation
-Der Server hällt keine Zustandsinformationen über den Client welcher über die Dauer
-eines Requests hinaus geht. Daher muss der Zustand einer Anwendung entweder am
-Client liegen oder vom Server in eine Resource umgewandelt werden.
+auf einem Server adressiert, wobei eine Ressource eine statische Datei oder das Ergebnis einer Aktion auf dem Server sein kann. Dieser Architekturstil lässt sich durch
+fünf Prinzipiell zusammenfassen:
+• Ressource mit eindeutiger Identifikation: Jede Ressource wird durch eine
+URI (Uniform Resouce Identifier) weltweit eindeutig identifiziert. Diese adressiert unter anderem den Server auf den sich die Ressource befindet sowie Ressource auf dem Server selbst.
+• Hypermedia: Verknüpfungen zu anderen Entitäten werden als Links auf die
+jeweiligen Ressourcen dargestellt. Weiters kann die Steuerung des Applikationszustandes durch Links auf weiter Aktionen durch Hypermedia umgesetzt
+werden.
+• Standard-Opperationen: Es gibt ein definiertes Interface welches von jeder Ressource zur Verfügung gestellt werden muss. Dieses umfasst einen relativ kleinen Satz von Operationen welche auf die Ressource ausgeführt werden
+können.
+• Unterschiedliche Repräsentation der Resourcen: Die Ressourcen können
+unterschiedliche Darstellungsformen haben. Ein Client kann also eine Ressource
+in einem bestimmten Format (z.B.: XML, HTML, JSON) anfordern, sofern
+diese Darstellung vom Server für die jeweilige Ressource unterstützt wird. In
+HTTP wird die gewünschte Darstellung im Header angegeben.
+• Zustandslose Kommunikation Der Server hält keine Zustandsinformationen über den Client welche über die Dauer eines Requests hinaus gehen. Daher
+muss der Zustand einer Anwendung entweder am Client liegen oder vom Server
+in eine Ressource umgewandelt werden [Til09].
 
 3.1.3
 
 JSON
 
 Bei JSON (JavaScript Object Notation) handelt es sich um ein Datenformat zum
-Autausch von Arrays und Objekt-Graphen. JSON findet neben XML vorallem in
+Austausch von Arrays und Objekt-Graphen. JSON findet neben XML vor allem in
 der Kommunikation zwischen Client und Server bei Webanwendungen Verwendung,
-wobei JSON Daten wesentlich kompakter und damit Resourcensparender sind. Wie
-bei XML werden Listen und Objekte in einer von Menschen lesbaren Form darestellt.
-Dabei werden folgende Datentypen unterstützt welche wiederum beliebig tief ineinander Verschachtelt werden können: NULL, Boolean, Zahl, String, Array und
-Objekt.
+wobei JSON Daten wesentlich kompakter und damit ressourcensparender sind. Wie
+bei XML werden Listen und Objekte in einer von Menschen lesbaren Form darstellt.
+Dabei werden folgende Datentypen unterstützt, welche wiederum beliebig tief ineinander verschachtelt werden können: NULL, Boolean, Zahl, String, Array und Objekt
+[Gam06].
 
 3.1.4
 
 AJAX
 
-AJAX (Asynchronous JavaScript and XML) ermöglicht es einer Webanwendung
-kleinere Mengen von Daten nachzuladen und damit Teile der Webseite dynamisch
-zu ändern, statt bei jeder Aktion die Webseite neu zu laden.
-Benötigt die Web Appliketion Daten vom Server wird an diesem eine HTTP Anfrage
-gesendet und Callback-Funktionen für den Fall einer Antwort oder eines Fehlers beim
-Browser registriert. Erhällt der Browser eine Antwort auf sine Anfrage ruft er die
-Callback-Funktion auf und übergibt die erhalten Daten wodurch die Webanwendung
-mit der Verarbeitung dieser fortfahren kann.
-Dies ermöglicht die Entwicklung komplexer Webapplikationen, wobei die Webapplikation selbst mit der Seite geladen wird und die Daten die der Benutzer mit der
-Anwendung verarbeiten möchte dynamisch von dieser nachgeladen werden können.
+AJAX (Asynchronous JavaScript and XML) ermöglicht es einer Webanwendung,kleinere
+Mengen von Daten nachzuladen und damit Teile der Webseite dynamisch zu ändern,
+statt bei jeder Aktion die Webseite neu zu laden. Benötigt die Weapplikation Daten
+vom Server, wird an diesen eine HTTP Anfrage gesendet und Callback-Funktionen
+für den Fall einer Antwort oder eines Fehlers beim Browser registriert. Erhält der
+Browser eine Antwort auf seine Anfrage ruft er die Callback-Funktion auf und übergibt die erhalten Daten, wodurch die Webanwendung mit der Verarbeitung dieser
+fortfahren kann. Dies ermöglicht die Entwicklung komplexer Webapplikationen, wobei die Webapplikation selbst mit der Seite geladen wird und die Daten, die der
+
+11
+
+Benutzer mit der Anwendung verarbeiten möchte, dynamisch von der Anwendung
+nachgeladen werden können [Gam06].
 
 3.1.5
 
-Objectiv J
+Objectiv-J
 
-Objective J ist eine Programmiersprache welche sich von der Syntax stark an Objective C anlehnt. Sie ist eine Erweiterung oder Obermenge von Javascript und
-wird von einem in Javascript geschriebenen Interpreter abgearbeitet. In Javascript
-können Objekte durch Prototyping erstellt werden, das Konzept von Klassen wird
-aber nicht unterstüzt. Obj J bietet zusätzlich zu den nativen JS Objekten die definition von Klassen inklusive Vererbung und die generierung von Objekten daraus.
-Obwohl es die Sprache erlaubt für Variablen, Methodenparameter und Rückgaben
-eine Datentyp zu definieren, werden diese aufgrund von schwacher Typisierung vom
-Interpreter nicht auf ihre Einhaltung überprüft. In der aktullen Version wird die
-Übergabe von Referenzen als Parameter ähnlich einem Pointer in C unterstützt. [?]
+Objective-J ist eine Programmiersprache welche sich von der Syntax stark an ObjectiveC anlehnt. Sie ist eine Erweiterung oder Obermenge von Javascript und wird von
+einem in Javascript geschriebenen Interpreter abgearbeitet. In Javascript können Objekte durch Prototyping erstellt werden, das Konzept von Klassen wird aber nicht
+unterstützt. Objective-J bietet zusätzlich zu den nativen JavaScript Objekten die
+Definition von Klassen inklusive Vererbung und die Generierung von Objekten daraus. Obwohl es die Sprache erlaubt für Variablen, Methodenparameter und Rückgabe
+einer Funktion einen Datentyp zu definieren, werden diese aufgrund von schwacher
+Typisierung vom Interpreter nicht auf ihre Einhaltung überprüft. In der aktuellen
+Version wird die Übergabe von Referenzen als Parameter ähnlich einem Pointer in
+C unterstützt [Pro13].
 
-7
-
-3.1.6
+3.1.6
 
 Cappuccino
 
-Bei Cappuccino handelt es sich um ein Web Application Framework für Objectiv J
-und Javascript, welches haupsächlich der Erstellung komplexer Benutzeroberflächen
-dient. Das Framework lehnt sich sowol vom Aussehen als auch von der Benennung
-der Komponenten sehr stark an das GUI-Framework Cocoa von Apple an. GUIElemente werden als Objekte erstellt welche von einer View-Klasse erben und innerhalb von anderen Views positioniert werden können. Das Interface wird von einem
-HTML5 fähigen Browser gerendert wobei für dessen Erstellung keinerlei HTML oder
-CSS kentnisse notwendig sind.
+Bei Cappuccino handelt es sich um ein Web Application Framework für Objectiv-J
+und JavaScript, welches hauptsächlich der Erstellung komplexer Benutzeroberflächen dient. Das Framework lehnt sich sowohl vom Aussehen als auch von der Benennung der Komponenten sehr stark an das GUI-Framework Cocoa von Apple an.
+GUI-Elemente werden als Objekte erstellt welche von einer View-Klasse erben und
+innerhalb von anderen Views positioniert werden können. Das Interface wird von
+einem HTML-fähigen Browser gerendert, wobei durch die Abstraktion durch die
+Komponenten des Frades Frameworks meworks für die Entwicklung keinerlei HTML
+oder CSS Kenntnisse notwendig sind[Pro13].
 
 3.1.7
 
 WebGL
 
 WebGL ist eine API für die Erstellung von 2D und 3D Grafiken in Browsern mit
-der Unterstützung der Grafikkarte. Im gegensatz zur Canvas-2D API wo die Bilder
+der Unterstützung der Grafikkarte. Im Gegensatz zur Canvas-2D API wo die Bilder
 in der CPU gerendert werden, ist WebGL aufgrund der Hardwarebeschleunigung
-wesentlich performanter.
-WebGL ist eine Shaderbasierte API welche sich sehr stark an OpenGL ES anlehnt.
-Diese bedeutet dass Code für die Recheneinheiten (Shadereinheiten) der Grafikkarte
-entwickelt wird, welchen der Treiber der Karte in Bytecode übersetzt und zur ausführung in den Grafikchip lädt. Die Shaderprogramme werden in der Programmiersprache GLSL geschrieben welche sich sehr stark an C anlehnt.
-Der Zugriff auf die Schnittstelle erfolgt über das HTML Canvas Element in welchem
-die Ausgabe der Grafikkarte dargestellt wird. Dies geschieht mittels JavaScript wo
-die API funktionen zur Übergabe der Nutzdaten, Befehle und der Shaderprogramme
-bereitstellt.
+wesentlich performanter. WebGL ist eine shaderbasierte API welche sich sehr stark
+an OpenGL ES anlehnt. Dies bedeutet, dass Code für die Shadereinheiten der Grafikpipeline 7 entwickelt wird, welchen der Treiber der Karte in Bytecode übersetzt
+und zur Ausführung in den Grafikchip lädt. Die Shaderprogramme werden in der
+Programmiersprache GLSL geschrieben, welche sich sehr stark an C orientiert. Der
+Zugriff auf die Schnittstelle erfolgt über das HTML Canvas Element in welchem die
+Ausgabe der Grafikkarte dargestellt wird. Dies geschieht mittels JavaScript, wo die
+API Funktionen zur Übergabe der Nutzdaten, Befehle und der Shaderprogramme
+bereitstellt[das ist kein satz] [Gro14b].
+Zum Rendern einer Grafik mit der WebGL Grafik Pipeline werden Arrays von
+Punkten, welche meist die Ecken eines Dreiecks bilden, in einen Vektorbuffer geschrieben. Diese werden anschließend vom Vertex-Shader verarbeitet, welcher zum
+Beispiel Skalierung, Rotation oder Transformation auf die Geometrien anwendet oder
+Farbinfomation hinzufügt. Anschließend werden aus den Punkten Dreiecke generiert
+
+12
+
+Abbildung 7: WebGL Graphik Pipeline
+und in der Rasterisierung die Pixel der Dreiecke berechnet. Die Pixel bekommen
+dann vom Fragment-Shader ihre Farbe, welcher diese aus Farbinformationen oder
+aus zuvor übergebenen Textur-Daten generiert. Nach der Durchführung eines Tiefentests, in welchen überprüft wird welche Pixel sichtbar sind und welche von anderen
+verdeckt werden bzw der Mischung der Farben bei Transparenz, werden die Bildinformationen in den Framebuffer geschrieben, von wo aus Sie auf dem Bildschirm
+angezeigt werden können [Mic].
+
+3.1.8
+
+PixiJS
+
+Da WebGL eine relativ Hardware nahe API ist wurden einige Frameworks entwickelt
+welche von der Komplexität einer solchen API abstrahieren, zu denen auch PixiJS
+zählt. Es bietet Funktionen zum Zeichen von geometrischen Figuren, Füllen von
+diesen und Laden von Texturen. Eine Szene in PixiJS ist als Baum organisiert,
+wobei jeder Knoten in dem Baum wiederum Operationen zur Manipulation wie
+Transformation, Translation oder Transparenz anbietet. Ein weiteres Feature ist,
+dass auf einen Knoten ein Filter mit WebGL Fragment-Shader-Code gesetzt werden
+kann, welcher zur Manipulation der Farbinformation in den einzelnen Bildpunkte
+dient [Ltd14].
 
 3.2
 
 Funktionalität und Aufbau der Benutzeroberfläche
 
+Der Workflow beim Durchsuchen von radiologischen Aufnahmen mit KRESHMOI
+gliedert sich in folgende Schritte:
+1. Auswahl eines Start-Datensatzes.
+2. Betrachten des Datensatzes inklusive Fenstern und Zoomen.
+3. Anotieren einer oder mehrerer ROI(s) und eventuelle Eingabe von Text in die
+Suchzeile.
+4. Suche absenden und Ergebnisse listen.
+5. Betrachen von Datensätzen aus der Ergebnisliste.
+6. Um neue Suchanfrage von ein Ergebnissdatensatz aus zu stellen werden die
+Schritte von 3 an wiederholt.
+
+13
+
+Abbildung 8: Hauptansicht mit Layout für zwei 2D-Betrachter, Report-Betrachter und
+Ergebnis-Liste
+Entsprechend dieses Ablaufs wird beim Start der Applikation eine Liste mit allen
+Datensätzen geladen, aus welchen einer als Einstiegspunkt in die Suche ausgewählt
+werden kann. Dieser Datensatz wird in den Betrachter der Haupansicht 8 geladen.
+Die Haupansicht setzt sich aus verschiedenen Interaktions-Elementen (Views) zusammen, welche in mehreren möglichen Layouts mit unterschiedlicher Multiplizität
+und Anordnung miteinander kombiniert werden. Von diesen Elementen gibt es Vier
+verschiedene Typen:
+• Betrachtungsansicht für Volumes (2D-Betrachter)
+• Betrachtungsansicht für den Report (Report-Betrachter)
+• Präsentationsansicht für die Ergebnisse (Ergebnis-Liste)
+• Eingabezeile für Schlagwörter mit dem Suchbutton (Suchzeile)
+Die Fläche welchen die einzelnen Views innerhalb des Browserfensters einnehmen
+kann zwischen den Views beliebig verschoben werden, unter der Prämisse dass die
+Bedienelemente der einzelnen Views genügend Platz haben. Auf den Funktionsumfang des 2D-Betrachters und der Ergebnis-Liste wird in den folgenden Unterkapiteln
+etwas genauer eingegangen.
+
+3.2.1
+
+Funktionalität des 2D-Betrachters
+
+Der 2D-Betrachter orientiert sich von seinen Funktionen sehr stark an der Betrachtungssoftware einer PACS-Workstaion oder eines DICOM-Betrachters. Er ermöglicht
+die räumliche Navigation durch die Schnitte eines Volumes in einer bestimmten Orientierung, sowie das Umschalten zwischen den Orientierungen. Des weiteren kann
+wenn das Volume aus der Ergebnissliste einer Suche ausgewählt wurde, also nicht
+der Startdatensatz ist, eine Anzeige mit den Deckungsbereichen der Suche hinzu
+geschaltet werden.
+
+14
+
+Abbildung 9: Konzept zum Aufbau von GUIs durch die Veschachtelung von ViewObjekten in Cappuccino
+Zur Interaktion mit den Volume wird auch wie bei anderen Betrachtern der Maus
+eine bestimmte Funktion zugewiesen. Die Funktionen umfassen Fensterung, Zoom,
+Bewegen des Bildes und Zeichnen und Löschen von Polygonen (ROIs). Das Einzeichnen von ROIs ist um die Benutzung einfach zu halten auf ein einzelnes Schnittbild
+beschränkt. Wird das Werkzeug zum Zeichen oder Löschen von Polygonen auf mehreren Schnitten verwendet springt der Betrachte bei deren Aktivierung immer wieder
+auf das Schnittbild mit dem ersten Polygon zurück. Das Bild kann halb Transparent
+mit dem Report des Datensatzes überblendet werden, was aber die Mausfunktion
+auf das Scrollen des Reports reduziert. In allen anderen Funktionen ist das Scrollen
+immer an die Navigation durch die Schnitte gebunden.
+
+3.2.2
+
+Funktionalität der Ergebniss-Liste
+
+Die Ergebnis-Liste präsentiert die Ergebnisse einer Suche welches sie über Drag and
+Drop in einen Betrachter laden lassen. Die Präsentation erfolgt über ein Vorschaubild
+welches von KRESHMOI als repräsentatives Bild für die Suche gewählt wurde. Um
+eine Beurteilung der Suchergebnisse im Vorfeld zu ermöglichen, verfügt die ErgebnisList ebenfalls über die Funktion die Orientierung der Schnitte des Volumes zu ändern
+und die Vorschaubilder zu zoomen.
+
 3.3
+
+Technische Umsetzung
+
+In dem Unterkapitel Technische Umsetzung wird im Groben die Archtiktur der Applikation sowie von komplexeren Komponenten erklärt und auf wichtige Details bei
+deren Umsetzung eingegangen. Weiters wird angegeben wie die Fensterung mit zwei
+verschiedenen Technologien implementiert wurde.
+
+3.3.1
+
+Framework für dynamischen Layouts
+
+Eines der zentralen Konzepete bei der Darstellung von Bedien- und Anzeige-Elementen
+in Cappuccino ist die View Klasse (Siehe Figure 9 ), von welcher all diese Elemente
+erben. In eine View können wiederum weitere Sub-Views eingehängt und innerhalb
+dieser Positioniert werden. Die Darstellung der Instanzierten Elemente erfolgt in einem Fenster, welche als erste View in der Hirachie ihre sogenannte ContentView zur
+Verfügung stellt.
+
+15
+
+Abbildung 10: Framework zum für den Layout-Austausch
+Auch die funktionalen Blöcke in welche diese Software eingeteilt wurde, im weiteren as Superelemente bezeichnet, erben von dieser View-Klasse, wodurch Sie in einer
+übergeordneten View einfach in verschiedenen Layouts angeordnet werden können.
+Die Anordung der Superelemente sowie die Kommunikation zwischen ihnen erfolgt in
+einem LayoutController. Der LayoutController kapselt das von Ihm erstellte Layout
+in einer LayoutView welche dann in die ContentView des Anzeige-Fensters eingehängt wird. Durch dieses Konzept (Siehe Figure 10 ) lassen sich die Anzahl und
+Anordung der Superelemente einfach zur Laufzeit ändern, da bei einer Änderung
+nur ein neuer LayoutController instanziert und seine LayoutView gegen die akutelle
+LayoutView in der ContentView getauscht werden muss. Zur Erhaltung der Nutzdaten muss jeder LayoutController Funktionen zum Setzen und Abfragen dieser zur
+Verfügung stellen. Die Behandlung von Layout-Änderungen finden im LayoutControllerManager statt, welcher sich um den Austausch der LayoutView kümmert und
+die Nutzdaten vom alten in den neuen LayoutController überträgt.
+
+3.3.2
+
+Berechnung der Fensterung
+
+Die Berechnung der Fensterung ist eine Anpassung von Kontrast und Helligkeit des
+Bildes, wozu für jedes Pixel der Farbwert mit einer Linear Transformation in einen
+neuen Zielwert überführt werden muss.
+F (x) = c ∗ x + b
+
+(1)
+
+Dabei ist der Kontrast durch c und die Helligkeit durch b gegeben. Für diese Berechnung wurde ein Ansatz auf Basis von JavaScript durch die Canvas 2D API und
+eine Implementierung mit Web GL getestet.
+Canvas 2D API
+Für die graphische Ausgabe im Browser wird ein HTML5 Canvas Element verwendet, auf welches über ein sogenanten Grafikkontext zugegriffen werden kann. Dieser
+Grafikkontext wird in JavaScript vom Browser als Objekt zur Verfügung gestellt.
+Durch das Kontext-Objekt kann der Bildinhalt in ein Array von Farbwerten ausgegeben und umgekehrt auch ein Array von Farbwerten in das Bild geschrieben
+werden. Dabei wird das Bild zeilenweise in ein eindimensionales Array Serialisiert,
+wo jeder Bildpunkt auf 4 Speicherstellen mit einem Integer-Wert zwischen 0 und
+
+Listing 1: Ändern von Kontrast und Helligkeit in einem HTML Canvas Element mit einer
+LookUp Tabelle in JavaScript
+
+255 abgebildet wird. Die ersten drei Speicherstellen bilden den Farbwert durch die
+Anteile von Rot, Grün, Blau und die vierte den Alpha Kanal. Für die Fensterung
+müssen alle Speicherstellen für die Farbe transformiert und wieder auf einen Integer
+Wert gerundet werden. Um unnötige Berechnungen für jedes einzelne Pixel zu sparen, werden pro Fensterungsschritt alle Pixelwerte zwischen 0 und 255 einmal vor
+berechnet und in einer LookUp Tabelle als Array gespeichert. Anstatt den Wert für
+jedes Pixel neu zu berechen und zu runden fungiert bei diesem Ansatz der aktuelle
+Wert eines Pixels als Schlüssel für die Tabelle, welche den neuen Wert des Pixels enthält. Die Anzahl der Operationen wird dabei auf 255 Berechnungen und die Anzahl
+der Speicherzugriffe pro Bildpunkt sowie die der LookUp Tabelle reduziert.
+WebGL
+Die Berechnung der Fensterung in der WebGL Grafik Pipeline erfolgt im FragmentShader. Dazu wird über die WebGL-API zuerst ein Array von Punkten, welches die
+Grundfläche in der Form von zwei aneinander liegenden Dreiecken darstellt übergeben. Weiters wird das Bild für die Fensterung als Textur in den Speicher der
+Grafikkarte geladen und die Variablen für Helligkeit und Kontrast übergeben. Der
+Vertex-Shader fügt den Punkten einen Vektor mit Textur-Koordinaten hinzu, welche an den Fragment-Shader weitergereicht werden. Dieser kann dann mit Hilfe der
+Textur-Koordinaten für jedes Pixel der Grundfläche die Farbe des Pixels aus der gepufferten Textur laden. Die Repräsentation der Farbe erfolgt mit dem Datentyp vec4
+welcher eine Vierdimensionalen Vektor für Fließkommazahlen darstellt. Die ersten
+Drei Dimensionen bilden die Drei Grundfarbe Rot, Grün, Blau die vierte den AlphaKanal, welche jeweils von einem Wert zwischen 0 und 1 repräsentiert werden. Bevor
+die Farb-Information des Pixels zurückgegeben wird erfolgt die Fensterung durch
+einen Linear-Transformation auf die drei Farbkanäle des Farbvektors. Die Rückgabe
+
+2D Betrachter
+
+Für die Implementierung des 2D-Betrachters wurde neben Cappuccino für die Bedienelemente auch noch Pixi.JS für das Grafikfenster zur Darstellung des Volumes
+verwendet. Der Inhalt des Grafikfensters ergibt sich aus den Inhalten von mehreren
+übereinanderliegenden Layern.
+• ImageLayer zur Darstellung der Schnitte des Volumes
+• AnotationLayer zum zeichnen der ROIs
+• ZoomLayer zur Darstellung des Zoom-Rechecks
+• ReportLayer zum Render des Berichtes in das Bild
+
+18
+
+Abbildung 12: Struktur des 2D-Betrachters als Klassendiagramm
+Bei diesen Layern werden Skalierung und Positionierung nur auf den ImageLayer und
+den AnotationLayer angewendet, die anderen füllen jeweils nur das ganze Grafikfenster aus. Um die Software möglichst erweiterbar zu gestalten, wurde eine LayerKlasse
+P ixiLayer entwickelt welcher eine beliebige Menge von Sublayern hizugefügt werden
+kann. Dabei wird zwischen statischen Sublayern welche jeweils nur die Anzeigefläche
+ausfüllen und dynamischen Sublayern welche gemeinsam skaliert und positioniert
+werden können unterschieden. Diese Layerklasse erledigt auch die Konvertierung
+von Punkten zwischen den dynamischen und den statischen Sublayern, im Bezug
+auf Postion, Skalierung und und der Abmessungen des Layers da das Zentrum als
+Nullpunkt angenommen wird. Da die restliche GUI mit Cappuccino aufgebaut wurde
+und dieses Framework auch die Ereignisse für Größenänderungen der einzelen Views
+behandelt, müssen diese vom Cappuccino View-Objekt welches den 2D-Betrachter
+Kapselt an das Grafikfenster weiter gegeben werden. Ansonsten ist das Pixi.JS basierte Grafikfenster durch die Layer- und Sublayler-Klassen bis auf Funktionen zur
+Übergabe der Anzeigedaten und zur Punktkonvertierung vom 2D-Betrachter abgeschottet. Die eigentliche Logik des Betrachters ist in den Sublayern zugeordnete
+Controller-Klassen gekapselt. Die Betrachter-Klasse selbst ist hauptsächlich für die
+Erstelltung der Bedienelemente und die Behandlung von Events verantwortlich. Die
+Grob-Architektur des Betrachters wird in Abbildung 12 dargestellt. Die Klassen
+welche mit Pixi.JS interagieren und das Framework steuern sind in der Abbildung
+orange eingezeichnet.
+Die Umsetzung der Fensterung im 2D-Betrachter erfolgte wegen der wesentlich
+besseren Performance in WebGL, was der Grund für die Auswahl von Pixi.JS als
+Grafik-Framework ist. Die Fensterung wurde in einem Filter für Pixi.JS implementiert (Siehe Kapitel 3.1.8 ), welcher den GLSL-Shadercode auf das Schnittbild des
+Volumes anwendet. Neben der Fensterung war das Rendern von Text mit einer um-
+
+19
+
+fangreichen Toolbox ein weiters Kriterium für die Verwendung von Pixi.JS gegenüber
+der Grafik-API von Cappucino.
+
+3.4
 
 Kommunikation mit KRESHMOI
 
-Der Datenaustausch mit KRESHMOI basiert auf REST wobei sowohl auf die einzelnen Slices von einem Volume, als auch auf die Suche als Resoure über eine URL
-zugegrifen werden kann.
+Die umsetzung von KRESHMOI erfolgte als ein System mit einer Service Orientierten Architektur (SOA). Dabei sind die einzelenen Komponenten des Gesamtsystems
+lose über REST oder SOAP Schnitstellen gekoppelt [EJ11]. Der Datenaustausch mit
+dem Subsytem für die radiologische Bilsuche basiert auf REST, wobei sowohl auf
+die einzelnen Slices von einem Volume, als auch auf die Suche als Ressource über
+eine URL zugegriffen werden kann.
 
-3.3.1
+3.4.1
 
 Query nach Bildern
 
 Der Zugriff auf die Suchfunktion erfolgt über eine POST-Operation in welcher die
-Anfrage und die Antwort in JSON codiert werden. Zum Ausführen einer Suchanfrage stehen zwei Resourcen zur verfügung:
+Anfrage und die Antwort in JSON codiert werden. Zum Ausführen einer Suchanfrage
+stehen zwei Ressourcen zur Verfügung:
 /index
-Liefert ein Array von allen Verfügbaren Datensätzen zurück
+Liefert eine Liste von allen Verfügbaren Datensätzen als JSON-Array zurück.
 /query
-Liefert ein Array von Datensätzen zurück welche anhand der Übergebenen Suchkriterien gefunden wurden. Eine Suchanfrage basiert immer auf einen Datensatz welcher
-
-8
-
-in der Anfrage übergeben werden muss. In diesem Datensatz werden weiters Interessante Bereiche sogenannte ROIs (Region of Interesst) in den einzelnen Schnittbildern definiert. Die Übergabe einer ROI erfolgt als Polygon in Form einer Listen
-von Punkten im drei Dimensionalen Raum des Volumes.
-
-Listing 1: Query
-1
-
-{
-" q u e r y i d " : "" ,
-" t e x t " : "" ,
-" i m a g e i d " : "" ,
-" roi " :
-[
-" polygon " :
-[
-" p o i n t " : {"x" : 0 , "y" : 1 , z : 0} ,
-" p o i n t " : {"x" : 1 , "y" : 1 , z : 0} ,
-" p o i n t " : {"x" : 0 , "y" : 0 , z : 0}
-],
-
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-
-]
-
-14
-15
-
-}
-
-Listing 2: Result
-1
-
-{
-" rankedImageID " :
-[
-{
-" imageID " : " 95 87 336b13 2b1 27b93 6ad0 a f d 8 0 ca 86 2" ,
-"normalDimX" : 52 ,
-"normalDimY" : 51 2 ,
-"normalDimZ" : 512 ,
-" relevance " : 1 ,
-" r e p o r t " : "" ,
-" t i t l e " : "Some Image "
-},
-]
-
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-
-}
-
-3.3.2
-
-Laden der Bilder
-
-Die Bildaten eines Volumes können über eine GET-Operation geladen werden. Dabei
-wird jedes Volume als eine Resource im Unterverzeichniss /image/ indentifiziert.
-Über Parameter in der URL werden die Schnittrichtung und und die Nummer des
-Bildes in der jeweiligen Schnittebene angegeben. Wir keine Nummer für das Bild
-angegeben wählt KRESHMOI eine repräsentatives Bild für die Suchanfrage, welches
-für die Präsentation der Ergebnisse verwendet wird. Für die Schnittebene gibt es
-entrsprechende der Terminologie für die Bildgebung in der Anatomie die Optionen:
-
-9
-
-• Axial: Die Schnitte erfolgen Wagrecht in der Transversalebene
-• Sagital: Die Schnitte erfolgen Senkrecht in der Sagitalebene
-• Coronal: Die Schnitte erfolgen Senkrecht in der Frontalebene
-Sollen die Regionen welche der Suchanfrage entsprechen in den einzelnen Bildern
-markiert werden, muss die Query-ID mit übergeben werden um die urspüngliche
-Suchanfrage zu identifizieren.
-Beispiel:
-/image/9587336b132b127b936ad0afd80ca86.jpg?slice=1&direction=axial&query=
-1
-
-3.4
-
-Architektur und Komponenten
-
-3.4.1
-
-Domänen Model
+Liefert eine Liste von Datensätzen zurück welche anhand der Übergebenen Suchkriterien gefunden wurden. Eine Suchanfrage basiert immer auf einen AusgangsDatensatz welcher in der Anfrage übergeben werden muss. Für diesem Datensatz
+werden auf ein Schnittbild Interessante Bereiche (ROIs) definiert. Die Übergabe einer ROI erfolgt als Polygon in Form einer Listen von Punkten im Dreidimensionalen
+Raum des Volumes. Die Struktur der Anfrage wird als Beispiel in Listing 3 dargestellt.
+Als Antwort auf eine der beiden POST Anfragen liefert KRESHMOI eine Liste
+von Ergebniss-Datensätzen als JSON-Array (Siehe Listing 4 ). Jeder Ergebniss in
+der Liste enthält neben der ID mit der auf das Volume zugegriffen werden kann noch
+Bild-Dimension und Titel und den Report. Die Ergebnisse werden entsprechend der
+Übereinstimmung mit der Textur aus der Suchanfrage nach ihrer Relevanz sortiert.
+Nach dieser gereiht werden Sie in die Liste eingefügt und weiters wird die Relevanz
+noch als Kommazahl in den Ergebniss-Datensatz aufgenommen.
 
 3.4.2
 
-Architektur und Aufteilung in Komponenten
+Laden der Bilder
 
-3.4.3
+Die Bilddaten eines Volumes können über eine GET-Operation geladen werden.
+Dabei wird jedes Volume als eine Resource im Unterverzeichnis /image/ identifiziert,
+welche durch die Angabe von Parametern ein konkretes Schnittbild aus dem Volume
+liefert (Siehe Listing 5 ). Über Parameter in der URL werden die Schnittrichtung
+und und die Nummer des Bildes in der jeweiligen Schnittebene angegeben. Wir
+keine Nummer für das Bild angegeben wählt KRESHMOI eine repräsentatives Bild
+für die Suchanfrage, welches für die Präsentation der Ergebnisse verwendet wird.
+Für die Schnittebene gibt es entsprechende der Terminologie für die Bildgebung in
+der Anatomie (Siehe Figure 13 ) die Optionen:
 
-2DView
 
-3.4.4
+Listing 4: Beispiel Resultat für eine Suchanfrage mit einem Datensatz als Ergebniss.
 
-Kommunikations Module
+• Axial: Die Schnitte erfolgen Waagrecht in der Transversalebene
+• Sagital: Die Schnitte erfolgen Senkrecht in der Sagitalebene
+• Coronal: Die Schnitte erfolgen Senkrecht in der Frontalebene
+Sollen die Regionen welche der Suchanfrage entsprechen in den einzelnen Bildern
+markiert werden, muss die Query-ID mit übergeben werden um die ursprüngliche
+Suchanfrage zu identifizieren.
+In diesem Kapitel wurden die wichtigsten Funktionen der Webapplikation vorgestellt. Wir haben gesehen wie diese umgesetzt wurden und welche Technologien und
+Framework-Lösungen dafür verwendet wurden. Weiters wurde eine Teil der KRESHMOI API vorgestellt und wie die Applikation mit KRESHMOI kommuniziert.
 
-3.5
-3.5.1
+21
 
-Usability
-Workflow bei der Befundung
+Abbildung 13: Bezeichnung der Schnittachsen in der Radiologie
 
-10
+Listing 5: Beispiel-Anfrage für eine Schnittbild
+
+22
 
 4
 
@@ -1196,18 +708,147 @@ Results
 
 4.1
 
-Geschwindigkeit
+Performance
+
+In Absatz 3.3.2 wurden zwei Ansätze zur Berechnung der Fensterung vorgestellt,
+welche jeweils auf unterschiedlichen vom Browser zur Verfügung gestellten API’s
+basieren. In diesem Unterkapitel wird gezeigt wie sich diese beiden Verahren im
+Bezug auf ihre Performance verhalten. Dazu wird ein Testsystem vorgestellt mit
+dem diese gemessen wurde und weiters die Ergebnisse dieser Messungen präsentiert
+und diskutiert.
+
+4.1.1
+
+Messverfahren
+
+Um zu evaluieren wie performant ein Verfahren ist, wurde über einen bestimmten
+Zeitraum Tm ermittelt, wie viele Bilder durchschnittlich in der Sekunde berechnet
+werden können. Dieser Wert wird als Framerate bezeichnet und in FPS (Frames per
+Second) angegeben. Die Framerate ist von folgenden Faktoren abhängig:
+• Berechnungs-Verfahren
+• Anzahl der Pixel im Bild
+• Verwendete Hardware
+• Verwendeter Browser
+• Aktuelle Auslatung der Maschine
+Die ersten vier Parameter wurden für die verschiedenen Messungen variert, während
+der letzte eine Störgröße dartstellt welche nur bedingt beeinflusst und nicht absolut
+konstant gehalten werden kann. Bei jeder Messung wurden die durchschnittlichen
+FPS in Abhängigkeit von der Bildgröße aufgenommen. Eine Messung besteht daher
+aus einer Menge Messpunkten wobei jeder die durchschnittliche Framerate für eine
+bestimmte Bildgröße angiebt. Dabei wurde eine quadratisches Bild verwendet und
+dessen Kantenlänge zwischen zwei Messpunkten jeweils um einen bestimmte Wert
+∆edge vergrößert. Die Pixelanzahl zwischen zwei Messpunkten hat somit ein quadratisches Wachstum wie es auch beim Zoomen von Bildern in der Applikation der Fall
+ist.
+Für die Durchführung der Messung wurde eine eigene Messumgebung entwickelt
+mit welcher es möglich ist die Implementierung der beiden Verfahren mit unterschliedlichen Parametern zu testen. Die Messumgebung besteht aus einem Servlet
+welches mit Spring MVC implementiert wurde und aus einer Clientseitigen Testumgebung für die Implementierungen der beiden Verfahren. Eine Messung wird durch
+den Aufruf einer Resource auf dem Servlet gestartet und parametriert. Das Servlet
+retourniert darauf hin eine Webseite in welcher die Testumgebung als JavaScript ausgeführt wird. Diese versucht auf einem Bild die Fensterung mit einer Ziel-Framerate
+von 60FPS zu berechnen und misst Abfälle in der Framerate. Für die eigentliche
+Messung wurde das Tool Stats.JS verwendet und geringfügig modifiziert um die
+gemessenen Werte auslesen zu können. Nach ablauf der Messzeit Tm werden die
+gemessenen Werte zurück an den Server gesendet welcher diese in eine Datenbank
+
+Abbildung 15: Getestete Browser
+schreibt. Der Server antwortet darauf mit einem neuen Messpunkt wobei das Testbild zwischen den Messpunkten jedes mal um den Wert ∆edge vergrößert wird, bis
+es eine vorher festgelegte maximale Bildgröße ereicht hat.
+
+4.1.2
+
+Ergebnisse
+
+Das im letzen Unterkapitel wurde ein Verfahren zur Ermittlung der Framerate in
+Abhängigkeit von der Bildgröße vorgestellt, sowie mehrere Parameter welche auf diese Größe einen Einfluss haben. Von diesen Paramertern wurden die Harware 14, der
+Browser 15 und das Verfahren zum Rendern 16 in unterschidlichen Kombinationen
+getestet und einen Kennline ermittlet.
+Die Abbildungen 17 und 18 zeigen einen Vergleich der beiden rendering Verfahren
+auf jeweils unterschiedlicher Hardware mit Chrome. In beiden Fällen verhält sich
+WebGl wesentlich performanter als das rendering der Bilder in der CPU. Am PC
+mit einer Grafikkarte aus dem Jahr 2007 wurden Bilder bis zu 3000Pixel Kantelänge
+getestet, welche sich ohne Eeinbrüche mit 60FPS render liesen. Dieses Verhalten lässt
+sich dadurch erklären dass eine GPU für diese Anwendung wesentlich geeigneter ist.
+Zu den beschleunigenden Faktoren zählen unter anderem, das Zusammenarbeiten
+vieler paraleller Shader-Kerne welche selbst wiederum sehr stark für diese Art von
+Berechnungen optimiert sind. Weitere Fakturen sind die schnelle Anbindung des
+Grafikspeichers in dem das Bild als Textur abgelegt wird, und dass die GPU auf
+weniger paralelle Prozesse aufgeteilt wird als die CPU. Am PC wurden dieses Tests
+auch mit anderen Browsern durchgeführt welche hier nicht abgebildet sind, da die
+Ergebnisse sehr ähnlich waren.
+Unterschiede zwischen den verschiedenen Browsern zeigten sich nur beim rendern mit Canvas 2D was in Abbildung 19 dargestellt wird. Bei dieser Gegenüberstellung wird die Performance ausschließlich durch die Imlementierung des Browsers
+
+24
+
+Verfahren Verwendete Technologien
+WebGL
+Canvas3D API, Pixi.JS, JavaScript
+Canvas 2D Canvas2D API, JavaScript
+Abbildung 16: Getestete Verfahren mit verwendeten Technologien
+
+Abbildung 17: Performance unterschiedliche rendering Verfahren am PC mit Chrome
+bestimmt, wobei hier die Effizienz der JavaScript-Engine am meisten Einfluss hat.
+Bei diesen Test ist noch anzumerken dass nicht davon ausgegangen werden kann,
+dass die JavaScript Interpreter für diese Art von Operationen, also dem vearbeiten
+von großen linearen Daten-Arrays optimiert wurden, da diese Art der Datenverabeitung in klassischen Html5 Anwendungen eher selten vorkommt. Das unterschiedliche
+Verhalten der Browser mit WebGl wurde hier nicht dargestellt da die Performance
+bis zu einer Größe von 3000Pixel Kantenlänge bei allen Browsern konstant 60FPS
+beträgt. Die einzige Ausnahme bildet der Browser Safare in welchen WebGl nur
+exerimentell verfügbar ist und extra aktiviert werden muss, was in der geteseten
+Version nicht möglich war. Es ist auch anzunehmen dass beim Rendern mit WebGl
+der Browser selbst keine nennenswerte Rolle spielt da die Datenverarbeitung in der
+GPU passiert und der Browser nur das Ergebniss darstellt.
+In den Abbildungen 20 und 21 wird die Performance auf unterschiedlicher Hardware gezeigt. Obwohl sich beim Browser Chrome die Tablet Version in einigen Features von der Desktop Version unterscheidet, ist anzunehmen dass Dies auf die Performance keine Auswirkung hat da sie beide die selbe JavaScript Engine verwenden.
+Die Unterschiede in der Leistung beim Rendern mit Canvas 2D erklärt sich durch die
+wesentlich geringere Leistung der CPU im Tablet gegenüber dem PC. Beim Rendern
+mit WegGl führt die schwächere GPU des Tablets zu der schlechteren Performance.
+
+4.1.3
+
+Zusammenfassug der Ergebnisse
+
+Im letzen unterkapitel wurden Messergebnisse für die Performance in Abhängigkeit
+von Rendering-Verfahren, Hardware und Browser gezeigt. Zusammenfassen läst sich
+sagen, dass unter der Verwendung von WebGl auf einem aktuellen PC, Bilder bis zu
+einer Auflösung von 9 MegaPixel problemlos fenstern lassen. Auf dem verwendeten
+
+25
+
+Abbildung 18: Performacne unterschiedliche rendering Verfahren am Tablet mit Chrome
+
+Abbildung 19: Performance unterschiedlicher Browser beim rendering mit Canvas 2D
+
+Abbildung 20: Performance unterschiedlicher Hardware mit Canvas 2D in Chrome
+26
+
+Abbildung 21: Performance unterschiedlicher Hardware mit WebGL in Chrome
+Tablet liegt die Grenze bei ca einem MegaPixel. Rendern mit Canvas 2D liefert im
+Vergleich zu WebGl wesentlich schlechtere Performance und lässt sich in der Praxis
+am Tablet nicht sinvoll verwenden.
 
 4.2
 
 Usability
 
-11
+Usablility markus fragen
+
+27
 
 5
 
 Conclusion
 
-12
+In dieser Arbeit wurde die Umsetzung eines Browser basierten Frontend’s für eine
+Suchmaschiene für radiologische Bilddaten gezeigt. Es wurden anhand von zwei gängigen Software-Produkten, zur Betrachtung von radiologischen Bilddaten die wichtigsten Anforderungen analysiert und mit der Erweiterung um die Suchfunktion als
+Webapplikation umgesetzt. Es wurde gezeigt dass es mit den aktuell verfügbaren
+Technologien und Frameworks ohne Probleme möglich ist, einen Betrachter radiologischer Bild-Daten für fast alle gängigen Browser zu implementieren. Weiters wurden
+zwei verschiedene Technologien zur Clientseitigen Nachbearbeitung der Bilder vorgestellt und auf ihre Performance getestet. Diese Tests zeigten dass diese Nachbearbeitung auf Basis von WebGl auf aktueller Hardware flüssig in Echzeit durchgeführt
+werden kann.
+Da die Anforderungen auf die Grundfunktionalität für einen Betrachter mit Suchfunktion limitiert waren, bietet die Webapplikation noch viele Potentiale zur Weiterentwicklung. Weitere Schritte währen zum einen die Implementierung der weiteren
+Features welche auch der JavaClient für KRESHMOI in der Radiologie-Version zur
+verfügung stellt. Zum anderen bieten die in dieser Arbeiten analysierten Programme zur Betrachtung von radiologischen Bilddaten noch viele weitere Features, wie
+3D-Rendering welche sich ebenfalls in der Webapplikation umsetzen lassen.
+Für die Forschung und Lehre macht es durch aus Sinn ein System wie KRESMOI
+weiter zu Entwickeln und einfach als Webapplikation zugängich zu machen. Der
+Zugriff auf Daten und komlexere Systeme durch eine Webapplikation spiegelt auch
+einen aktuellen Trend in der IT wieder, welcher einen Teil des Cloud Computing
+Konzeptes ist.
 
-

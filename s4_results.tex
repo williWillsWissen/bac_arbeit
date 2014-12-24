@@ -14,7 +14,7 @@
 
 In Absatz \ref{sec:Berehnung_der_Fensterung} wurden zwei Ansätze zur Berechnung der Fensterung vorgestellt,
 welche jeweils auf unterschiedlichen vom Browser zur Verfügung gestellten API's basieren.
-In diesem Unterkapitel wird gezeigt wie sich diese beiden Verahren im Bezug auf ihre Performance verhalten.
+In diesem Unterkapitel wird gezeigt wie sich diese beiden Verfahren im Bezug auf ihre Performance verhalten.
 Dazu wird ein Testsystem vorgestellt mit dem diese gemessen wurde und weiters die Ergebnisse dieser Messungen präsentiert und diskutiert.
 
 \subsubsection{Messverfahren}
@@ -27,29 +27,29 @@ Die Framerate ist von folgenden Faktoren abhängig:
 	\item Anzahl der Pixel im Bild
 	\item Verwendete Hardware
 	\item Verwendeter Browser
-	\item Aktuelle Auslatung der Maschine
+	\item Aktuelle Auslastung der Maschine
 \end{itemize}
-Die ersten vier Parameter wurden für die verschiedenen Messungen variert, während der letzte eine Störgröße dartstellt welche nur bedingt beeinflusst und nicht absolut konstant gehalten werden kann.
+Die ersten vier Parameter wurden für die verschiedenen Messungen variert, während der letzte eine Störgröße darstellt welche nur bedingt beeinflusst und nicht absolut konstant gehalten werden kann.
 Bei jeder Messung wurden die durchschnittlichen FPS in Abhängigkeit von der Bildgröße aufgenommen.
-Eine Messung besteht daher aus einer Menge Messpunkten wobei jeder die durchschnittliche Framerate für eine bestimmte Bildgröße angiebt.
+Eine Messung besteht daher aus einer Menge Messpunkten wobei jeder die durchschnittliche Framerate für eine bestimmte Bildgröße angibt.
 Dabei wurde eine quadratisches Bild verwendet und dessen Kantenlänge zwischen zwei Messpunkten jeweils um einen bestimmte Wert $\Delta_{edge}$ vergrößert.
 Die Pixelanzahl zwischen zwei Messpunkten hat somit ein quadratisches Wachstum wie es auch beim Zoomen von Bildern in der Applikation der Fall ist.
 
-Für die Durchführung der Messung wurde eine eigene Messumgebung entwickelt mit welcher es möglich ist die Implementierung der beiden Verfahren mit unterschliedlichen Parametern zu testen.
+Für die Durchführung der Messung wurde eine eigene Messumgebung entwickelt mit welcher es möglich ist die Implementierung der beiden Verfahren mit unterschiedlichen Parametern zu testen.
 Die Messumgebung besteht aus einem Servlet welches mit Spring MVC implementiert wurde und aus einer Clientseitigen Testumgebung für die Implementierungen der beiden Verfahren.
 Eine Messung wird durch den Aufruf einer Resource auf dem Servlet gestartet und parametriert.
 Das Servlet retourniert darauf hin eine Webseite in welcher die Testumgebung als JavaScript ausgeführt wird.
 Diese versucht auf einem Bild die Fensterung mit einer Ziel-Framerate von 60FPS zu berechnen und misst Abfälle in der Framerate.
 Für die eigentliche Messung wurde das Tool Stats.JS verwendet und geringfügig modifiziert um die gemessenen Werte auslesen zu können.
-Nach ablauf der Messzeit $T_m$ werden die gemessenen Werte zurück an den Server gesendet welcher diese in eine Datenbank schreibt.
+Nach Ablauf der Messzeit $T_m$ werden die gemessenen Werte zurück an den Server gesendet, welcher diese in eine Datenbank schreibt.
 Der Server antwortet darauf mit einem neuen Messpunkt wobei das Testbild zwischen den Messpunkten jedes mal um den Wert $\Delta_{edge}$ vergrößert wird, 
 bis es eine vorher festgelegte maximale Bildgröße ereicht hat.
 
 \subsubsection{Ergebnisse}
-Das im letzen Unterkapitel wurde ein Verfahren zur Ermittlung der Framerate in Abhängigkeit von der Bildgröße vorgestellt, 
+Im letzten Unterkapitel wurde ein Verfahren zur Ermittlung der Framerate in Abhängigkeit von der Bildgröße vorgestellt, 
 sowie mehrere Parameter welche auf diese Größe einen Einfluss haben.
-Von diesen Paramertern wurden die Harware \ref{tab:tested_hardware}, 
-der Browser \ref{tab:tested_browser} und das Verfahren zum Rendern \ref{tab:tested_technologies} in unterschidlichen Kombinationen getestet und einen Kennline ermittlet.
+Von diesen Parametern wurden die Hardware \ref{tab:tested_hardware}, 
+der Browser \ref{tab:tested_browser} und das Verfahren zum Rendern \ref{tab:tested_technologies} in unterschiedlichen Kombinationen getestet und einen Kennline ermittelt.
 \begin{figure}[t]
 	\centering
 	\begin{tabular}{| l | l | l |}
@@ -100,24 +100,24 @@ der Browser \ref{tab:tested_browser} und das Verfahren zum Rendern \ref{tab:test
 
 
 Die Abbildungen \ref{fig:stat_renderer_pc_chorme} und \ref{fig:stat_renderer_tablet_chorme} zeigen einen Vergleich der beiden rendering Verfahren auf jeweils unterschiedlicher Hardware mit Chrome.
-In beiden Fällen verhält sich WebGl wesentlich performanter als das rendering der Bilder in der CPU.
+In beiden Fällen verhält sich WebGl wesentlich performanter als das Rendering der Bilder in der CPU.
 Am PC mit einer Grafikkarte aus dem Jahr 2007 wurden Bilder bis zu 3000Pixel Kantelänge getestet, 
-welche sich ohne Eeinbrüche mit 60FPS render liesen.
+welche sich ohne Einbrüche mit 60FPS render liesen.
 Dieses Verhalten lässt sich dadurch erklären dass eine GPU für diese Anwendung wesentlich geeigneter ist.
-Zu den beschleunigenden Faktoren zählen unter anderem, das Zusammenarbeiten vieler paraleller Shader-Kerne welche selbst wiederum sehr stark für diese Art von Berechnungen optimiert sind.
-Weitere Fakturen sind die schnelle Anbindung des Grafikspeichers in dem das Bild als Textur abgelegt wird, und dass die GPU auf weniger paralelle Prozesse aufgeteilt wird als die CPU.
+Zu den beschleunigenden Faktoren zählen unter anderem, das Zusammenarbeiten vieler paralleler Shader-Kerne welche selbst wiederum sehr stark für diese Art von Berechnungen optimiert sind.
+Weitere Faktoren sind die schnelle Anbindung des Grafikspeichers in dem das Bild als Textur abgelegt wird, und dass die GPU auf weniger parallele Prozesse aufgeteilt wird als die CPU.
 Am PC wurden dieses Tests auch mit anderen Browsern durchgeführt welche hier nicht abgebildet sind, da die Ergebnisse sehr ähnlich waren.
 
-Unterschiede zwischen den verschiedenen Browsern zeigten sich nur beim rendern mit Canvas 2D was in Abbildung \ref{fig:stat_browser_js_pc} dargestellt wird.
-Bei dieser Gegenüberstellung wird die Performance ausschließlich durch die Imlementierung des Browsers bestimmt,
+Unterschiede zwischen den verschiedenen Browsern zeigten sich nur beim Rendern mit Canvas 2D was in Abbildung \ref{fig:stat_browser_js_pc} dargestellt wird.
+Bei dieser Gegenüberstellung wird die Performance ausschließlich durch die Implementierung des Browsers bestimmt,
 wobei hier die Effizienz der JavaScript-Engine am meisten Einfluss hat.
 Bei diesen Test ist noch anzumerken dass nicht davon ausgegangen werden kann, 
 dass die JavaScript Interpreter für diese Art von Operationen, 
-also dem vearbeiten von großen linearen Daten-Arrays optimiert wurden, 
-da diese Art der Datenverabeitung in klassischen Html5 Anwendungen eher selten vorkommt.
+also dem verarbeiten von großen linearen Daten-Arrays optimiert wurden, 
+da diese Art der Datenverarbeitung in klassischen Html5 Anwendungen eher selten vorkommt.
 Das unterschiedliche Verhalten der Browser mit WebGl wurde hier nicht dargestellt da die Performance bis zu einer Größe von 3000Pixel Kantenlänge bei allen Browsern konstant 60FPS beträgt.
-Die einzige Ausnahme bildet der Browser Safare in welchen WebGl nur exerimentell verfügbar ist und extra aktiviert werden muss, was in der geteseten Version nicht möglich war.
-Es ist auch anzunehmen dass beim Rendern mit WebGl der Browser selbst keine nennenswerte Rolle spielt da die Datenverarbeitung in der GPU passiert und der Browser nur das Ergebniss darstellt.
+Die einzige Ausnahme bildet der Browser Safari in welchen WebGl nur experimentell verfügbar ist und extra aktiviert werden muss, was in der getesteten Version nicht möglich war.
+Es ist auch anzunehmen dass beim Rendern mit WebGl der Browser selbst keine nennenswerte Rolle spielt da die Datenverarbeitung in der GPU passiert und der Browser nur das Ergebnis darstellt.
 
 In den Abbildungen \ref{fig:stat_hardware_js_chrome} und \ref{fig:stat_hardware_webgl_chrome} wird die Performance auf unterschiedlicher Hardware gezeigt.
 Obwohl sich beim Browser Chrome die Tablet Version in einigen Features von der Desktop Version unterscheidet, 
@@ -128,21 +128,21 @@ Beim Rendern mit WegGl führt die schwächere GPU des Tablets zu der schlechtere
 \begin{figure}[pt]
 	\centering
 	\includegraphics[width=0.7\linewidth]{img/c4_stat_renderer_pc_chorme.jpg}
-	\caption{Performance unterschiedliche rendering Verfahren am PC mit Chrome}
+	\caption{Performance unterschiedlicher rendering Verfahren am PC mit Chrome}
 	\label{fig:stat_renderer_pc_chorme}
 \end{figure}
 
 \begin{figure}[pt]
 	\centering
 	\includegraphics[width=0.7\linewidth]{img/c4_stat_renderer_tablet_chorme.jpg}
-	\caption{Performacne unterschiedliche rendering Verfahren am Tablet mit Chrome}
+	\caption{Performance unterschiedliche rendering Verfahren am Tablet mit Chrome}
 	\label{fig:stat_renderer_tablet_chorme}
 \end{figure}
 
 \begin{figure}[pt]
 	\centering
 	\includegraphics[width=0.7\linewidth]{img/c4_stat_browser_js_pc.jpg}
-	\caption{Performance unterschiedlicher Browser beim rendering mit Canvas 2D}
+	\caption{Performance unterschiedlicher Browser beim Rendering mit Canvas 2D}
 	\label{fig:stat_browser_js_pc}
 \end{figure}
 
@@ -161,12 +161,12 @@ Beim Rendern mit WegGl führt die schwächere GPU des Tablets zu der schlechtere
 \end{figure}
 
 \subsubsection{Zusammenfassug der Ergebnisse}
-Im letzen unterkapitel wurden Messergebnisse für die Performance in Abhängigkeit von Rendering-Verfahren, Hardware und Browser gezeigt.
-Zusammenfassen läst sich sagen, 
+Im letzten Unterkapitel wurden Messergebnisse für die Performance in Abhängigkeit von Rendering-Verfahren, Hardware und Browser gezeigt.
+Zusammenfassen lässt sich sagen, 
 dass unter der Verwendung von WebGl auf einem aktuellen PC, 
 Bilder bis zu einer Auflösung von 9 MegaPixel problemlos fenstern lassen.
 Auf dem verwendeten Tablet liegt die Grenze bei ca einem MegaPixel.
-Rendern mit Canvas 2D liefert im Vergleich zu WebGl wesentlich schlechtere Performance und lässt sich in der Praxis am Tablet nicht sinvoll verwenden.
+Rendern mit Canvas 2D liefert im Vergleich zu WebGl wesentlich schlechtere Performance und lässt sich in der Praxis am Tablet nicht sinnvoll verwenden.
 
 
 %----------------------------------------------
