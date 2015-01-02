@@ -7,10 +7,10 @@
 \label{sec:methodology}
 \C{
 In diesem Kapitel wird die Umsetzung des Web-Frontends für KRESHMOI beschrieben.
-Zuerst werden die wichtigsten Framworks und Technologien vorgestellt welche die technischen Grundlagen der Anwendung bilden.
+Zuerst werden die wichtigsten Framworks und Technologien vorgestellt, welche die technischen Grundlagen der Anwendung bilden.
 Weiters werden alle wichtigen funktionalen Anforderungen der Anwendung aufgezeigt und grundlegend auf die Bedienung der Applikation eingegangen.
 Wie die funktionalen Anforderungen umgesetzt wurden wird im darauf folgenden Unterkapitel beschrieben.
-Hier werden Lösungen für die technische Umsetzung der Fensterung sowie für die nicht funktionale Anforderung einer modularen Applikation präsentiert.
+In diesem werden Lösungen für die technische Umsetzung der Fensterung, sowie für die nicht funktionale Anforderung einer modularen Applikation präsentiert.
 Zum Schluss wird noch die API für KRESHMOI selbst vorgestellt welche die Anwendung für den Datenaustausch mit den System nutzt.
 }
 
@@ -20,37 +20,39 @@ Zum Schluss wird noch die API für KRESHMOI selbst vorgestellt welche die Anwend
 %----------------------------------------------
 \subsection{Verwendetet Technologien und Protokolle}
 \label{sec:Verwendetet Technologien}
-Bevor auf die eigentliche Umsetzung eingegangen wird werden die verwendeten Frameworks und Technologien dargestellt.
+Bevor auf die eigentliche Umsetzung eingegangen wird, werden die verwendeten Frameworks und Technologien dargestellt.
 Ein Teil davon, wie HTTP und REST, wurden bereits durch das Interface für KRESHMOI festgelegt, 
 ein weiterer ergab sich durch die Anforderung einer Web-Applikation.
-Die Frameworks und Technologien für Grafik und GUI wurden gewählt weil mit ihnen eine schnelle Umsetzung der Anforderungen möglich war.
+Die Frameworks und Technologien für Grafik und GUI wurden gewählt, weil mit ihnen eine schnelle Umsetzung der Anforderungen möglich war.
 
 %----------------------------------------------
 % ** HTTP
 %----------------------------------------------
 \subsubsection{HTTP}
 \label{sec:HTTP}
-HTTP (Hyper Text Transfer Protokoll) ist ein Protokoll zur Übertragung von Daten über ein Netzwerk welches auf TCP aufsetzt.
-Der Datenaustausch zwischen zwei Kommunikationspartnern findet in der Form von Nachrichten statt, 
-wobei der Client eine Anfrage an einen Server stellt und dieser die Anfrage bearbeitet und eine Antwort returniert.
+HTTP (Hyper Text Transfer Protokoll) ist ein Protokoll zur Übertragung von Daten über ein Netzwerk, 
+welches auf TCP aufsetzt.
+Der Datenaustausch zwischen zwei Kommunikationspartnern findet in Form von Nachrichten statt, 
+wobei der Client eine Anfrage an einen Server stellt und dieser die Anfrage bearbeitet und eine Antwort retourniert.
 %
 Eine Nachricht setzt sich aus einem Header und einen Body zusammen.
-Der Body enthält die Nutzdaten und der Header enthält Metadaten über die Nutzdaten.
+Während der Body die Nutzdaten enthält, beinhaltet der Header die Metadaten über die Nutzdaten.
 Vom Aufbau der Nachricht unterscheiden sich Anfrage und Antwort nur in der ersten Zeile:
 \begin{itemize}
-	\item Anfrage: Enthält die HTTP-Methode, die URL welche auf die Resource am Server zeigt und die Protokollversion.
+	\item Anfrage: Enthält die HTTP-Methode, die URL, welche auf die Resource am Server verweist und die Protokollversion.
 	\item Antwort: Enthält die Protokollversion und den Serverstatus. 
-		Der Serverstatus liefert eine Aussage ob der Request erfolgreich bearbeitet wurde bzw welche Art von Fehler bei der Bearbeitung aufgetreten ist.
+		Der Serverstatus liefert eine Aussage darüber, 
+		ob der Request erfolgreich bearbeitet wurde bzw welche Art von Fehler bei der Bearbeitung aufgetreten ist.
 \end{itemize}
 HTTP ist ein zustandsloses Protokoll, daher wird nach jeder Anfrage die Verbindung vom Server wieder abgebaut.
-Für eine Zuordnung eines Clients muss dieser eine Session-ID mitsenden welche normalerweise im Header enthalten ist \cite{http}.
+Für eine Zuordnung eines Clients muss dieser eine Session-ID mitsenden, die normalerweise im Header enthalten ist \cite{http}.
 
 %--------------------------------------------- 
 % ** REST
 %----------------------------------------------
 \subsubsection{REST}
 \label{sec:HTTP}
-REST ist im eigentlichen Sinn mehr ein Architekturstil als ein Protokoll welcher mit HTTP umgesetzt wird.
+REST (Representional State Transfer) ist im eigentlichen Sinn mehr ein Architekturstil als ein Protokoll welcher mit HTTP umgesetzt wird.
 Die Idee von REST ist, dass eine URL genau eine Ressource auf einem Server adressiert, 
 wobei eine Ressource eine statische Datei oder das Ergebnis einer Aktion auf dem Server sein kann.
 Dieser Architekturstil lässt sich durch fünf Prinzipiell zusammenfassen:

@@ -14,8 +14,8 @@
 
 In Absatz \ref{sec:Berehnung_der_Fensterung} wurden zwei Ansätze zur Berechnung der Fensterung vorgestellt,
 welche jeweils auf unterschiedlichen vom Browser zur Verfügung gestellten API's basieren.
-In diesem Unterkapitel wird gezeigt wie sich diese beiden Verfahren im Bezug auf ihre Performance verhalten.
-Dazu wird ein Testsystem vorgestellt mit dem diese gemessen wurde und weiters die Ergebnisse dieser Messungen präsentiert und diskutiert.
+In diesem Unterkapitel wird gezeigt, wie sich diese beiden Verfahren im Bezug auf ihre Performance verhalten.
+Dazu wird ein Testsystem vorgestellt, mit dem diese gemessen wurde und weiters werden die Ergebnisse dieser Messungen präsentiert und diskutiert.
 
 \subsubsection{Messverfahren}
 Um zu evaluieren wie performant ein Verfahren ist,
@@ -29,13 +29,14 @@ Die Framerate ist von folgenden Faktoren abhängig:
 	\item Verwendeter Browser
 	\item Aktuelle Auslastung der Maschine
 \end{itemize}
-Die ersten vier Parameter wurden für die verschiedenen Messungen variert, während der letzte eine Störgröße darstellt welche nur bedingt beeinflusst und nicht absolut konstant gehalten werden kann.
+Die ersten vier Parameter wurden für die verschiedenen Messungen variiert, während der letzte eine Störgröße darstellt, welche nur bedingt beeinflusst und nicht absolut konstant gehalten werden kann.
 Bei jeder Messung wurden die durchschnittlichen FPS in Abhängigkeit von der Bildgröße aufgenommen.
-Eine Messung besteht daher aus einer Menge Messpunkten wobei jeder die durchschnittliche Framerate für eine bestimmte Bildgröße angibt.
-Dabei wurde eine quadratisches Bild verwendet und dessen Kantenlänge zwischen zwei Messpunkten jeweils um einen bestimmte Wert $\Delta_{edge}$ vergrößert.
+Eine Messung besteht daher aus einer Menge von Messpunkten, wobei jeder die durchschnittliche Framerate für eine bestimmte Bildgröße angibt.
+Dabei wurde ein quadratisches Bild verwendet und dessen Kantenlänge zwischen zwei Messpunkten jeweils um einen bestimmten Wert $\Delta_{edge}$ vergrößert.
 Die Pixelanzahl zwischen zwei Messpunkten hat somit ein quadratisches Wachstum wie es auch beim Zoomen von Bildern in der Applikation der Fall ist.
 
-Für die Durchführung der Messung wurde eine eigene Messumgebung entwickelt mit welcher es möglich ist die Implementierung der beiden Verfahren mit unterschiedlichen Parametern zu testen.
+Für die Durchführung der Messung wurde eine eigene Messumgebung entwickelt, 
+mit welcher es möglich ist die Implementierung der beiden Verfahren mit unterschiedlichen Parametern zu testen.
 Die Messumgebung besteht aus einem Servlet welches mit Spring MVC implementiert wurde und aus einer Clientseitigen Testumgebung für die Implementierungen der beiden Verfahren.
 Eine Messung wird durch den Aufruf einer Resource auf dem Servlet gestartet und parametriert.
 Das Servlet retourniert darauf hin eine Webseite in welcher die Testumgebung als JavaScript ausgeführt wird.
@@ -172,7 +173,12 @@ Rendern mit Canvas 2D liefert im Vergleich zu WebGl wesentlich schlechtere Perfo
 %----------------------------------------------
 % * Usability
 %----------------------------------------------
-\subsection{Usability}
+\subsection{Vergleich mit dem KRESHMOI JavaClient}
 \label{sec:Usability}
-Usablility
-markus fragen
+In der Einführung wurde bereits erwähnt, 
+dass für KRESHMOI paralell zu der in diesem Projekt entwickelten Webapplikation auch noch ein Radiologie-Client in Java entwickelt wurde.
+Wie auch die Webapplikation dient der JavaClient zum Betrachten und Durchsuchen von radiologischen Bilddaten,
+bietet aber weiters noch umfangreiche Tools für die Textsuche und für kolaboratives Arbeiten.
+In diesem Unterkapitel werden Features und die Umsetzung der beiden Anwendung bezüglich des Pflichtenheftes (Siehe Unterkapitel \ref{sec:Pflichtenheft}) verglichen.
+
+
